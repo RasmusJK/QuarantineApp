@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>672048634659-lr4597lqi1cdb0dh9d6crc7ugrmuu06d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.672048634659-lr4597lqi1cdb0dh9d6crc7ugrmuu06d</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCRYY0lvIfNCfRF43SSRSosPuDMcs7hHQ8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>672048634659</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>fi.metropolia.roopeva.QuarantineApp</string>
+	<key>PROJECT_ID</key>
+	<string>quarantine-29400</string>
+	<key>STORAGE_BUCKET</key>
+	<string>quarantine-29400.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:672048634659:ios:2571fdf83ecdc3199cca96</string>
+	<key>DATABASE_URL</key>
+	<string>https://quarantine-29400.firebaseio.com</string>
+</dict>
+</plist>

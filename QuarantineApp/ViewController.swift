@@ -7,15 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("ads")
+        let db = Firestore.firestore()
+        db.collection("testing").addDocument(data: ["text": "kakka"])
     }
-
-
 }
 
