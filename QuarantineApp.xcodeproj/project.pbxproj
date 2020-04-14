@@ -16,6 +16,10 @@
 		2FEF1FBC2445C96300E9D75D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FBA2445C96300E9D75D /* LaunchScreen.storyboard */; };
 		2FEF1FC72445C96300E9D75D /* QuarantineAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF1FC62445C96300E9D75D /* QuarantineAppTests.swift */; };
 		2FEF1FD22445C96300E9D75D /* QuarantineAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF1FD12445C96300E9D75D /* QuarantineAppUITests.swift */; };
+		2FEF1FE12445CC6D00E9D75D /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FE02445CC6D00E9D75D /* Auth.storyboard */; };
+		2FEF1FE32445CC7900E9D75D /* CovidTracker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FE22445CC7900E9D75D /* CovidTracker.storyboard */; };
+		2FEF1FE52445CC8200E9D75D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FE42445CC8200E9D75D /* Profile.storyboard */; };
+		2FEF1FE72445CC8800E9D75D /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FE62445CC8800E9D75D /* Community.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,10 @@
 		2FEF1FCD2445C96300E9D75D /* QuarantineAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuarantineAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FEF1FD12445C96300E9D75D /* QuarantineAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarantineAppUITests.swift; sourceTree = "<group>"; };
 		2FEF1FD32445C96300E9D75D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FEF1FE02445CC6D00E9D75D /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		2FEF1FE22445CC7900E9D75D /* CovidTracker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CovidTracker.storyboard; sourceTree = "<group>"; };
+		2FEF1FE42445CC8200E9D75D /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		2FEF1FE62445CC8800E9D75D /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +109,10 @@
 		2FEF1FAB2445C96100E9D75D /* QuarantineApp */ = {
 			isa = PBXGroup;
 			children = (
+				2FEF1FDF2445CC5800E9D75D /* Storyboards */,
 				2FEF1FAC2445C96100E9D75D /* AppDelegate.swift */,
 				2FEF1FAE2445C96100E9D75D /* SceneDelegate.swift */,
 				2FEF1FB02445C96100E9D75D /* ViewController.swift */,
-				2FEF1FB22445C96100E9D75D /* Main.storyboard */,
 				2FEF1FB82445C96300E9D75D /* Assets.xcassets */,
 				2FEF1FBA2445C96300E9D75D /* LaunchScreen.storyboard */,
 				2FEF1FBD2445C96300E9D75D /* Info.plist */,
@@ -129,6 +137,18 @@
 				2FEF1FD32445C96300E9D75D /* Info.plist */,
 			);
 			path = QuarantineAppUITests;
+			sourceTree = "<group>";
+		};
+		2FEF1FDF2445CC5800E9D75D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2FEF1FB22445C96100E9D75D /* Main.storyboard */,
+				2FEF1FE02445CC6D00E9D75D /* Auth.storyboard */,
+				2FEF1FE22445CC7900E9D75D /* CovidTracker.storyboard */,
+				2FEF1FE42445CC8200E9D75D /* Profile.storyboard */,
+				2FEF1FE62445CC8800E9D75D /* Community.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,8 +255,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FEF1FE52445CC8200E9D75D /* Profile.storyboard in Resources */,
+				2FEF1FE32445CC7900E9D75D /* CovidTracker.storyboard in Resources */,
+				2FEF1FE12445CC6D00E9D75D /* Auth.storyboard in Resources */,
 				2FEF1FBC2445C96300E9D75D /* LaunchScreen.storyboard in Resources */,
 				2FEF1FB92445C96300E9D75D /* Assets.xcassets in Resources */,
+				2FEF1FE72445CC8800E9D75D /* Community.storyboard in Resources */,
 				2FEF1FB42445C96100E9D75D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,14 +462,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = QuarantineApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fi.metropolia.roopeva.QuarantineApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -455,14 +483,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = QuarantineApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fi.metropolia.roopeva.QuarantineApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
