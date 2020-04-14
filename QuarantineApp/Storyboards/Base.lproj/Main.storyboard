@@ -21,7 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="To auth"/>
                                 <connections>
-                                    <segue destination="oVa-sz-oVR" kind="show" id="gPX-PZ-22g"/>
+                                    <segue destination="oVa-sz-oVR" kind="presentation" modalPresentationStyle="fullScreen" id="gPX-PZ-22g"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Main" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ha-42-CRM">
