@@ -5,7 +5,7 @@ build_project:
   stage: build
   script:
     - xcodebuild clean -project QuarantineApp.xcodeproj -scheme QuarantineApp | xcpretty
-    - xcodebuild test -project QuarantineApp.xcodeproj -scheme QuarantineApp -destination ‘platform=iOS Simulator,name=iPhone 11 Pro Max,OS=13.2' | xcpretty -s
+    - xcodebuild test -project QuarantineApp.xcodeproj -scheme QuarantineApp -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max,OS=13.2.2' | xcpretty -s
   tags:
     - ci
 
