@@ -20,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="back to main"/>
                                 <connections>
-                                    <segue destination="DrV-ej-EON" kind="show" id="QjX-zn-gG3"/>
+                                    <segue destination="DrV-ej-EON" kind="presentation" modalPresentationStyle="fullScreen" id="QjX-zn-gG3"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Auth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-zF-NUT">
