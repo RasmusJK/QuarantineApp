@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  QuarantineApp
+
+  Created by Topias Peiponen on 15.4.2020.
+  Copyright © 2020 Roope Vaarama. All rights reserved.
+*/
+
+"Home" = "Home";
+"Community" = "Community";
+"Profile" = "Profile";
+"All" = "All";
+"Movies" = "Movies";
+"Shows" = "Shows";
+"Games" = "Games";
+"Streams" = "Streams";

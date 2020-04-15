@@ -1,0 +1,48 @@
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "6VU-Lv-a81"; */
+"6VU-Lv-a81.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Main"; ObjectID = "7ha-42-CRM"; */
+"7ha-42-CRM.text" = "Main";
+
+/* Class = "UILabel"; text = "Profile"; ObjectID = "AlF-UT-OEx"; */
+"AlF-UT-OEx.text" = "Profile";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "LIx-Eo-Xdo"; */
+"LIx-Eo-Xdo.title" = "Profile";
+
+/* Class = "UITabBarItem"; title = "Community"; ObjectID = "RlH-zb-S5p"; */
+"RlH-zb-S5p.title" = "Community";
+
+/* Class = "UIButton"; normalTitle = "To auth"; ObjectID = "UbS-Dm-bEy"; */
+"UbS-Dm-bEy.normalTitle" = "To auth";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XiX-gW-zcy"; */
+"XiX-gW-zcy.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Y1G-fj-cbi"; */
+"Y1G-fj-cbi.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "ciE-K2-3c6"; */
+"ciE-K2-3c6.title" = "Home";
+
+/* Class = "UILabel"; text = "COVID Tracker"; ObjectID = "qpn-WR-PBx"; */
+"qpn-WR-PBx.text" = "COVID Tracker";
+
+/* Class = "UISegmentedControl"; xXF-WR-gza.segmentTitles[0] = "All"; ObjectID = "xXF-WR-gza"; */
+"xXF-WR-gza.segmentTitles[0]" = "All";
+
+/* Class = "UISegmentedControl"; xXF-WR-gza.segmentTitles[1] = "Movies"; ObjectID = "xXF-WR-gza"; */
+"xXF-WR-gza.segmentTitles[1]" = "Movies";
+
+/* Class = "UISegmentedControl"; xXF-WR-gza.segmentTitles[2] = "Shows"; ObjectID = "xXF-WR-gza"; */
+"xXF-WR-gza.segmentTitles[2]" = "Shows";
+
+/* Class = "UISegmentedControl"; xXF-WR-gza.segmentTitles[3] = "Games"; ObjectID = "xXF-WR-gza"; */
+"xXF-WR-gza.segmentTitles[3]" = "Games";
+
+/* Class = "UISegmentedControl"; xXF-WR-gza.segmentTitles[4] = "Streams"; ObjectID = "xXF-WR-gza"; */
+"xXF-WR-gza.segmentTitles[4]" = "Streams";
+
+/* Class = "UITabBarItem"; title = "Covid-19"; ObjectID = "yET-kP-4ts"; */
+"yET-kP-4ts.title" = "Covid-19";
