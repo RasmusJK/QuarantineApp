@@ -31,6 +31,8 @@
 		6AB111D02446038800B02BD8 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB111CF2446038800B02BD8 /* CommunityViewController.swift */; };
 		6ACA8E072446068700B9339C /* CovidTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACA8E062446068700B9339C /* CovidTrackerViewController.swift */; };
 		6ACA8E092446076B00B9339C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACA8E082446076B00B9339C /* ProfileViewController.swift */; };
+		6AF41C9524478E3B00803008 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF41C9424478E3B00803008 /* LoginViewController.swift */; };
+		6AF41C972447A3B200803008 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF41C962447A3B200803008 /* RegisterViewController.swift */; };
 		DE48BCAD043D3448B87D3219 /* Pods_QuarantineApp_QuarantineAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE699EE72ABF7C9343C047B6 /* Pods_QuarantineApp_QuarantineAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,8 @@
 		6AB111CF2446038800B02BD8 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		6ACA8E062446068700B9339C /* CovidTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidTrackerViewController.swift; sourceTree = "<group>"; };
 		6ACA8E082446076B00B9339C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		6AF41C9424478E3B00803008 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6AF41C962447A3B200803008 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A7591915F2A3C74BBCBB474F /* Pods_QuarantineAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuarantineAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7147EC4EBA19A0C7E6A32B9 /* Pods-QuarantineApp-QuarantineAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarantineApp-QuarantineAppUITests.release.xcconfig"; path = "Target Support Files/Pods-QuarantineApp-QuarantineAppUITests/Pods-QuarantineApp-QuarantineAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EE699EE72ABF7C9343C047B6 /* Pods_QuarantineApp_QuarantineAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuarantineApp_QuarantineAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +206,8 @@
 				6ACA8E082446076B00B9339C /* ProfileViewController.swift */,
 				6A13A4F8244706CB00EBC44B /* MenuViewController.swift */,
 				6A13A50724471BF700EBC44B /* MainTabViewController.swift */,
+				6AF41C9424478E3B00803008 /* LoginViewController.swift */,
+				6AF41C962447A3B200803008 /* RegisterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -499,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AF41C9524478E3B00803008 /* LoginViewController.swift in Sources */,
 				6ACA8E072446068700B9339C /* CovidTrackerViewController.swift in Sources */,
 				2FEF1FB12445C96100E9D75D /* HomeViewController.swift in Sources */,
 				2FEF1FAD2445C96100E9D75D /* AppDelegate.swift in Sources */,
@@ -508,6 +515,7 @@
 				6A13A50A24471F0A00EBC44B /* SlideInTransition.swift in Sources */,
 				6ACA8E092446076B00B9339C /* ProfileViewController.swift in Sources */,
 				6AB111D02446038800B02BD8 /* CommunityViewController.swift in Sources */,
+				6AF41C972447A3B200803008 /* RegisterViewController.swift in Sources */,
 				2FEF1FB72445C96100E9D75D /* QuarantineApp.xcdatamodeld in Sources */,
 				6A13A4F9244706CB00EBC44B /* MenuViewController.swift in Sources */,
 			);
