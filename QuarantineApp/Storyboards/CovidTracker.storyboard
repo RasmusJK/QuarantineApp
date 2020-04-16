@@ -15,26 +15,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Covid Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmR-V8-WkG">
-                                <rect key="frame" x="114" y="96" width="193" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CovidMap" translatesAutoresizingMaskIntoConstraints="NO" id="2hz-0s-JG2">
+                                <rect key="frame" x="8" y="52" width="398" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="uti-8F-nwR"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dead" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTi-ok-zsa">
+                                <rect key="frame" x="8" y="298" width="398" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recovered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTo-ZZ-0Fk">
+                                <rect key="frame" x="8" y="336" width="398" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs2-1f-REo">
+                                <rect key="frame" x="8" y="260" width="398" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uDG-Zc-zKL">
+                                <rect key="frame" x="8" y="374" width="398" height="431"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CountryCell" id="OEC-Np-cka">
+                                        <rect key="frame" x="0.0" y="28" width="398" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OEC-Np-cka" id="3rE-yI-dpl">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RTi-ok-zsa" firstAttribute="top" secondItem="qs2-1f-REo" secondAttribute="bottom" constant="8" id="2fO-Zt-RUY"/>
+                            <constraint firstItem="uDG-Zc-zKL" firstAttribute="leading" secondItem="DjW-Bd-Z04" secondAttribute="leading" constant="8" id="Ca3-hI-RtV"/>
+                            <constraint firstItem="DjW-Bd-Z04" firstAttribute="trailing" secondItem="RTi-ok-zsa" secondAttribute="trailing" constant="8" id="Czo-i7-DlE"/>
+                            <constraint firstItem="DjW-Bd-Z04" firstAttribute="trailing" secondItem="uDG-Zc-zKL" secondAttribute="trailing" constant="8" id="Dtk-uD-taR"/>
+                            <constraint firstItem="CTo-ZZ-0Fk" firstAttribute="top" secondItem="RTi-ok-zsa" secondAttribute="bottom" constant="8" id="FvB-bZ-QKM"/>
+                            <constraint firstItem="CTo-ZZ-0Fk" firstAttribute="leading" secondItem="DjW-Bd-Z04" secondAttribute="leading" constant="8" id="Km4-VL-dXK"/>
+                            <constraint firstItem="uDG-Zc-zKL" firstAttribute="top" secondItem="CTo-ZZ-0Fk" secondAttribute="bottom" constant="8" id="Mx7-rd-eBc"/>
+                            <constraint firstItem="DjW-Bd-Z04" firstAttribute="trailing" secondItem="CTo-ZZ-0Fk" secondAttribute="trailing" constant="8" id="REI-5p-uHw"/>
+                            <constraint firstItem="DjW-Bd-Z04" firstAttribute="trailing" secondItem="2hz-0s-JG2" secondAttribute="trailing" constant="8" id="TsJ-s2-fWj"/>
+                            <constraint firstItem="2hz-0s-JG2" firstAttribute="leading" secondItem="DjW-Bd-Z04" secondAttribute="leading" constant="8" id="Vfz-aw-qK2"/>
+                            <constraint firstItem="RTi-ok-zsa" firstAttribute="leading" secondItem="DjW-Bd-Z04" secondAttribute="leading" constant="8" id="VmK-Vx-l31"/>
+                            <constraint firstItem="qs2-1f-REo" firstAttribute="top" secondItem="2hz-0s-JG2" secondAttribute="bottom" constant="8" id="ZAr-PX-Svu"/>
+                            <constraint firstItem="DjW-Bd-Z04" firstAttribute="trailing" secondItem="qs2-1f-REo" secondAttribute="trailing" constant="8" id="a0d-XT-FIN"/>
+                            <constraint firstItem="RTi-ok-zsa" firstAttribute="top" secondItem="qs2-1f-REo" secondAttribute="bottom" constant="8" id="ek2-Q0-DVn"/>
+                            <constraint firstItem="CTo-ZZ-0Fk" firstAttribute="top" secondItem="RTi-ok-zsa" secondAttribute="bottom" constant="8" id="gf0-Q6-Hw9"/>
+                            <constraint firstItem="DjW-Bd-Z04" firstAttribute="bottom" secondItem="uDG-Zc-zKL" secondAttribute="bottom" constant="8" id="ieH-eS-FiG"/>
+                            <constraint firstItem="2hz-0s-JG2" firstAttribute="top" secondItem="DjW-Bd-Z04" secondAttribute="top" constant="8" id="mq0-QI-KFV"/>
+                            <constraint firstItem="qs2-1f-REo" firstAttribute="top" secondItem="2hz-0s-JG2" secondAttribute="bottom" constant="8" id="pPN-ec-A9U"/>
+                            <constraint firstItem="qs2-1f-REo" firstAttribute="leading" secondItem="DjW-Bd-Z04" secondAttribute="leading" constant="8" id="xky-gp-KvR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DjW-Bd-Z04"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Covid-19" image="doc.circle" catalog="system" id="gxi-Bq-Lxr"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="countryTableView" destination="uDG-Zc-zKL" id="u6U-jD-GZS"/>
+                        <outlet property="deadLabel" destination="RTi-ok-zsa" id="a3S-at-aam"/>
+                        <outlet property="recoveredLabel" destination="CTo-ZZ-0Fk" id="Y8q-fx-1PF"/>
+                        <outlet property="totalLabel" destination="qs2-1f-REo" id="2la-ri-0y2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bvG-EW-PQ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="85"/>
+            <point key="canvasLocation" x="121.73913043478262" y="84.375"/>
         </scene>
     </scenes>
     <resources>
+        <image name="CovidMap" width="156.5" height="80.5"/>
         <image name="doc.circle" catalog="system" width="64" height="60"/>
     </resources>
 </document>

@@ -30,10 +30,12 @@ class CovidAPI {
             guard let data = data else {
                 return
             }
-            let covidData = try? JSONDecoder().decode(CovidData.self, from: data)
+            let covidData = try? JSONDecoder().decode([CovidData].self, from: data)
             
-            print("Total covid cases: \(covidData?.cases ?? 0), Deaths: \(covidData?.deaths ?? 0), Recovered: \(covidData?.recovered ?? 0)")
-            self.covidAPIDelegate?.newData(covidData)
+            for country in covidData! {
+                print("\(country.country)")
+                self.covidAPIDelegate?.newData(country)
+            }
         }
         dataTask.resume()
     }

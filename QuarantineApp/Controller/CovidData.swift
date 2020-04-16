@@ -9,7 +9,9 @@
 import Foundation
 
 struct CovidData: Codable {
-    var cases: Int
-    var deaths: Int
-    var recovered: Int
+    let country: String
+    let cases, todayCases, deaths, todayDeaths: Int
+    let recovered: Int?
+    let active, critical, casesPerOneMillion, deathsPerOneMillion: Int
+    let totalTests, testsPerOneMillion: Int
 }

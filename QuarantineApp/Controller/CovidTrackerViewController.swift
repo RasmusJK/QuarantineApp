@@ -8,23 +8,51 @@
 
 import UIKit
 
-class CovidTrackerViewController: UIViewController {
-
+class CovidTrackerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CovidAPIDelegate {
+    
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var deadLabel: UILabel!
+    @IBOutlet weak var recoveredLabel: UILabel!
+    @IBOutlet weak var countryTableView: UITableView!
+    
+    
+    let covidApi = CovidAPI()
+    var covidCountryList = ["kakka"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        countryTableView.dataSource = self
+        countryTableView.delegate = self
+        
+        covidApi.url = "https://coronavirus-19-api.herokuapp.com/countries"
+        covidApi.covidAPIDelegate = self
+        covidApi.getData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: Delegated data
+    func newData(_ covidData: CovidData?) {
+        DispatchQueue.main.async {
+            // self.totalLabel.text = "Cases: \(covidData?.cases ?? 0)"
+            // self.deadLabel.text = "Deaths: \(covidData?.deaths ?? 0)"
+            // self.recoveredLabel.text = "Recovered: \(covidData?.recovered ?? 0)"
+            self.covidCountryList.append("\(covidData?.country ?? "error"): \(covidData?.cases ?? 0)")
+            self.countryTableView.reloadData()
+        }
     }
-    */
-
+    
+    //MARK: TableView
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return covidCountryList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath)
+        cell.textLabel!.text = covidCountryList[indexPath.row]
+        return cell
+    }
+    
 }
