@@ -27,6 +27,7 @@
 		6A13A5062447163300EBC44B /* LocalizedUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A13A5052447163300EBC44B /* LocalizedUILabel.swift */; };
 		6A13A50824471BF700EBC44B /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A13A50724471BF700EBC44B /* MainTabViewController.swift */; };
 		6A13A50A24471F0A00EBC44B /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A13A50924471F0A00EBC44B /* SlideInTransition.swift */; };
+		6A13A50E24487E0B00EBC44B /* LocalizedUISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A13A50D24487E0B00EBC44B /* LocalizedUISegmentedControl.swift */; };
 		6A1899512445E12A0038784B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A1899502445E12A0038784B /* GoogleService-Info.plist */; };
 		6AB111D02446038800B02BD8 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB111CF2446038800B02BD8 /* CommunityViewController.swift */; };
 		6ACA8E072446068700B9339C /* CovidTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACA8E062446068700B9339C /* CovidTrackerViewController.swift */; };
@@ -85,6 +86,8 @@
 		6A13A5052447163300EBC44B /* LocalizedUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedUILabel.swift; sourceTree = "<group>"; };
 		6A13A50724471BF700EBC44B /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		6A13A50924471F0A00EBC44B /* SlideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInTransition.swift; sourceTree = "<group>"; };
+		6A13A50C24487CC600EBC44B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		6A13A50D24487E0B00EBC44B /* LocalizedUISegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedUISegmentedControl.swift; sourceTree = "<group>"; };
 		6A1899502445E12A0038784B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6AB111CF2446038800B02BD8 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		6ACA8E062446068700B9339C /* CovidTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidTrackerViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 		2FEF1FAB2445C96100E9D75D /* QuarantineApp */ = {
 			isa = PBXGroup;
 			children = (
+				6A13A50F2448956500EBC44B /* Localization */,
 				6A13A5042447161200EBC44B /* Utils */,
 				6A13A5032447160D00EBC44B /* View */,
 				6A13A5022447160300EBC44B /* Model */,
@@ -158,7 +162,6 @@
 				2FEF1FBA2445C96300E9D75D /* LaunchScreen.storyboard */,
 				2FEF1FBD2445C96300E9D75D /* Info.plist */,
 				6A1899502445E12A0038784B /* GoogleService-Info.plist */,
-				6A13A500244712A100EBC44B /* Localizable.strings */,
 			);
 			path = QuarantineApp;
 			sourceTree = "<group>";
@@ -224,10 +227,19 @@
 		6A13A5042447161200EBC44B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				6A13A5052447163300EBC44B /* LocalizedUILabel.swift */,
 				6A13A50924471F0A00EBC44B /* SlideInTransition.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		6A13A50F2448956500EBC44B /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				6A13A500244712A100EBC44B /* Localizable.strings */,
+				6A13A5052447163300EBC44B /* LocalizedUILabel.swift */,
+				6A13A50D24487E0B00EBC44B /* LocalizedUISegmentedControl.swift */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		B065EFD3B91A7EA6545A7169 /* Frameworks */ = {
@@ -505,6 +517,7 @@
 				2FEF1FAF2445C96100E9D75D /* SceneDelegate.swift in Sources */,
 				6A13A5062447163300EBC44B /* LocalizedUILabel.swift in Sources */,
 				6A13A50824471BF700EBC44B /* MainTabViewController.swift in Sources */,
+				6A13A50E24487E0B00EBC44B /* LocalizedUISegmentedControl.swift in Sources */,
 				6A13A50A24471F0A00EBC44B /* SlideInTransition.swift in Sources */,
 				6ACA8E092446076B00B9339C /* ProfileViewController.swift in Sources */,
 				6AB111D02446038800B02BD8 /* CommunityViewController.swift in Sources */,
@@ -550,6 +563,7 @@
 			children = (
 				2FEF1FB32445C96100E9D75D /* Base */,
 				6A13A4FA24470FC100EBC44B /* fi */,
+				6A13A50C24487CC600EBC44B /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

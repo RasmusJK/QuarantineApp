@@ -1,7 +1,4 @@
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "6VU-Lv-a81"; */
-"6VU-Lv-a81.normalTitle" = "Button";
-
 /* Class = "UILabel"; text = "Main"; ObjectID = "7ha-42-CRM"; */
 "7ha-42-CRM.text" = "Main";
 
@@ -17,10 +14,10 @@
 /* Class = "UIButton"; normalTitle = "To auth"; ObjectID = "UbS-Dm-bEy"; */
 "UbS-Dm-bEy.normalTitle" = "To auth";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "XiX-gW-zcy"; */
+/* Class = "UILabel"; text = "Logout"; ObjectID = "XiX-gW-zcy"; */
 "XiX-gW-zcy.text" = "Logout";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "Y1G-fj-cbi"; */
+/* Class = "UILabel"; text = "Help"; ObjectID = "Y1G-fj-cbi"; */
 "Y1G-fj-cbi.text" = "Help";
 
 /* Class = "UITabBarItem"; title = "Home"; ObjectID = "ciE-K2-3c6"; */
