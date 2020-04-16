@@ -17,7 +17,7 @@ class CovidTrackerViewController: UIViewController, UITableViewDelegate, UITable
     
     
     let covidApi = CovidAPI()
-    var covidCountryList = ["kakka"]
+    var covidCountryList = [""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +32,16 @@ class CovidTrackerViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: Delegated data
     func newData(_ covidData: CovidData?) {
         DispatchQueue.main.async {
-            // self.totalLabel.text = "Cases: \(covidData?.cases ?? 0)"
-            // self.deadLabel.text = "Deaths: \(covidData?.deaths ?? 0)"
-            // self.recoveredLabel.text = "Recovered: \(covidData?.recovered ?? 0)"
-            self.covidCountryList.append("\(covidData?.country ?? "error"): \(covidData?.cases ?? 0)")
-            self.countryTableView.reloadData()
+            let notCountry = ["Africa", "Asia", "Europe", "North America", "South America", "Oceania", "World", "", "Total:"]
+            if covidData?.country == "World" {
+                self.totalLabel.text = "Cases: \(covidData?.cases ?? 0)"
+                self.deadLabel.text = "Deaths: \(covidData?.deaths ?? 0)"
+                self.recoveredLabel.text = "Recovered: \(covidData?.recovered ?? 0)"
+            }
+            if !notCountry.contains(covidData?.country ?? "unknown")  {
+                self.covidCountryList.append("\(covidData?.country ?? "unknown"): \(covidData?.cases ?? 0)")
+                self.countryTableView.reloadData()
+            }
         }
     }
     
