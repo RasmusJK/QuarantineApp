@@ -25,7 +25,7 @@ class MainTabViewController: UITabBarController {
             guard let menuViewController = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController else { return }
             menuViewController.didTapMenuItem = { menuItem in
                 print(menuItem)
-                // self.changeView(menuItem)
+                self.changeView(menuItem)
             }
             menuViewController.modalPresentationStyle = .overCurrentContext
             menuViewController.transitioningDelegate = self
@@ -43,7 +43,7 @@ class MainTabViewController: UITabBarController {
         case .profile:
             present(((storyboard?.instantiateViewController(withIdentifier: "Profile"))!), animated: true)
         case .tracker:
-            present(((storyboard?.instantiateViewController(withIdentifier: "CovidTracker"))!), animated: true)
+            performSegue(withIdentifier: "tracker", sender: self)
         case .help:
             print("ASD")
         case .logout:
