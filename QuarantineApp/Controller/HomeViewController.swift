@@ -30,8 +30,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Setting an event for segment changing
         categorySegment.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
         
+        //MARK: Firebase testing
         let db = Firestore.firestore()
-        db.collection("testing").addDocument(data: ["text": "kakka"])
+        let testText = "toimiiko?"
+        //Add
+        db.collection("testing").addDocument(data: ["text": testText])
+        //Get
+        db.collection("testing").whereField("text", isEqualTo: testText).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting Firestore data: \(err)")
+            } else {
+                for doc in querySnapshot!.documents {
+                    print("id: \(doc.documentID), data: \(doc.data())")
+                }
+            }
+        }
+        
     }
     
     //MARK: Private methods

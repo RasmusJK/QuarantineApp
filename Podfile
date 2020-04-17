@@ -7,6 +7,7 @@ target 'QuarantineApp' do
 
   # Pods for QuarantineApp
   pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
 
