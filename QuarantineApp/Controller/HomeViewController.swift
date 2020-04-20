@@ -14,12 +14,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: Properties
     @IBOutlet var itemTableView: UITableView!
     @IBOutlet var categorySegment: LocalizedUISegmentedControl!
+    let transition = SlideInTransition()
+    var menuIsActive = false
     let testTopMedia = ["Movie", "Show", "Game", "Stream"]
     let testTopMovies = ["Movie1", "Movie2", "Movie3", "Movie4", "Movie5"]
     let testTopShows = ["Show1", "Show2", "Show3", "Show4", "Show5"]
     let testTopGames = ["Game1", "Game2", "Game3", "Game4", "Game5"]
     let testTopStreams = ["Stream1", "Stream2", "Stream3", "Stream4", "Stream5"]
     lazy var mediaToDisplay = testTopMedia
+    @IBOutlet var menuButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Setting an event for segment changing
         categorySegment.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
+        
+        // Set action for menu button
+        menuButton.addTarget(self, action: #selector(menuPressed), for: .touchUpInside)
         
         //MARK: Firebase testing
         let db = Firestore.firestore()
@@ -47,6 +53,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
     }
+    @IBAction func GOTOAUTH(_ sender: UIButton) {
+        performSegue(withIdentifier: "Auth", sender: self)
+    }
+    
     
     //MARK: Private methods
     @objc fileprivate func handleSegmentChange(){
@@ -89,6 +99,49 @@ extension HomeViewController {
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+}
+extension HomeViewController : UIViewControllerTransitioningDelegate {
+    /**
+        Shows and dismisses the side/burger menu
+    */
+    @objc func menuPressed() {
+        if !menuIsActive {
+            guard let menuViewController = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController else { return }
+            menuViewController.didTapMenuItem = { menuItem in
+                print(menuItem)
+                //self.changeView(menuItem)
+                }
+            menuViewController.modalPresentationStyle = .overCurrentContext
+            menuViewController.transitioningDelegate = self
+            menuIsActive = true
+            present(menuViewController, animated: true)
+        } else {
+            menuIsActive = false
+            dismiss(animated: true, completion: {
+                print("Dismissing menu")
+            })
+        }
+    }
+    func changeView(_ menuItem: menuItem)  {
+        switch menuItem {
+            case .profile:
+                present(((storyboard?.instantiateViewController(withIdentifier: "Profile"))!), animated: true)
+            case .tracker:
+                performSegue(withIdentifier: "tracker", sender: self)
+            case .help:
+                print("ASD")
+            case .logout:
+                print("asd")
+        }
+    }
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.isActive = true
+        return transition
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.isActive = false
+        return transition
     }
 }
 

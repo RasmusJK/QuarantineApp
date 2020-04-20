@@ -9,11 +9,16 @@
 import UIKit
 
 class CommunityViewController: UIViewController {
-
+    //MARK: Properties
+    let transition = SlideInTransition()
+    var menuIsActive = false
+    @IBOutlet var menuButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // Set action for menu button
+        menuButton.addTarget(self, action: #selector(menuPressed), for: .touchUpInside)
     }
     
 
@@ -27,4 +32,48 @@ class CommunityViewController: UIViewController {
     }
     */
 
+}
+
+extension CommunityViewController : UIViewControllerTransitioningDelegate {
+    /**
+        Shows and dismisses the side/burger menu
+    */
+    @objc func menuPressed() {
+        if !menuIsActive {
+            guard let menuViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController else { return }
+            menuViewController.didTapMenuItem = { menuItem in
+                print(menuItem)
+                //self.changeView(menuItem)
+                }
+            menuViewController.modalPresentationStyle = .overCurrentContext
+            menuViewController.transitioningDelegate = self
+            menuIsActive = true
+            present(menuViewController, animated: true)
+        } else {
+            menuIsActive = false
+            dismiss(animated: true, completion: {
+                print("Dismissing menu")
+            })
+        }
+    }
+    func changeView(_ menuItem: menuItem)  {
+        switch menuItem {
+            case .profile:
+                present(((storyboard?.instantiateViewController(withIdentifier: "Profile"))!), animated: true)
+            case .tracker:
+                performSegue(withIdentifier: "tracker", sender: self)
+            case .help:
+                print("ASD")
+            case .logout:
+                print("asd")
+        }
+    }
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.isActive = true
+        return transition
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.isActive = false
+        return transition
+    }
 }

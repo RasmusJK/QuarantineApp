@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CmI-yE-zlo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hWe-FF-KWg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -20,7 +20,7 @@
         <!--Main Tab View Controller-->
         <scene sceneID="F3c-XT-3Hm">
             <objects>
-                <tabBarController id="hWe-FF-KWg" customClass="MainTabViewController" customModule="QuarantineApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Main" id="hWe-FF-KWg" customClass="MainTabViewController" customModule="QuarantineApp" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="jdq-c1-vD6">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="5z9-wn-yyE">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6VU-Lv-a81" userLabel="Menu">
@@ -34,7 +34,7 @@
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Pcq-hB-BQn">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UbS-Dm-bEy">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UbS-Dm-bEy">
                                 <rect key="frame" x="285" y="0.0" width="109" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="To auth"/>
@@ -50,16 +50,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="AMw-GJ-MB2"/>
+                        <segue destination="DmX-sX-XlF" kind="relationship" relationship="viewControllers" id="AMw-GJ-MB2"/>
                         <segue destination="dso-Ci-HLb" kind="relationship" relationship="viewControllers" id="f9F-DZ-yvx"/>
                         <segue destination="7Lr-Wj-sQg" kind="relationship" relationship="viewControllers" id="1XQ-d0-qxh"/>
                         <segue destination="2cy-EU-Kuv" kind="relationship" relationship="viewControllers" id="HdT-dB-my7"/>
-                        <segue destination="e5z-dw-Wsv" kind="show" id="bxn-vW-rsS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Jm-lD-ait" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2404" y="635"/>
+            <point key="canvasLocation" x="-3145" y="635"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="7Nx-YY-O9r">
@@ -227,7 +226,7 @@
             </objects>
             <point key="canvasLocation" x="-1635" y="-110"/>
         </scene>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="QuarantineApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -263,19 +262,19 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="3fQ-UQ-04x">
                                                     <rect key="frame" x="149" y="17" width="67.5" height="126.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3A-st-8dV">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3A-st-8dV">
                                                             <rect key="frame" x="0.0" y="0.0" width="52.5" height="33.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvO-PJ-atP">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvO-PJ-atP">
                                                             <rect key="frame" x="0.0" y="59.5" width="44.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmc-fe-Uj6">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmc-fe-Uj6">
                                                             <rect key="frame" x="0.0" y="106" width="67.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -358,15 +357,38 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="ciE-K2-3c6"/>
+                    <navigationItem key="navigationItem" id="eoZ-by-JHW">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="KLP-Jd-2kI">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Nlu-VA-SPG">
+                                <rect key="frame" x="20" y="11" width="21" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="line.horizontal.3" catalog="system"/>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="1zt-v5-aKj">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="k6U-N6-xtO">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Auth"/>
+                                <connections>
+                                    <action selector="GOTOAUTH:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6RZ-tB-znb"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="goToAuth:" destination="BYZ-38-t0r" id="kqF-gq-aAW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="categorySegment" destination="xXF-WR-gza" id="FGr-KS-ffh"/>
                         <outlet property="itemTableView" destination="IkF-eP-bs9" id="no2-iW-8I5"/>
+                        <outlet property="menuButton" destination="Nlu-VA-SPG" id="eZE-9F-Nt9"/>
+                        <segue destination="oVa-sz-oVR" kind="show" identifier="Auth" id="geD-BN-eHE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+            <point key="canvasLocation" x="1042.0289855072465" y="138.61607142857142"/>
         </scene>
         <!--CovidTracker-->
         <scene sceneID="Yp8-0a-mjl">
@@ -390,22 +412,6 @@
             </objects>
             <point key="canvasLocation" x="151" y="887"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="zl8-uk-X1T">
-            <objects>
-                <navigationController storyboardIdentifier="Main" id="CmI-yE-zlo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jrd-zO-nRq">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="hWe-FF-KWg" kind="relationship" relationship="rootViewController" id="8nZ-nk-Ckp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oRc-uG-cmC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3132" y="635"/>
-        </scene>
         <!--Auth-->
         <scene sceneID="pIf-Ek-zxL">
             <objects>
@@ -414,7 +420,29 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yNH-ub-8ni" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="804" y="21"/>
+            <point key="canvasLocation" x="1713.7681159420292" y="20.758928571428569"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="zKk-Ur-RVi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DmX-sX-XlF" customClass="NavigationViewController" customModule="QuarantineApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="ciE-K2-3c6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FFG-G6-FJ4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Uuu-au-vPS">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="nuS-Cy-750"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O5f-H9-vPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
     <resources>
@@ -428,4 +456,7 @@
         <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="xmark.circle" catalog="system" width="64" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gPX-PZ-22g"/>
+    </inferredMetricsTieBreakers>
 </document>
