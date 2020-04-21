@@ -106,6 +106,7 @@ extension HomeViewController : UIViewControllerTransitioningDelegate {
         Shows and dismisses the side/burger menu
     */
     @objc func menuPressed() {
+        print(menuIsActive)
         if !menuIsActive {
             guard let menuViewController = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController else { return }
             menuViewController.didTapMenuItem = { menuItem in
@@ -114,10 +115,10 @@ extension HomeViewController : UIViewControllerTransitioningDelegate {
                 }
             menuViewController.modalPresentationStyle = .overCurrentContext
             menuViewController.transitioningDelegate = self
-            menuIsActive = true
+            menuIsActive = false
             present(menuViewController, animated: true)
         } else {
-            menuIsActive = false
+            menuIsActive = true
             dismiss(animated: true, completion: {
                 print("Dismissing menu")
             })

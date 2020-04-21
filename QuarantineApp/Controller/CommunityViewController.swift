@@ -47,10 +47,10 @@ extension CommunityViewController : UIViewControllerTransitioningDelegate {
                 }
             menuViewController.modalPresentationStyle = .overCurrentContext
             menuViewController.transitioningDelegate = self
-            menuIsActive = true
+            menuIsActive = false
             present(menuViewController, animated: true)
         } else {
-            menuIsActive = false
+            menuIsActive = true
             dismiss(animated: true, completion: {
                 print("Dismissing menu")
             })

@@ -22,6 +22,10 @@ class MenuViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        dismiss(animated: true, completion: nil)
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let menuItem = menuItem(rawValue: indexPath.row) else { return }
         dismiss(animated: true) { [weak self] in
