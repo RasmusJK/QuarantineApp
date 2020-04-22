@@ -7,14 +7,27 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
-class RegisterViewController: UIViewController {
-
+class RegisterViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var confirmField: UITextField!
+    
+    var handle: AuthStateDidChangeListenerHandle?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        usernameField.delegate = self
+        passwordField.delegate = self
+        confirmField.delegate = self
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            print("\(auth), \(user!)")
+        }
     }
+    
     @IBAction func toMain(_ sender: UIButton) {
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -23,15 +36,27 @@ class RegisterViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: FirebaseAuth
+    func registerUser(registerEmail: String, registerPassword: String) {
+        Auth.auth().createUser(withEmail: ("\(registerEmail)@quarantodo.info"), password: registerPassword) { authResult, error in
+            guard let user = authResult?.user, error == nil else {
+                let alertController = UIAlertController(title: "Register error", message: error!.localizedDescription.replacingOccurrences(of: "email address", with: "username"), preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
+            print("New user: \(user.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "error")")
+            //mee mainiiin??
+        }
     }
-    */
-
+    
+    @IBAction func registerButton(_ sender: UIButton) {
+        if passwordField.text == confirmField.text {
+            registerUser(registerEmail: usernameField.text!, registerPassword: passwordField.text!)
+        } else {
+            let alertController = UIAlertController(title: "Register error", message: "Passwords did not match", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
 }
