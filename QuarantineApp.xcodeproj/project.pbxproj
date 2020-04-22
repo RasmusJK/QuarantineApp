@@ -20,6 +20,10 @@
 		2FEF1FE32445CC7900E9D75D /* CovidTracker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FE22445CC7900E9D75D /* CovidTracker.storyboard */; };
 		2FEF1FE52445CC8200E9D75D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FE42445CC8200E9D75D /* Profile.storyboard */; };
 		2FEF1FE72445CC8800E9D75D /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FE62445CC8800E9D75D /* Community.storyboard */; };
+		2FF9BEA7244F04D40090195D /* JokeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9BEA6244F04D40090195D /* JokeAPI.swift */; };
+		2FF9BEA9244F04F00090195D /* JokeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9BEA8244F04F00090195D /* JokeInfo.swift */; };
+		2FF9BEAB244F0C040090195D /* Jokes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF9BEAA244F0C040090195D /* Jokes.storyboard */; };
+		2FF9BEAD244F0D520090195D /* JokesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9BEAC244F0D520090195D /* JokesViewController.swift */; };
 		316D110E8EEB877BF18752CD /* Pods_QuarantineApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20EEE7C15EB1C194AF61146A /* Pods_QuarantineApp.framework */; };
 		535EFEFC35EA2E1324E266C7 /* Pods_QuarantineAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7591915F2A3C74BBCBB474F /* Pods_QuarantineAppTests.framework */; };
 		6A13A4F9244706CB00EBC44B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A13A4F8244706CB00EBC44B /* MenuViewController.swift */; };
@@ -88,6 +92,10 @@
 		2FEF1FE22445CC7900E9D75D /* CovidTracker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CovidTracker.storyboard; sourceTree = "<group>"; };
 		2FEF1FE42445CC8200E9D75D /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		2FEF1FE62445CC8800E9D75D /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
+		2FF9BEA6244F04D40090195D /* JokeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeAPI.swift; sourceTree = "<group>"; };
+		2FF9BEA8244F04F00090195D /* JokeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeInfo.swift; sourceTree = "<group>"; };
+		2FF9BEAA244F0C040090195D /* Jokes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Jokes.storyboard; sourceTree = "<group>"; };
+		2FF9BEAC244F0D520090195D /* JokesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesViewController.swift; sourceTree = "<group>"; };
 		40D39FC0B2100AC966CA0CD6 /* Pods-QuarantineAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarantineAppTests.debug.xcconfig"; path = "Target Support Files/Pods-QuarantineAppTests/Pods-QuarantineAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5FE8B587D03D97857D8FDC78 /* Pods-QuarantineApp-QuarantineAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarantineApp-QuarantineAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-QuarantineApp-QuarantineAppUITests/Pods-QuarantineApp-QuarantineAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		635A1F7B5C71E5CA072E9E15 /* Pods-QuarantineApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarantineApp.release.xcconfig"; path = "Target Support Files/Pods-QuarantineApp/Pods-QuarantineApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -219,6 +227,7 @@
 				2FEF1FE22445CC7900E9D75D /* CovidTracker.storyboard */,
 				2FEF1FE42445CC8200E9D75D /* Profile.storyboard */,
 				2FEF1FE62445CC8800E9D75D /* Community.storyboard */,
+				2FF9BEAA244F0C040090195D /* Jokes.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -227,6 +236,9 @@
 			isa = PBXGroup;
 			children = (
 				2FEF1FB02445C96100E9D75D /* HomeViewController.swift */,
+				2FF9BEA6244F04D40090195D /* JokeAPI.swift */,
+				2FF9BEAC244F0D520090195D /* JokesViewController.swift */,
+				2FF9BEA8244F04F00090195D /* JokeInfo.swift */,
 				6AB111CF2446038800B02BD8 /* CommunityViewController.swift */,
 				6ACA8E062446068700B9339C /* CovidTrackerViewController.swift */,
 				6A189952244875EB0038784B /* CovidAPI.swift */,
@@ -422,6 +434,7 @@
 				6A13A4FE244712A100EBC44B /* Localizable.strings in Resources */,
 				2FEF1FBC2445C96300E9D75D /* LaunchScreen.storyboard in Resources */,
 				2FEF1FB92445C96300E9D75D /* Assets.xcassets in Resources */,
+				2FF9BEAB244F0C040090195D /* Jokes.storyboard in Resources */,
 				2FEF1FE72445CC8800E9D75D /* Community.storyboard in Resources */,
 				2FEF1FB42445C96100E9D75D /* Main.storyboard in Resources */,
 			);
@@ -553,6 +566,7 @@
 			files = (
 				6ACA8E072446068700B9339C /* CovidTrackerViewController.swift in Sources */,
 				2FEF1FB12445C96100E9D75D /* HomeViewController.swift in Sources */,
+				2FF9BEA9244F04F00090195D /* JokeInfo.swift in Sources */,
 				2FEF1FAD2445C96100E9D75D /* AppDelegate.swift in Sources */,
 				6A13A51B2449C6E800EBC44B /* RegisterViewController.swift in Sources */,
 				6A13A5192449C6DD00EBC44B /* LoginViewController.swift in Sources */,
@@ -560,6 +574,7 @@
 				6A47BF5C2448C1F600233528 /* ReviewCategory.swift in Sources */,
 				6A13A5062447163300EBC44B /* LocalizedUILabel.swift in Sources */,
 				6A13A50824471BF700EBC44B /* MainTabViewController.swift in Sources */,
+				2FF9BEAD244F0D520090195D /* JokesViewController.swift in Sources */,
 				6A13A50E24487E0B00EBC44B /* LocalizedUISegmentedControl.swift in Sources */,
 				6A47BF582448C0BA00233528 /* ReviewCategoryTableViewCell.swift in Sources */,
 				6A13A5112448D53100EBC44B /* ItemTableViewCell.swift in Sources */,
@@ -568,6 +583,7 @@
 				6A47BF602448CC4300233528 /* CommunityGroupTableViewController.swift in Sources */,
 				6A189955244876570038784B /* CovidData.swift in Sources */,
 				6A13A5132448D56E00EBC44B /* TopItemTableViewCell.swift in Sources */,
+				2FF9BEA7244F04D40090195D /* JokeAPI.swift in Sources */,
 				6ACA8E092446076B00B9339C /* ProfileViewController.swift in Sources */,
 				6A189953244875EB0038784B /* CovidAPI.swift in Sources */,
 				6AB111D02446038800B02BD8 /* CommunityViewController.swift in Sources */,
