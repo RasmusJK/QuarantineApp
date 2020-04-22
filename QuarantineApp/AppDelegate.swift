@@ -18,12 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        Auth.auth().signInAnonymously() { (authResult, error) in
-            guard let user = authResult?.user else { return }
-            let isAnonymous = user.isAnonymous
-            let uid = user.uid
-            print("Anonymous auth for user: \(uid)")
-        }
         return true
     }
 

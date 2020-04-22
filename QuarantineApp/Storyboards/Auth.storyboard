@@ -32,7 +32,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RGF-fG-8aP" userLabel="PasswordField">
                                         <rect key="frame" x="16" y="164.5" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQY-7j-mmi" userLabel="LoginButton">
                                         <rect key="frame" x="64" y="244.5" width="286" height="30"/>
@@ -40,6 +40,9 @@
                                         <state key="normal" title="Login">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginButton:" destination="QxY-ve-y0u" eventType="touchUpInside" id="BES-dG-K47"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJC-dd-YDV" userLabel="RegisterButton">
                                         <rect key="frame" x="64" y="320.5" width="286" height="30"/>
@@ -85,6 +88,8 @@
                         <viewLayoutGuide key="safeArea" id="wug-oc-RTH"/>
                     </view>
                     <connections>
+                        <outlet property="passwordField" destination="RGF-fG-8aP" id="XG3-8i-4Sh"/>
+                        <outlet property="usernameField" destination="wPv-6s-ofv" id="YiC-og-dfJ"/>
                         <segue destination="HkN-0l-uRS" kind="presentation" identifier="ToRegisterSegue" id="n2T-7c-9z9"/>
                         <segue destination="DrV-ej-EON" kind="presentation" id="FPv-di-vX2"/>
                     </connections>
@@ -128,12 +133,12 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IWx-xN-9K6" userLabel="PasswordField">
                                         <rect key="frame" x="16" y="164.5" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="npD-Nq-cLb" userLabel="RePasswordField">
                                         <rect key="frame" x="16" y="244.5" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qez-GY-dmr" userLabel="RegisterButton">
                                         <rect key="frame" x="64" y="324.5" width="286" height="30"/>
@@ -162,6 +167,7 @@
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
+                                            <action selector="guestButton:" destination="HkN-0l-uRS" eventType="touchUpInside" id="RWo-pY-QiN"/>
                                             <action selector="toMain:" destination="HkN-0l-uRS" eventType="touchUpInside" id="ZoE-jb-ZpC"/>
                                         </connections>
                                     </button>
@@ -204,6 +210,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ptF-Hn-ni4"/>
+        <segue reference="n2T-7c-9z9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,13 +7,23 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
-class LoginViewController: UIViewController {
-
+class LoginViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    
+    var handle: AuthStateDidChangeListenerHandle?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        usernameField.delegate = self
+        passwordField.delegate = self
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            print("\(auth), \(user!)")
+        }
     }
     @IBAction func toMain(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -23,15 +33,21 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier: "ToRegisterSegue", sender: self)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: FirebaseAuth
+    func loginUser(loginEmail: String, loginPassword: String) {
+        Auth.auth().signIn(withEmail: ("\(loginEmail)@quarantodo.info"), password: loginPassword) { [weak self] authResult, error in
+            guard let user = authResult?.user, error == nil else {
+                let alertController = UIAlertController(title: "Login error", message: error!.localizedDescription.replacingOccurrences(of: "email address", with: "username"), preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default))
+                self!.present(alertController, animated: true, completion: nil)
+                return
+            }
+            print("Login: \(user.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "error")")
+            //mee mainiiin??
+        }
     }
-    */
-
+    
+    @IBAction func loginButton(_ sender: UIButton) {
+        loginUser(loginEmail: usernameField.text!, loginPassword: passwordField.text!)
+    }
 }

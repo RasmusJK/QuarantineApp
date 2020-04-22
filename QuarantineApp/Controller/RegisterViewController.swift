@@ -45,7 +45,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 self.present(alertController, animated: true, completion: nil)
                 return
             }
-            print("New user: \(user.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "error")")
+            print("Register: \(user.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "error")")
             //mee mainiiin??
         }
     }
@@ -57,6 +57,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             let alertController = UIAlertController(title: "Register error", message: "Passwords did not match", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func guestButton(_ sender: UIButton) {
+        Auth.auth().signInAnonymously() { (authResult, error) in
+            guard let user = authResult?.user else { return }
+            let uid = user.uid
+            print("Anonymous auth for user: \(uid)")
         }
     }
 }
