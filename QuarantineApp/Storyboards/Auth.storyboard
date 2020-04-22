@@ -61,7 +61,7 @@
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="toMain:" destination="QxY-ve-y0u" eventType="touchUpInside" id="Etm-Ht-H8l"/>
+                                            <action selector="guestButton:" destination="QxY-ve-y0u" eventType="touchUpInside" id="iuT-DG-BeK"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -168,7 +168,6 @@
                                         </state>
                                         <connections>
                                             <action selector="guestButton:" destination="HkN-0l-uRS" eventType="touchUpInside" id="RWo-pY-QiN"/>
-                                            <action selector="toMain:" destination="HkN-0l-uRS" eventType="touchUpInside" id="ZoE-jb-ZpC"/>
                                         </connections>
                                     </button>
                                 </subviews>
