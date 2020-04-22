@@ -132,6 +132,8 @@ extension HomeViewController : UIViewControllerTransitioningDelegate {
                 performSegue(withIdentifier: "tracker", sender: self)
             case .help:
                 print("ASD")
+            case .jokes:
+                print("ASD")
             case .logout:
                 print("asd")
         }

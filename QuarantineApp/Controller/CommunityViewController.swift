@@ -66,6 +66,8 @@ extension CommunityViewController : UIViewControllerTransitioningDelegate {
                 print("ASD")
             case .logout:
                 print("asd")
+            case .jokes:
+                print("asd")
         }
     }
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

@@ -12,6 +12,7 @@ enum menuItem: Int {
     case profile
     case tracker
     case help
+    case jokes
     case logout
 }
 

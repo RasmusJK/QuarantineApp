@@ -66,6 +66,8 @@ extension ProfileViewController: UIViewControllerTransitioningDelegate {
                 print("ASD")
             case .logout:
                 print("asd")
+            case .jokes:
+                print("ASD")
         }
     }
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
