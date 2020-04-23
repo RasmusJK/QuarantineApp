@@ -13,14 +13,16 @@ class JokesViewController: UIViewController, JokeAPIDelegate {
     func newData(_ jokeInfo: JokeInfo?) {
         DispatchQueue.main.async {
             print("newData in viewcontroller")
-            self.setupLabel.text = jokeInfo?.setup
-            self.jokeLabel.text = jokeInfo?.joke
+            if(jokeInfo?.setup == nil) {
+                self.setupLabel.text = jokeInfo?.joke
+            } else {
+                self.setupLabel.text = jokeInfo?.setup
+            }
             print(jokeInfo?.setup)
             self.deliveryLabel.text = jokeInfo?.delivery
         }
     }
     
-    @IBOutlet var jokeLabel: UILabel!
     @IBOutlet var setupLabel: UILabel!
     @IBOutlet var deliveryLabel: UILabel!
     @IBAction func previousButon(_ sender: UIButton) {
