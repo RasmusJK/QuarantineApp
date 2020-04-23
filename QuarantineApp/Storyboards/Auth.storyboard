@@ -32,7 +32,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RGF-fG-8aP" userLabel="PasswordField">
                                         <rect key="frame" x="16" y="164.5" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQY-7j-mmi" userLabel="LoginButton">
                                         <rect key="frame" x="64" y="244.5" width="286" height="30"/>
@@ -40,6 +40,9 @@
                                         <state key="normal" title="Login">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginButton:" destination="QxY-ve-y0u" eventType="touchUpInside" id="BES-dG-K47"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJC-dd-YDV" userLabel="RegisterButton">
                                         <rect key="frame" x="64" y="320.5" width="286" height="30"/>
@@ -58,7 +61,7 @@
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="toMain:" destination="QxY-ve-y0u" eventType="touchUpInside" id="Etm-Ht-H8l"/>
+                                            <action selector="guestButton:" destination="QxY-ve-y0u" eventType="touchUpInside" id="iuT-DG-BeK"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -85,6 +88,8 @@
                         <viewLayoutGuide key="safeArea" id="wug-oc-RTH"/>
                     </view>
                     <connections>
+                        <outlet property="passwordField" destination="RGF-fG-8aP" id="XG3-8i-4Sh"/>
+                        <outlet property="usernameField" destination="wPv-6s-ofv" id="YiC-og-dfJ"/>
                         <segue destination="HkN-0l-uRS" kind="presentation" identifier="ToRegisterSegue" id="n2T-7c-9z9"/>
                         <segue destination="DrV-ej-EON" kind="presentation" id="FPv-di-vX2"/>
                     </connections>
@@ -112,7 +117,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="46" translatesAutoresizingMaskIntoConstraints="NO" id="Ykc-QC-Msh">
-                                <rect key="frame" x="0.0" y="128" width="414" height="586.5"/>
+                                <rect key="frame" x="0.0" y="128" width="414" height="506.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkH-fZ-WcZ" userLabel="RegisterTitle">
                                         <rect key="frame" x="150.5" y="0.0" width="113" height="38.5"/>
@@ -125,30 +130,28 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6cr-TP-q0S" userLabel="EmailField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IWx-xN-9K6" userLabel="PasswordField">
                                         <rect key="frame" x="16" y="164.5" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IWx-xN-9K6" userLabel="PasswordField">
-                                        <rect key="frame" x="16" y="244.5" width="382" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="npD-Nq-cLb" userLabel="RePasswordField">
-                                        <rect key="frame" x="16" y="324.5" width="382" height="34"/>
+                                        <rect key="frame" x="16" y="244.5" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qez-GY-dmr" userLabel="RegisterButton">
-                                        <rect key="frame" x="64" y="404.5" width="286" height="30"/>
+                                        <rect key="frame" x="64" y="324.5" width="286" height="30"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <state key="normal" title="Register">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="registerButton:" destination="HkN-0l-uRS" eventType="touchUpInside" id="2ch-B0-bHy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbs-2K-Mbp" userLabel="LoginButton">
-                                        <rect key="frame" x="64" y="480.5" width="286" height="30"/>
+                                        <rect key="frame" x="64" y="400.5" width="286" height="30"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <state key="normal" title="Go to login">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -158,13 +161,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pM-k0-jtr" userLabel="GuestButton">
-                                        <rect key="frame" x="64" y="556.5" width="286" height="30"/>
+                                        <rect key="frame" x="64" y="476.5" width="286" height="30"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <state key="normal" title="Continue as guest">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="toMain:" destination="HkN-0l-uRS" eventType="touchUpInside" id="ZoE-jb-ZpC"/>
+                                            <action selector="guestButton:" destination="HkN-0l-uRS" eventType="touchUpInside" id="RWo-pY-QiN"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -173,13 +176,11 @@
                                     <constraint firstItem="3pM-k0-jtr" firstAttribute="leading" secondItem="Ykc-QC-Msh" secondAttribute="leading" constant="64" id="BKC-z9-zIY"/>
                                     <constraint firstAttribute="trailing" secondItem="qez-GY-dmr" secondAttribute="trailing" constant="64" id="Grj-zk-nNs"/>
                                     <constraint firstItem="c0i-XB-tmy" firstAttribute="leading" secondItem="Ykc-QC-Msh" secondAttribute="leading" constant="16" id="JTR-XU-CR4"/>
-                                    <constraint firstAttribute="trailing" secondItem="6cr-TP-q0S" secondAttribute="trailing" constant="16" id="MEp-Pl-6j3"/>
                                     <constraint firstItem="npD-Nq-cLb" firstAttribute="leading" secondItem="Ykc-QC-Msh" secondAttribute="leading" constant="16" id="Phz-MS-dPZ"/>
                                     <constraint firstItem="qez-GY-dmr" firstAttribute="leading" secondItem="Ykc-QC-Msh" secondAttribute="leading" constant="64" id="VAz-Jx-Yub"/>
                                     <constraint firstAttribute="trailing" secondItem="3pM-k0-jtr" secondAttribute="trailing" constant="64" id="Wks-DA-gqh"/>
                                     <constraint firstAttribute="trailing" secondItem="c0i-XB-tmy" secondAttribute="trailing" constant="16" id="ZiD-sA-HFj"/>
                                     <constraint firstAttribute="trailing" secondItem="IWx-xN-9K6" secondAttribute="trailing" constant="16" id="dWp-6U-JFu"/>
-                                    <constraint firstItem="6cr-TP-q0S" firstAttribute="leading" secondItem="Ykc-QC-Msh" secondAttribute="leading" constant="16" id="ey7-gH-eYI"/>
                                     <constraint firstAttribute="trailing" secondItem="hbs-2K-Mbp" secondAttribute="trailing" constant="64" id="fJR-dF-IgM"/>
                                     <constraint firstItem="IWx-xN-9K6" firstAttribute="leading" secondItem="Ykc-QC-Msh" secondAttribute="leading" constant="16" id="hUe-qc-i4C"/>
                                     <constraint firstAttribute="trailing" secondItem="npD-Nq-cLb" secondAttribute="trailing" constant="16" id="yt2-ss-AYW"/>
@@ -196,6 +197,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="azd-jA-vVe"/>
                     <connections>
+                        <outlet property="confirmField" destination="npD-Nq-cLb" id="fjP-ia-ejK"/>
+                        <outlet property="passwordField" destination="IWx-xN-9K6" id="SSw-bk-DYZ"/>
+                        <outlet property="usernameField" destination="c0i-XB-tmy" id="JCm-TP-dva"/>
                         <segue destination="QxY-ve-y0u" kind="presentation" id="ptF-Hn-ni4"/>
                     </connections>
                 </viewController>
