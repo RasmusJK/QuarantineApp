@@ -37,7 +37,12 @@ var url : String {
             }
             do {
                 let steamData = try JSONDecoder().decode(SteamData.self, from: data)
-               // print(steamData[0].name)
+             
+                  for i in steamData {
+                    print(i.value.name)
+                    
+                }
+                self.steamAPIDelegate?.newData(steamData)
                 
                
                    

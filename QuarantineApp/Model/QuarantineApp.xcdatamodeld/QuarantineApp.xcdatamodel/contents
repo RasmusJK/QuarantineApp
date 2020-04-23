@@ -2,9 +2,8 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Games" representedClassName="Games" syncable="YES" codeGenerationType="class">
         <attribute name="gameTitle" optional="YES" attributeType="String"/>
-        <attribute name="gameUsers" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Games" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="Games" positionX="-63" positionY="-18" width="128" height="58"/>
     </elements>
 </model>
