@@ -51,7 +51,7 @@ class ReviewCategoryTableViewController: UITableViewController {
         cell.reviewCategoryImage.image = reviewCategoryCreated.image
         
         selectedCategory = reviewCategoryCreated.title
-        print("category option: \(selectedCategory)")
+        print("category option: \(String(describing: selectedCategory))")
         
         // Configure the cell...
 
@@ -128,7 +128,6 @@ class ReviewCategoryTableViewController: UITableViewController {
         let reviewCategoryPhoto1 = UIImage(named: "CommunityIcon")
         let reviewCategoryPhoto2 = UIImage(named: "CommunityIcon")
         let reviewCategoryBooksPhoto = UIImage(named: "CommunityIcon")
-        let reviewCategoryTvPhoto = UIImage(named: "CommunityIcon")
         
         guard let reviewCategory1 = ReviewCategory(title: "Movies", image: reviewCategoryPhoto1) else {
             print("fucked up with title")

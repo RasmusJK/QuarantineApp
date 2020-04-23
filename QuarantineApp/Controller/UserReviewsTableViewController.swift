@@ -14,11 +14,12 @@ class UserReviewsTableViewController: UITableViewController {
     var allUserReviews = [UserReview]()
     var userReviews = [UserReview]()
     var selectedCategory: String?
+    var newReview: UserReview!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("this is what u got as a category \(selectedCategory)")
+        print("this is what u got as a category \(String(describing: selectedCategory))")
         guard let currentCategory = selectedCategory else {
             fatalError("dont have a category")
         }
@@ -95,7 +96,7 @@ class UserReviewsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -103,7 +104,7 @@ class UserReviewsTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
     
     //MARK: Private functions
     
@@ -135,5 +136,19 @@ class UserReviewsTableViewController: UITableViewController {
             }
         }
     }
+    
+    //MARK: Actions
+    
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        
+        if let sourceViewController = sender.source as? CreateReviewViewController, let newReview = sourceViewController.review {
+
+                //Add a new review
+                let newIndexPath = IndexPath(row: userReviews.count, section: 0)
+                
+                userReviews.append(newReview)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
 
 }
