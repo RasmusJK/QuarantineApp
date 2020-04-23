@@ -13,14 +13,12 @@ class CovidTrackerViewController: UIViewController, UITableViewDelegate, UITable
     let transition = SlideInTransition()
     var menuIsActive = false
     @IBOutlet weak var totalLabel: UILabel!
-    @IBOutlet weak var deadLabel: UILabel!
-    @IBOutlet weak var recoveredLabel: UILabel!
     @IBOutlet weak var countryTableView: UITableView!
     @IBOutlet var menuButton: UIButton!
     
     
     let covidApi = CovidAPI()
-    var covidCountryList = [""]
+    var covidCountryList: Array<String> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,14 +36,12 @@ class CovidTrackerViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: Delegated data
     func newData(_ covidData: CovidData?) {
         DispatchQueue.main.async {
-            let notCountry = ["Africa", "Asia", "Europe", "North America", "South America", "Oceania", "World", "", "Total:"]
+            let notCountry = ["Africa", "Asia", "Europe", "North America", "South America", "Oceania", "World", " ", "", "Total:"]
             if covidData?.country == "World" {
-                self.totalLabel.text = "Cases: \(covidData?.cases ?? 0)"
-                self.deadLabel.text = "Deaths: \(covidData?.deaths ?? 0)"
-                self.recoveredLabel.text = "Recovered: \(covidData?.recovered ?? 0)"
+                self.totalLabel.text = "Total: \(covidData?.cases ?? 0) | \(covidData?.deaths ?? 0) | \(covidData?.recovered ?? 0)"
             }
-            if !notCountry.contains(covidData?.country ?? "unknown")  {
-                self.covidCountryList.append("\(covidData?.country ?? "unknown"): \(covidData?.cases ?? 0)")
+            if !notCountry.contains(covidData!.country)  {
+                self.covidCountryList.append("\(covidData?.country ?? "error"): \(covidData?.cases ?? 0) | \(covidData?.deaths ?? 0) | \(covidData?.recovered ?? 0)")
                 self.countryTableView.reloadData()
             }
         }
@@ -62,11 +58,14 @@ class CovidTrackerViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath)
+        covidCountryList.sort()
         cell.textLabel!.text = covidCountryList[indexPath.row]
         return cell
     }
     
 }
+
+//MARK: Nav?
 extension CovidTrackerViewController : UIViewControllerTransitioningDelegate {
     /**
         Shows and dismisses the side/burger menu

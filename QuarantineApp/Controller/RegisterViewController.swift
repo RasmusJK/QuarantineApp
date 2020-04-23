@@ -24,12 +24,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         passwordField.delegate = self
         confirmField.delegate = self
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print("\(auth), \(user!)")
+            print("\(auth), \(user!.email ?? "unknown")")
         }
-    }
-    
-    @IBAction func toMain(_ sender: UIButton) {
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func toLogin(_ sender: UIButton) {
@@ -39,15 +35,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     //MARK: FirebaseAuth
     func registerUser(registerEmail: String, registerPassword: String) {
         Auth.auth().createUser(withEmail: ("\(registerEmail)@quarantodo.info"), password: registerPassword) { authResult, error in
-            guard let user = authResult?.user, error == nil else {
+            guard error == nil else {
                 let alertController = UIAlertController(title: "Register error", message: error!.localizedDescription.replacingOccurrences(of: "email address", with: "username"), preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alertController, animated: true, completion: nil)
                 return
             }
-            print("Register: \(user.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "error")")
             Auth.auth().removeStateDidChangeListener(self.handle!)
-            //mee mainiiin??
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     
@@ -63,10 +58,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func guestButton(_ sender: UIButton) {
         Auth.auth().signInAnonymously() { (authResult, error) in
-            guard let user = authResult?.user else { return }
-            let uid = user.uid
-            print("Anonymous auth for user: \(uid)")
+            guard (authResult?.user) != nil else { return }
             Auth.auth().removeStateDidChangeListener(self.handle!)
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
 }
