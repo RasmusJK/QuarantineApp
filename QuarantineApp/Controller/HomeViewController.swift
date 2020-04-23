@@ -10,14 +10,22 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NetflixAPIDelegate {
+    func newData(_ netflixInfo: NetflixInfo?) {
+        for info in (netflixInfo?.results)! {
+            print(info.title)
+            testTopMovies.append(info)
+        }
+    }
+    
     //MARK: Properties
     @IBOutlet var itemTableView: UITableView!
     @IBOutlet var categorySegment: LocalizedUISegmentedControl!
     let transition = SlideInTransition()
     var menuIsActive = false
+    let netflixAPI : NetflixAPI = NetflixAPI()
     let testTopMedia = ["Movie", "Show", "Game", "Stream"]
-    let testTopMovies = ["Movie1", "Movie2", "Movie3", "Movie4", "Movie5"]
+    var testTopMovies = [Result]()
     let testTopShows = ["Show1", "Show2", "Show3", "Show4", "Show5"]
     let testTopGames = ["Game1", "Game2", "Game3", "Game4", "Game5"]
     let testTopStreams = ["Stream1", "Stream2", "Stream3", "Stream4", "Stream5"]
@@ -29,6 +37,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         itemTableView.delegate = self
         itemTableView.dataSource = self
+        netflixAPI.netflixAPIDelegate = self
+        
+        netflixAPI.getData()
         
         // Setting an event for segment changing
         categorySegment.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
@@ -60,40 +71,74 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: Private methods
     @objc fileprivate func handleSegmentChange(){
-        switch categorySegment.selectedSegmentIndex {
-        case 0:
-            mediaToDisplay = testTopMedia
-        case 1:
-            mediaToDisplay = testTopMovies
-        case 2:
-            mediaToDisplay = testTopShows
-        case 3:
-            mediaToDisplay = testTopGames
-        case 4:
-            mediaToDisplay = testTopStreams
-        default:
-            mediaToDisplay = testTopMedia
-        }
         itemTableView.reloadData()
     }
 }
 
 extension HomeViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mediaToDisplay.count
+        switch categorySegment.selectedSegmentIndex {
+        case 0:
+            return testTopMedia.count
+        case 1:
+            return testTopMovies.count
+        case 2:
+            return testTopShows.count
+        case 3:
+            return testTopGames.count
+        case 4:
+            return testTopStreams.count
+        default:
+            return 0
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (categorySegment.selectedSegmentIndex == 0) {
+        switch categorySegment.selectedSegmentIndex {
+        case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TopItemCell", for: indexPath) as! TopItemTableViewCell
-            cell.Title.text = "Top \(mediaToDisplay[0])"
-            cell.Users.text = "Top \(mediaToDisplay[0])"
-            cell.Available.text = "Top \(mediaToDisplay[0])"
+            cell.Title.text = "Top \(testTopMedia[0])"
+            cell.Users.text = "Top \(testTopMedia[0])"
+            cell.Available.text = "Top \(testTopMedia[0])"
             return cell
-        } else {
+        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
-            cell.Title.text = mediaToDisplay[0]
-            cell.Users.text = mediaToDisplay[0]
-            cell.Available.text = mediaToDisplay[0]
+            cell.Title.text = testTopMovies[indexPath.row].title
+            cell.Users.text = testTopMovies[indexPath.row].title
+            cell.Available.text = testTopMovies[indexPath.row].title
+            
+            //Make the image thumbnail data
+            let imgUrl = URL(string: testTopMovies[indexPath.row].img!)
+            if (imgUrl != nil) {
+                let imgData = try? Data(contentsOf: imgUrl!)
+                if (imgData != nil) {
+                    let image : UIImage = UIImage(data: imgData!)!
+                    cell.img.image = image
+                    }
+                }
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+            cell.Title.text = testTopMedia[0]
+            cell.Users.text = testTopMedia[0]
+            cell.Available.text = testTopMedia[0]
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+            cell.Title.text = testTopMedia[0]
+            cell.Users.text = testTopMedia[0]
+            cell.Available.text = testTopMedia[0]
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+            cell.Title.text = testTopMedia[0]
+            cell.Users.text = testTopMedia[0]
+            cell.Available.text = testTopMedia[0]
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+            cell.Title.text = testTopMedia[0]
+            cell.Users.text = testTopMedia[0]
+            cell.Available.text = testTopMedia[0]
             return cell
         }
     }

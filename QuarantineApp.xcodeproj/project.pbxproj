@@ -37,6 +37,8 @@
 		6A13A5172449858E00EBC44B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6A13A5162449858E00EBC44B /* .gitignore */; };
 		6A13A5192449C6DD00EBC44B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A13A5182449C6DD00EBC44B /* LoginViewController.swift */; };
 		6A13A51B2449C6E800EBC44B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A13A51A2449C6E800EBC44B /* RegisterViewController.swift */; };
+		6A13A5252450440A00EBC44B /* NetflixAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A13A5242450440A00EBC44B /* NetflixAPI.swift */; };
+		6A13A5272450464E00EBC44B /* NetflixInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A13A5262450464E00EBC44B /* NetflixInfo.swift */; };
 		6A1899512445E12A0038784B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A1899502445E12A0038784B /* GoogleService-Info.plist */; };
 		6A189953244875EB0038784B /* CovidAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A189952244875EB0038784B /* CovidAPI.swift */; };
 		6A189955244876570038784B /* CovidData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A189954244876570038784B /* CovidData.swift */; };
@@ -114,6 +116,8 @@
 		6A13A5162449858E00EBC44B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		6A13A5182449C6DD00EBC44B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6A13A51A2449C6E800EBC44B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		6A13A5242450440A00EBC44B /* NetflixAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixAPI.swift; sourceTree = "<group>"; };
+		6A13A5262450464E00EBC44B /* NetflixInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixInfo.swift; sourceTree = "<group>"; };
 		6A1899502445E12A0038784B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6A189952244875EB0038784B /* CovidAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidAPI.swift; sourceTree = "<group>"; };
 		6A189954244876570038784B /* CovidData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidData.swift; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 				6A13A5122448D56E00EBC44B /* TopItemTableViewCell.swift */,
 				6A13A5182449C6DD00EBC44B /* LoginViewController.swift */,
 				6A13A51A2449C6E800EBC44B /* RegisterViewController.swift */,
+				6A13A5242450440A00EBC44B /* NetflixAPI.swift */,
+				6A13A5262450464E00EBC44B /* NetflixInfo.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -564,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A13A5272450464E00EBC44B /* NetflixInfo.swift in Sources */,
 				6ACA8E072446068700B9339C /* CovidTrackerViewController.swift in Sources */,
 				2FEF1FB12445C96100E9D75D /* HomeViewController.swift in Sources */,
 				2FF9BEA9244F04F00090195D /* JokeInfo.swift in Sources */,
@@ -583,6 +590,7 @@
 				6A47BF602448CC4300233528 /* CommunityGroupTableViewController.swift in Sources */,
 				6A189955244876570038784B /* CovidData.swift in Sources */,
 				6A13A5132448D56E00EBC44B /* TopItemTableViewCell.swift in Sources */,
+				6A13A5252450440A00EBC44B /* NetflixAPI.swift in Sources */,
 				2FF9BEA7244F04D40090195D /* JokeAPI.swift in Sources */,
 				6ACA8E092446076B00B9339C /* ProfileViewController.swift in Sources */,
 				6A189953244875EB0038784B /* CovidAPI.swift in Sources */,
