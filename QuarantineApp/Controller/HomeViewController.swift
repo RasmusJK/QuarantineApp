@@ -15,20 +15,22 @@ import CoreData
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NetflixAPIDelegate {
     func newData(_ steamData: SteamData?) {
         DispatchQueue.main.async {
-        print("new data in homeView")
+            print("new data in homeView")
             for item in steamData! {
                 print(item)
-                self.testTopGames[item.key] = item.value
-              //  self.saveToCoreData(gameTitle: item.value.name)
+                self.testTopGames.append(item.value)
+                //  self.saveToCoreData(gameTitle: item.value.name)
             }
         }
     }
     func newData(_ netflixInfo: NetflixInfo?) {
-        for info in (netflixInfo?.results)! {
-            print(info.title)
-            testTopMovies.append(info)
+        DispatchQueue.main.async {
+            for info in (netflixInfo?.results)! {
+                print(info.title)
+                self.testTopMovies.append(info)
+            }
         }
-        }
+    }
     
     //MARK: Properties
     @IBOutlet var itemTableView: UITableView!
@@ -39,7 +41,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let testTopMedia = ["Movie", "Show", "Game", "Stream"]
     var testTopMovies = [Result]()
     let testTopShows = ["Show1", "Show2", "Show3", "Show4", "Show5"]
-    var testTopGames = [String : SteamDataValue]()
+    var testTopGames = [SteamDataValue]()
     let testTopStreams = ["Stream1", "Stream2", "Stream3", "Stream4", "Stream5"]
     lazy var mediaToDisplay = testTopMedia
     @IBOutlet var menuButton: UIButton!
@@ -52,7 +54,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         itemTableView.dataSource = self
         netflixAPI.netflixAPIDelegate = self
         
-        netflixAPI.getData()
+        //MARK: UNCOMMENT THIS ONLY WHEN NEEDED OTHERWISE TOPI GETS CHARGED >:D
+        //netflixAPI.getData()
         
         // Steam API
         let steamAPI = SteamAPI()
@@ -166,9 +169,9 @@ extension HomeViewController {
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
-            cell.Title.text = testTopMedia[0]
-            cell.Users.text = testTopMedia[0]
-            cell.Available.text = testTopMedia[0]
+            cell.Title.text = testTopGames[indexPath.row].name
+            cell.Users.text = testTopGames[indexPath.row].owners
+            cell.Available.text = testTopGames[indexPath.row].developer
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
