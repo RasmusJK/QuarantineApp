@@ -11,14 +11,14 @@ import Firebase
 import FirebaseFirestore
 import CoreData
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NSFetchedResultsControllerDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate {
     func newData(_ steamData: SteamData?) {
         DispatchQueue.main.async {
         print("new data in homeView")
             for item in steamData! {
-               
-                
-                self.saveToCoreData(gameTitle: item.value.name)
+                print(item.value.name)
+             //   testTopGames.append(item)
+              //  self.saveToCoreData(gameTitle: item.value.name)
             }
         }
     }
@@ -31,7 +31,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let testTopMedia = ["Movie", "Show", "Game", "Stream"]
     let testTopMovies = ["Movie1", "Movie2", "Movie3", "Movie4", "Movie5"]
     let testTopShows = ["Show1", "Show2", "Show3", "Show4", "Show5"]
-    let testTopGames = ["Game1", "Game2", "Game3", "Game4", "Game5"]
+   // var testTopGames = [SteamData]()
+    let testTopGames = ["SteamData"]
     let testTopStreams = ["Stream1", "Stream2", "Stream3", "Stream4", "Stream5"]
     lazy var mediaToDisplay = testTopMedia
     @IBOutlet var menuButton: UIButton!
