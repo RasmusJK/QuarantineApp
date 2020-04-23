@@ -9,8 +9,18 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import CoreData
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate {
+    func newData(_ steamData: SteamData?) {
+        DispatchQueue.main.async {
+        print("new data in homeView")
+            for item in steamData! {
+               // self.saveToCoreData(gameTitle: item.name)
+            }
+        }
+    }
+    
     //MARK: Properties
     @IBOutlet var itemTableView: UITableView!
     @IBOutlet var categorySegment: LocalizedUISegmentedControl!
@@ -30,12 +40,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         itemTableView.delegate = self
         itemTableView.dataSource = self
         
+        // Steam API
+        let steamAPI = SteamAPI()
+        steamAPI.url = "https://steamspy.com/api.php?request=top100in2weeks"
+        steamAPI.steamAPIDelegate = self
+        steamAPI.getData()
+        
         // Setting an event for segment changing
         categorySegment.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
         
         // Set action for menu button
         menuButton.addTarget(self, action: #selector(menuPressed), for: .touchUpInside)
-        
+      /*
         //MARK: Firebase testing
         let db = Firestore.firestore()
         let testText = "toimiiko?"
@@ -51,8 +67,31 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         }
+        */
         
     }
+    
+   func saveToCoreData(gameTitle : String) {
+          guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+              return
+          }
+          
+          let managedContext = appDelegate.persistentContainer.viewContext
+          
+          let entity = NSEntityDescription.entity(forEntityName: "Games", in: managedContext)!
+          
+          let gameItem = NSManagedObject(entity: entity, insertInto: managedContext)
+          
+          gameItem.setValue(gameTitle, forKeyPath: "gameTitle")
+        
+          
+          do {
+              try managedContext.save()
+          } catch let error as NSError {
+              print(error)
+          }
+      }
+ 
     @IBAction func GOTOAUTH(_ sender: UIButton) {
         performSegue(withIdentifier: "Auth", sender: self)
     }
