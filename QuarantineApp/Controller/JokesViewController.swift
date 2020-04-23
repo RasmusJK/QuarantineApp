@@ -25,10 +25,6 @@ class JokesViewController: UIViewController, JokeAPIDelegate {
     
     @IBOutlet var setupLabel: UILabel!
     @IBOutlet var deliveryLabel: UILabel!
-    @IBAction func previousButon(_ sender: UIButton) {
-        number-=1
-        getJokes()
-    }
     @IBAction func nextButton(_ sender: UIButton) {
         number+=1
         getJokes()
