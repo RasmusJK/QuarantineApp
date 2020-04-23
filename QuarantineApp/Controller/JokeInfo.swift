@@ -11,8 +11,9 @@ import Foundation
 struct JokeInfo: Codable {
     let category: String
     let type: String
-    let setup: String
-    let delivery: String
+    let joke: String?
+    let setup: String?
+    let delivery: String?
     let flags: Flags
     let id: Int
     let error: Bool
@@ -20,6 +21,7 @@ struct JokeInfo: Codable {
     enum CodingKeys: String, CodingKey {
         case category = "category"
         case type = "type"
+        case joke = "joke"
         case setup = "setup"
         case delivery = "delivery"
         case flags = "flags"
