@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import os.log
 
 class UserReviewsTableViewController: UITableViewController {
     
     var userReviews = [UserReview]()
+    var selectedCategory: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let categorySelected = selectedCategory
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

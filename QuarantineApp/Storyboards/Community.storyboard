@@ -180,7 +180,7 @@
                                 <connections>
                                     <outlet property="reviewCategoryImage" destination="GL6-5x-c1a" id="YI3-w5-DoE"/>
                                     <outlet property="reviewCategoryTitle" destination="wse-Te-TH9" id="5qy-pn-6iY"/>
-                                    <segue destination="iZP-lM-Mbj" kind="showDetail" id="zkn-e7-kFc"/>
+                                    <segue destination="iZP-lM-Mbj" kind="show" id="bgy-p5-PVk"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -200,7 +200,7 @@
             <objects>
                 <tableViewController id="iZP-lM-Mbj" customClass="UserReviewsTableViewController" customModule="QuarantineApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QQy-pi-q4B">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -246,6 +246,7 @@
                             <outlet property="delegate" destination="iZP-lM-Mbj" id="iIl-Bt-fcA"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="DZs-jC-yOE"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVj-ia-7BI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
