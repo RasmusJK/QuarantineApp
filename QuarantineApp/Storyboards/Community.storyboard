@@ -180,7 +180,7 @@
                                 <connections>
                                     <outlet property="reviewCategoryImage" destination="GL6-5x-c1a" id="YI3-w5-DoE"/>
                                     <outlet property="reviewCategoryTitle" destination="wse-Te-TH9" id="5qy-pn-6iY"/>
-                                    <segue destination="iZP-lM-Mbj" kind="show" id="bgy-p5-PVk"/>
+                                    <segue destination="iZP-lM-Mbj" kind="show" identifier="userReviewSegue" id="bgy-p5-PVk"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

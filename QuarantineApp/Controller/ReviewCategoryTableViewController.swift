@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import os.log
 
 class ReviewCategoryTableViewController: UITableViewController {
     
     //MARK: Properties
     var reviewCategories = [ReviewCategory]()
+    var selectedCategory: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,9 @@ class ReviewCategoryTableViewController: UITableViewController {
         
         cell.reviewCategoryTitle.text = reviewCategoryCreated.title
         cell.reviewCategoryImage.image = reviewCategoryCreated.image
+        
+        selectedCategory = reviewCategoryCreated.title
+        print("category option: \(selectedCategory)")
         
         // Configure the cell...
 
@@ -88,15 +93,33 @@ class ReviewCategoryTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        switch(segue.identifier ?? "") {
+        case "userReviewSegue":
+            guard let userReviewsTableViewController2 = segue.destination as? UserReviewsTableViewController else {
+                fatalError("somethings wrong with the userreview segue")
+            }
+            
+            guard let selectedReviewCategory = sender as? ReviewCategoryTableViewCell else {
+                fatalError("issue cell")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedReviewCategory) else {
+                fatalError("")
+            }
+            
+            let selectedC = reviewCategories[indexPath.row]
+            userReviewsTableViewController2.selectedCategory = selectedC.title
+        default:
+            fatalError("")
+        }
     }
-    */
     
     //MARK: Private functions
     
@@ -107,24 +130,33 @@ class ReviewCategoryTableViewController: UITableViewController {
         let reviewCategoryBooksPhoto = UIImage(named: "CommunityIcon")
         let reviewCategoryTvPhoto = UIImage(named: "CommunityIcon")
         
-        guard let reviewCategory1 = ReviewCategory(title: "Movie Reviews", image: reviewCategoryPhoto1) else {
+        guard let reviewCategory1 = ReviewCategory(title: "Movies", image: reviewCategoryPhoto1) else {
             print("fucked up with title")
             fatalError("Unable to get reviewCategory")
         }
-        guard let reviewCategory2 = ReviewCategory(title: "Game Reviews", image: reviewCategoryPhoto2) else {
+        guard let reviewCategory2 = ReviewCategory(title: "Games", image: reviewCategoryPhoto2) else {
             print("fucked up with image")
             fatalError("Unable to get reviewCategory")
         }
-        guard let reviewCategory3 = ReviewCategory(title: "Book Reviews", image: reviewCategoryBooksPhoto) else {
+        guard let reviewCategory3 = ReviewCategory(title: "Books", image: reviewCategoryBooksPhoto) else {
             print("fucked up with image")
             fatalError("Unable to get reviewCategory")
         }
-        guard let reviewCategory4 = ReviewCategory(title: "TV Show Reviews", image: reviewCategoryTvPhoto) else {
+    /*    guard let reviewCategory4 = ReviewCategory(title: "TV Show Reviews", image: reviewCategoryTvPhoto) else {
             print("fucked up with image")
             fatalError("Unable to get reviewCategory")
-        }
+        } */
         
-        reviewCategories += [reviewCategory1, reviewCategory2, reviewCategory3, reviewCategory4]
+        reviewCategories += [reviewCategory1, reviewCategory2, reviewCategory3]
     }
+ /*
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "userReviewSegue") {
+            if let destination = segue.destination as? UserReviewsTableViewController {
+                print("you are going to see reviews from the category: \(selectedCategory)")
+                destination.selectedCategory = "\(selectedCategory)"
+            }
+        }
+    } */
 
 }
