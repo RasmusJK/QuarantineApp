@@ -16,8 +16,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         DispatchQueue.main.async {
         print("new data in homeView")
             for item in steamData! {
-                print(item.value.name)
-             //   testTopGames.append(item)
+                print(item)
+                self.testTopGames[item.key] = item.value
               //  self.saveToCoreData(gameTitle: item.value.name)
             }
         }
@@ -31,8 +31,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let testTopMedia = ["Movie", "Show", "Game", "Stream"]
     let testTopMovies = ["Movie1", "Movie2", "Movie3", "Movie4", "Movie5"]
     let testTopShows = ["Show1", "Show2", "Show3", "Show4", "Show5"]
-   // var testTopGames = [SteamData]()
-    let testTopGames = ["SteamData"]
+    var testTopGames = [String : SteamDataValue]()
     let testTopStreams = ["Stream1", "Stream2", "Stream3", "Stream4", "Stream5"]
     lazy var mediaToDisplay = testTopMedia
     @IBOutlet var menuButton: UIButton!
@@ -103,20 +102,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: Private methods
     @objc fileprivate func handleSegmentChange(){
-        switch categorySegment.selectedSegmentIndex {
-        case 0:
-            mediaToDisplay = testTopMedia
-        case 1:
-            mediaToDisplay = testTopMovies
-        case 2:
-            mediaToDisplay = testTopShows
-        case 3:
-            mediaToDisplay = testTopGames
-        case 4:
-            mediaToDisplay = testTopStreams
-        default:
-            mediaToDisplay = testTopMedia
-        }
         itemTableView.reloadData()
     }
 }
