@@ -9,14 +9,26 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import CoreData
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NetflixAPIDelegate {
+
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NetflixAPIDelegate {
+    func newData(_ steamData: SteamData?) {
+        DispatchQueue.main.async {
+        print("new data in homeView")
+            for item in steamData! {
+                print(item)
+                self.testTopGames[item.key] = item.value
+              //  self.saveToCoreData(gameTitle: item.value.name)
+            }
+        }
+    }
     func newData(_ netflixInfo: NetflixInfo?) {
         for info in (netflixInfo?.results)! {
             print(info.title)
             testTopMovies.append(info)
         }
-    }
+        }
     
     //MARK: Properties
     @IBOutlet var itemTableView: UITableView!
@@ -27,10 +39,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let testTopMedia = ["Movie", "Show", "Game", "Stream"]
     var testTopMovies = [Result]()
     let testTopShows = ["Show1", "Show2", "Show3", "Show4", "Show5"]
-    let testTopGames = ["Game1", "Game2", "Game3", "Game4", "Game5"]
+    var testTopGames = [String : SteamDataValue]()
     let testTopStreams = ["Stream1", "Stream2", "Stream3", "Stream4", "Stream5"]
     lazy var mediaToDisplay = testTopMedia
     @IBOutlet var menuButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +54,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         netflixAPI.getData()
         
+        // Steam API
+        let steamAPI = SteamAPI()
+        steamAPI.url = "https://steamspy.com/api.php?request=top100in2weeks"
+        steamAPI.steamAPIDelegate = self
+        steamAPI.getData()
+        
         // Setting an event for segment changing
         categorySegment.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
         
         // Set action for menu button
         menuButton.addTarget(self, action: #selector(menuPressed), for: .touchUpInside)
-        
+      /*
         //MARK: Firebase testing
         let db = Firestore.firestore()
         let testText = "toimiiko?"
@@ -62,8 +81,31 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         }
+        */
         
     }
+    
+   func saveToCoreData(gameTitle : String) {
+          guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+              return
+          }
+          
+          let managedContext = appDelegate.persistentContainer.viewContext
+          
+          let entity = NSEntityDescription.entity(forEntityName: "Games", in: managedContext)!
+          
+          let gameItem = NSManagedObject(entity: entity, insertInto: managedContext)
+          
+          gameItem.setValue(gameTitle, forKeyPath: "gameTitle")
+        
+          
+          do {
+              try managedContext.save()
+          } catch let error as NSError {
+              print(error)
+          }
+      }
+ 
     @IBAction func GOTOAUTH(_ sender: UIButton) {
         performSegue(withIdentifier: "Auth", sender: self)
     }
