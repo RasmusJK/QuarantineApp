@@ -14,11 +14,13 @@ class JokesViewController: UIViewController, JokeAPIDelegate {
         DispatchQueue.main.async {
             print("newData in viewcontroller")
             self.setupLabel.text = jokeInfo?.setup
+            self.jokeLabel.text = jokeInfo?.joke
             print(jokeInfo?.setup)
             self.deliveryLabel.text = jokeInfo?.delivery
         }
     }
     
+    @IBOutlet var jokeLabel: UILabel!
     @IBOutlet var setupLabel: UILabel!
     @IBOutlet var deliveryLabel: UILabel!
     @IBAction func previousButon(_ sender: UIButton) {
@@ -40,7 +42,7 @@ class JokesViewController: UIViewController, JokeAPIDelegate {
     
     func getJokes(){
         let jokeApi = JokeAPI()
-        jokeApi.url = "https://sv443.net/jokeapi/v2/joke/Any?blacklistFlags=\(blacklist)&type=twopart&idRange=1-184"
+        jokeApi.url = "https://sv443.net/jokeapi/v2/joke/Any?blacklistFlags=\(blacklist)&idRange=1-184"
         jokeApi.jokeAPIDelegate = self
         jokeApi.getData()
         
