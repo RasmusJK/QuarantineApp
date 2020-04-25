@@ -45,8 +45,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     lazy var mediaToDisplay = testTopMedia
     @IBOutlet var menuButton: UIButton!
     
+    //Firebase Auth handler
     var handle: AuthStateDidChangeListenerHandle?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,10 +87,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
          }
          */
         
+        //Firebase Auth handler
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print("Auth uid: \(auth.currentUser?.uid ?? "no uid"), username: \(auth.currentUser?.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "anonymous")")
+            print("Auth: \(auth.currentUser?.uid ?? "no uid"), username: \(auth.currentUser?.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "anonymous")")
         }
         
+        //Check auth at start
         if Auth.auth().currentUser?.email == nil {
             print("Auth: No user logged in, going to auth =>")
             performSegue(withIdentifier: "Auth", sender: self)
@@ -245,6 +247,7 @@ extension HomeViewController : UIViewControllerTransitioningDelegate {
                 print ("Auth: \(err)")
             }
             print("Auth: Logged out")
+            performSegue(withIdentifier: "Auth", sender: self)
         }
     }
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
