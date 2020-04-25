@@ -21,8 +21,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         usernameField.delegate = self
         passwordField.delegate = self
+        //Updates auth changes
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print("\(auth), \(user!.email ?? "unknown")")
+            print("Auth uid: \(auth.currentUser?.uid ?? "no uid"), username: \(auth.currentUser?.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "no name")")
         }
     }
     
@@ -39,6 +40,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self!.present(alertController, animated: true, completion: nil)
                 return
             }
+            //Remove auth handler
             Auth.auth().removeStateDidChangeListener(self!.handle!)
             self?.navigationController?.popToRootViewController(animated: true)
         }
