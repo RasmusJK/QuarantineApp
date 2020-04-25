@@ -15,9 +15,8 @@ import CoreData
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NetflixAPIDelegate {
     func newData(_ steamData: SteamData?) {
         DispatchQueue.main.async {
-            print("new data in homeView")
             for item in steamData! {
-                print(item)
+                print("newData steamData: \(item)")
                 self.testTopGames.append(item.value)
                 //  self.saveToCoreData(gameTitle: item.value.name)
             }
@@ -26,7 +25,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func newData(_ netflixInfo: NetflixInfo?) {
         DispatchQueue.main.async {
             for info in (netflixInfo?.results)! {
-                print(info.title)
+                print("newData netflixInfo: \(info.title ?? "no title")")
                 self.testTopMovies.append(info)
             }
         }
@@ -45,6 +44,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let testTopStreams = ["Stream1", "Stream2", "Stream3", "Stream4", "Stream5"]
     lazy var mediaToDisplay = testTopMedia
     @IBOutlet var menuButton: UIButton!
+    
+    var handle: AuthStateDidChangeListenerHandle?
     
     
     override func viewDidLoad() {
@@ -68,47 +69,56 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Set action for menu button
         menuButton.addTarget(self, action: #selector(menuPressed), for: .touchUpInside)
-      /*
-        //MARK: Firebase testing
-        let db = Firestore.firestore()
-        let testText = "toimiiko?"
-        //Add
-        db.collection("testing").addDocument(data: ["text": testText])
-        //Get
-        db.collection("testing").whereField("text", isEqualTo: testText).getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting Firestore data: \(err)")
-            } else {
-                for doc in querySnapshot!.documents {
-                    print("id: \(doc.documentID), data: \(doc.data())")
-                }
-            }
+        /*
+         //MARK: Firebase testing
+         let db = Firestore.firestore()
+         let testText = "toimiiko?"
+         //Add
+         db.collection("testing").addDocument(data: ["text": testText])
+         //Get
+         db.collection("testing").whereField("text", isEqualTo: testText).getDocuments() { (querySnapshot, err) in
+         if let err = err {
+         print("Error getting Firestore data: \(err)")
+         } else {
+         for doc in querySnapshot!.documents {
+         print("id: \(doc.documentID), data: \(doc.data())")
+         }
+         }
+         }
+         */
+        
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            print("Auth uid: \(auth.currentUser?.uid ?? "no uid"), username: \(auth.currentUser?.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "anonymous")")
         }
-        */
+        
+        if Auth.auth().currentUser?.email == nil {
+            print("Auth: No user logged in, going to auth =>")
+            performSegue(withIdentifier: "Auth", sender: self)
+        }
         
     }
     
-   func saveToCoreData(gameTitle : String) {
-          guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-              return
-          }
-          
-          let managedContext = appDelegate.persistentContainer.viewContext
-          
-          let entity = NSEntityDescription.entity(forEntityName: "Games", in: managedContext)!
-          
-          let gameItem = NSManagedObject(entity: entity, insertInto: managedContext)
-          
-          gameItem.setValue(gameTitle, forKeyPath: "gameTitle")
+    func saveToCoreData(gameTitle : String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
         
-          
-          do {
-              try managedContext.save()
-          } catch let error as NSError {
-              print(error)
-          }
-      }
- 
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Games", in: managedContext)!
+        
+        let gameItem = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        gameItem.setValue(gameTitle, forKeyPath: "gameTitle")
+        
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
     @IBAction func GOTOAUTH(_ sender: UIButton) {
         performSegue(withIdentifier: "Auth", sender: self)
     }
@@ -158,8 +168,8 @@ extension HomeViewController {
                 if (imgData != nil) {
                     let image : UIImage = UIImage(data: imgData!)!
                     cell.img.image = image
-                    }
                 }
+            }
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
@@ -193,16 +203,16 @@ extension HomeViewController {
 }
 extension HomeViewController : UIViewControllerTransitioningDelegate {
     /**
-        Shows and dismisses the side/burger menu
-    */
+     Shows and dismisses the side/burger menu
+     */
     @objc func menuPressed() {
         print(menuIsActive)
         if !menuIsActive {
             guard let menuViewController = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController else { return }
             menuViewController.didTapMenuItem = { menuItem in
                 print(menuItem)
-                //self.changeView(menuItem)
-                }
+                self.changeView(menuItem)
+            }
             menuViewController.modalPresentationStyle = .overCurrentContext
             menuViewController.transitioningDelegate = self
             menuIsActive = false
@@ -216,16 +226,25 @@ extension HomeViewController : UIViewControllerTransitioningDelegate {
     }
     func changeView(_ menuItem: menuItem)  {
         switch menuItem {
-            case .profile:
-                present(((storyboard?.instantiateViewController(withIdentifier: "Profile"))!), animated: true)
-            case .tracker:
-                performSegue(withIdentifier: "tracker", sender: self)
-            case .help:
-                print("ASD")
-            case .jokes:
-                print("ASD")
-            case .logout:
-                print("asd")
+            //Broken?
+        case .profile:
+            print("ASD")
+            //present(((storyboard?.instantiateViewController(withIdentifier: "Profile"))!), animated: true)
+        case .tracker:
+            print("ASD")
+            //performSegue(withIdentifier: "tracker", sender: self)
+        case .help:
+            print("ASD")
+        case .jokes:
+            print("ASD")
+        case .logout:
+            //Logout from firebase
+            do {
+                try Auth.auth().signOut()
+            } catch let err as NSError {
+                print ("Auth: \(err)")
+            }
+            print("Auth: Logged out")
         }
     }
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

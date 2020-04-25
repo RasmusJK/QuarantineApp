@@ -15,18 +15,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmField: UITextField!
-    
-    var handle: AuthStateDidChangeListenerHandle?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameField.delegate = self
         passwordField.delegate = self
         confirmField.delegate = self
-        //Updates auth changes
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print("Auth uid: \(auth.currentUser?.uid ?? "no uid"), username: \(auth.currentUser?.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "no name")")
-        }
     }
     
     @IBAction func toLogin(_ sender: UIButton) {
@@ -42,8 +36,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 self.present(alertController, animated: true, completion: nil)
                 return
             }
-            //Remove auth handler
-            Auth.auth().removeStateDidChangeListener(self.handle!)
             self.navigationController?.popToRootViewController(animated: true)
         }
     }
@@ -61,7 +53,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBAction func guestButton(_ sender: UIButton) {
         Auth.auth().signInAnonymously() { (authResult, error) in
             guard (authResult?.user) != nil else { return }
-            Auth.auth().removeStateDidChangeListener(self.handle!)
             self.navigationController?.popToRootViewController(animated: true)
         }
     }
