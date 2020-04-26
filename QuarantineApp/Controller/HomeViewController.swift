@@ -87,13 +87,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
          }
          */
         
-        //Firebase Auth handler
+        //Firebase Auth handler (filter console to "Auth")
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print("Auth: \(auth.currentUser?.uid ?? "no uid"), username: \(auth.currentUser?.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "anonymous")")
+            if let userId = user?.uid {
+                print("Auth: \(userId), username: \(user?.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "Anonymous")")
+            } else {
+                print("Auth: No user")
+            }
         }
         
         //Check auth at start
-        if Auth.auth().currentUser?.email == nil {
+        if Auth.auth().currentUser?.uid == nil {
             print("Auth: No user logged in, going to auth =>")
             performSegue(withIdentifier: "Auth", sender: self)
         }
