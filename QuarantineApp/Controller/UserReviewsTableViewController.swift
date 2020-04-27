@@ -12,46 +12,40 @@ import Firebase
 
 class UserReviewsTableViewController: UITableViewController {
     
+    //MARK: Properties
     var allUserReviews = [UserReview]()
     var allUserReviewsFromDb = [UserReview]()
     var userReviews = [UserReview]()
+    var listtt = [String]()
     var selectedCategory: String?
     var newReview: UserReview!
+    var listofuserreviews = [String]()
+    let db = Firestore.firestore()
+    var list = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Just showing the category, doesnt matter at the moment tho
         print("this is what u got as a category \(String(describing: selectedCategory))")
         guard let currentCategory = selectedCategory else {
             fatalError("dont have a category")
         }
         print("as string: \(currentCategory)")
-        
-        //MARK: Firebase User review testing
-        let db = Firestore.firestore()
-        
-        //Get
-        db.collection("reviews").getDocuments() { (querySnapshot, err) in
-        if let err = err {
-        print("Error getting Firestore data: \(err)")
-        } else {
-        for doc in querySnapshot!.documents {
-            print("id: \(doc.documentID), data: \(doc.data())")
-        }
-            
-        }
-        }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        loadUserReviews()
+        //Calls a function that fetches the user reviews from database
+        downloadUserReviewsNow() { reviewArray, error in
+        if let error = error {
+          // self.alert(title: "Error", message: error.localizedDescription)
+           return
+        }
+          self.list = reviewArray
+          self.tableView.reloadData()
+        }
     }
 
+    
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -59,7 +53,7 @@ class UserReviewsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return userReviews.count
+        return list.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,11 +62,15 @@ class UserReviewsTableViewController: UITableViewController {
             fatalError("fucked up loading data to userreview")
         }
             
-        let userRev = userReviews[indexPath.row]
+        /*let userRev = userReviews[indexPath.row]
         
         cell.reviewItemTitleLabel.text = userRev.title
         cell.reviewerUsernameLabel.text = userRev.username
         cell.reviewTextLabel.text = userRev.review
+ */
+        let userRev = String(describing: list[indexPath.row])
+        print("for the cell: \(userRev)")
+        cell.reviewTextLabel.text = userRev
         // Configure the cell...
 
         return cell
@@ -125,8 +123,46 @@ class UserReviewsTableViewController: UITableViewController {
     
     //MARK: Private functions
     
+    /*
+     //OLD VERSION
     private func loadUserReviews() {
         
+        //MARK: Firebase User review testing
+        //Get
+        db.collection("reviews").getDocuments() { (querySnapshot, err) in
+        if let err = err {
+        print("Error getting Firestore data: \(err)")
+        } else {
+            for doc in querySnapshot!.documents {
+               // print("id: \(doc.documentID), data: ç(doc.data())")
+                var data = String(describing: doc.data())
+             //   print("data: \(data)")
+                self.list.append("\(doc.data())")
+                }
+            print("thisis list \(self.list)")
+            }
+        }
+    }
+    */
+
+    //Function for fetching user reviews from database that's called on the viewDidLoad
+    func downloadUserReviewsNow(completion: @escaping ([String], Error?) -> Void) {
+       var reviewArray = [String]()
+        db.collection("reviews").getDocuments { QuerySnapshot, error in
+          if let error = error {
+            print(error)
+            completion(reviewArray, error)
+            return
+          }
+          for doc in QuerySnapshot!.documents {
+            let data = ("\(doc.data())")
+            reviewArray.append(data)
+          }
+          completion(reviewArray, error)
+        }
+      }
+        
+        /*
         guard let rev1 = UserReview(title: "Harry Potter", rating: "5", username: "testuser", review: "Harry Potter is the best book ever") else {
         fatalError("prob with the smhth")
         }
@@ -151,10 +187,11 @@ class UserReviewsTableViewController: UITableViewController {
           //  if i.category == selectedCategory {
                 userReviews += [i]
             }
-        }
+ */
     
     //MARK: Actions
     
+    //This should receive the new revie from the add view but its not working atm will check later
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.source as? CreateReviewViewController, let newReview = sourceViewController.review {
@@ -164,7 +201,7 @@ class UserReviewsTableViewController: UITableViewController {
                 
                 userReviews.append(newReview)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
+            tableView.reloadData()
             }
         }
-
 }

@@ -13,7 +13,6 @@ import Firebase
 class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
     //MARK: Properties
-    
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var titleInputField: UITextField!
     @IBOutlet weak var reviewInputField: UITextField!
@@ -39,7 +38,6 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     var categoriesForPicker = ["Books", "Games", "Movies"]
     
-
     /*
     // MARK: - Navigation
 
@@ -51,7 +49,6 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     */
     
     //MARK: UITextField Delegate methods
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -123,14 +120,15 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         }
         }
         
-        super.prepare(for: segue, sender: sender)
+       /* super.prepare(for: segue, sender: sender)
         
         guard let button = sender as? UIBarButtonItem, button === saveButton else {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
+        */
         
-        review = UserReview(title: reviewTitle, rating: "5", username: "defaultuser", review: reviewText2)
+     //   review = UserReview(title: reviewTitle, rating: "5", username: "defaultuser", review: reviewText2)
     }
     
 }
