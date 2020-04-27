@@ -69,23 +69,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Set action for menu button
         menuButton.addTarget(self, action: #selector(menuPressed), for: .touchUpInside)
-        /*
-         //MARK: Firebase testing
-         let db = Firestore.firestore()
-         let testText = "toimiiko?"
-         //Add
-         db.collection("testing").addDocument(data: ["text": testText])
-         //Get
-         db.collection("testing").whereField("text", isEqualTo: testText).getDocuments() { (querySnapshot, err) in
-         if let err = err {
-         print("Error getting Firestore data: \(err)")
-         } else {
-         for doc in querySnapshot!.documents {
-         print("id: \(doc.documentID), data: \(doc.data())")
-         }
-         }
-         }
-         */
         
         //Firebase Auth handler (filter console to "Auth")
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
@@ -103,6 +86,41 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
     }
+    
+    /*
+    override func viewDidAppear(_ animated: Bool) {
+        //MARK: Firebase testing
+        let db = Firestore.firestore()
+        let reviewItem = "Titanic"
+        let reviewRating = 3
+        let reviewText = "Not so bad movie"
+        let reviewUser = Auth.auth().currentUser?.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "Anonymous"
+        //Add
+        db.collection("reviews").addDocument(data: [
+            "reviewItem": reviewItem,
+            "reviewRating": reviewRating,
+            "reviewText": reviewText,
+            "reviewUser": reviewUser,
+        ])
+        //Get
+        db.collection("reviews").whereField("reviewItem", isEqualTo: "Titanic").getDocuments() { (querySnapshot, err) in
+            var rating = 0.0
+            var count = 1
+            if let err = err {
+                print("Error getting Firestore data: \(err)")
+            } else {
+                for doc in querySnapshot!.documents {
+                    print("FireStore: \(doc.data())")
+                    // doc.data()["FIELDIN NIMI"]
+                    let number = doc.data()["reviewRating"]
+                    rating += number as! Double
+                    count += 1
+                }
+                rating = rating/Double(count)
+                print("FireStore: example rating for Titanic is \(rating)")
+            }
+        }
+    }*/
     
     func saveToCoreData(gameTitle : String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -232,13 +250,13 @@ extension HomeViewController : UIViewControllerTransitioningDelegate {
     }
     func changeView(_ menuItem: menuItem)  {
         switch menuItem {
-            //Broken?
+        //Broken?
         case .profile:
             print("ASD")
-            //present(((storyboard?.instantiateViewController(withIdentifier: "Profile"))!), animated: true)
+        //present(((storyboard?.instantiateViewController(withIdentifier: "Profile"))!), animated: true)
         case .tracker:
             print("ASD")
-            //performSegue(withIdentifier: "tracker", sender: self)
+        //performSegue(withIdentifier: "tracker", sender: self)
         case .help:
             print("ASD")
         case .jokes:
