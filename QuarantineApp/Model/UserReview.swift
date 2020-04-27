@@ -12,19 +12,19 @@ class UserReview {
     
 //MARK: Properties
 
-    var category: String
     var title: String
+    var rating: String
     var username: String
     var review: String
 
 //MARK: Initialization
-    init?(category: String, title: String, username: String, review: String) {
-    
-    guard !category.isEmpty else {
-        return nil
+    init?(title: String, rating: String, username: String, review: String) {
+   
+    guard !title.isEmpty else {
+    return nil
     }
         
-    guard !title.isEmpty else {
+    guard !rating.isEmpty else {
     return nil
     }
         
@@ -36,8 +36,8 @@ class UserReview {
     return nil
     }
     
-    self.category = category
     self.title = title
+    self.rating = rating
     self.username = username
     self.review = review
         

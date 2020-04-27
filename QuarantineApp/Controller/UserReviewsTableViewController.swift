@@ -8,10 +8,12 @@
 
 import UIKit
 import os.log
+import Firebase
 
 class UserReviewsTableViewController: UITableViewController {
     
     var allUserReviews = [UserReview]()
+    var allUserReviewsFromDb = [UserReview]()
     var userReviews = [UserReview]()
     var selectedCategory: String?
     var newReview: UserReview!
@@ -24,6 +26,21 @@ class UserReviewsTableViewController: UITableViewController {
             fatalError("dont have a category")
         }
         print("as string: \(currentCategory)")
+        
+        //MARK: Firebase User review testing
+        let db = Firestore.firestore()
+        
+        //Get
+        db.collection("reviews").getDocuments() { (querySnapshot, err) in
+        if let err = err {
+        print("Error getting Firestore data: \(err)")
+        } else {
+        for doc in querySnapshot!.documents {
+            print("id: \(doc.documentID), data: \(doc.data())")
+        }
+            
+        }
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -110,32 +127,31 @@ class UserReviewsTableViewController: UITableViewController {
     
     private func loadUserReviews() {
         
-        guard let rev1 = UserReview(category: "Books", title: "Harry Potter", username: "testuser", review: "Harry Potter is the best book ever") else {
+        guard let rev1 = UserReview(title: "Harry Potter", rating: "5", username: "testuser", review: "Harry Potter is the best book ever") else {
         fatalError("prob with the smhth")
         }
-        guard let rev2 = UserReview(category: "Movies", title: "The Movie", username: "dude", review: "I hated this movie but I still watch it everyday.") else {
-        fatalError("prob with the ")
+        guard let rev2 = UserReview(title: "Harry Potter 2", rating: "4", username: "testuser", review: "Harry Potter is the best book ever") else {
+        fatalError("prob with the smhth")
         }
-        guard let rev3 = UserReview(category: "Games", title: "CS", username: "yeehaaw", review: "I play this game every day. It makes my quarantine feel like a holiday.") else {
-        fatalError("prob with the ")
+        guard let rev3 = UserReview(title: "Harry Potter", rating: "5", username: "testuser", review: "Harry Potter is the best book ever") else {
+        fatalError("prob with the smhth")
         }
-        guard let rev4 = UserReview(category: "Books", title: "How to Live in A Quarantine", username: "bookuser", review: "Nice book.") else {
-        fatalError("prob with the ")
+        guard let rev4 = UserReview(title: "Harry Potter", rating: "5", username: "testuser", review: "Harry Potter is the best book ever") else {
+        fatalError("prob with the smhth")
         }
-        guard let rev5 = UserReview(category: "Movies", title: "The Hobit", username: "quarantineloser", review: "I write some stuff that doesn't help you.") else {
-        fatalError("prob with the ")
+        guard let rev5 = UserReview(title: "Harry Potter", rating: "5", username: "testuser", review: "Harry Potter is the best book ever") else {
+        fatalError("prob with the smhth")
         }
-        guard let rev6 = UserReview(category: "Games", title: "Half Life Alyx", username: "VRboeh", review: "I live my VR glasses on and I have a new life now in this game.") else {
-        fatalError("prob with the ")
+        guard let rev6 = UserReview(title: "Harry Potter", rating: "5", username: "testuser", review: "Harry Potter is the best book ever") else {
+        fatalError("prob with the smhth")
         }
       
         allUserReviews += [rev1, rev2, rev3, rev4, rev5, rev6]
         for i in allUserReviews {
-            if i.category == selectedCategory {
+          //  if i.category == selectedCategory {
                 userReviews += [i]
             }
         }
-    }
     
     //MARK: Actions
     

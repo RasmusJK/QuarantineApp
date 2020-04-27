@@ -22,6 +22,7 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     var review: UserReview?
     var category:String = ""
+    var rating: String = ""
     var reviewTitle:String = ""
     var reviewText2:String = ""
     
@@ -129,7 +130,7 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
             return
         }
         
-        review = UserReview(category: category, title: reviewTitle, username: "defaultuser", review: reviewText2)
+        review = UserReview(title: reviewTitle, rating: "5", username: "defaultuser", review: reviewText2)
     }
     
 }
