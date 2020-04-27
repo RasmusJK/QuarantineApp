@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import Firebase
 
 class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
@@ -22,7 +23,7 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     var review: UserReview?
     var category:String = ""
     var reviewTitle:String = ""
-    var reviewText:String = ""
+    var reviewText2:String = ""
     
     
     override func viewDidLoad() {
@@ -64,9 +65,9 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
             reviewTitle = textField.text ?? "No title"
         }
         else {
-            reviewText = textField.text ?? "No review"
+            reviewText2 = textField.text ?? "No review"
         }
-        print("current title is: \(reviewTitle) and current review is: \(reviewText)")
+        print("current title is: \(reviewTitle) and current review is: \(reviewText2)")
     }
     
     
@@ -95,6 +96,32 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        //MARK: Firebase User review testing
+        let db = Firestore.firestore()
+        let reviewItem = reviewTitle
+        let reviewRating = "5"
+        let reviewText = reviewText2
+        let reviewUser = "testuser"
+        
+        //Add
+        db.collection("reviews").addDocument(data: [
+            "reviewItem": reviewItem,
+            "reviewRating": reviewRating,
+            "reviewText": reviewText,
+            "reviewUser": reviewUser
+        ])
+        
+        //Get
+        db.collection("reviews").whereField("reviewItem", isEqualTo: reviewItem).getDocuments() { (querySnapshot, err) in
+        if let err = err {
+        print("Error getting Firestore data: \(err)")
+        } else {
+        for doc in querySnapshot!.documents {
+        print("id: \(doc.documentID), data: \(doc.data())")
+        }
+        }
+        }
+        
         super.prepare(for: segue, sender: sender)
         
         guard let button = sender as? UIBarButtonItem, button === saveButton else {
@@ -102,7 +129,7 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
             return
         }
         
-        review = UserReview(category: category, title: reviewTitle, username: "defaultuser", review: reviewText)
+        review = UserReview(category: category, title: reviewTitle, username: "defaultuser", review: reviewText2)
     }
     
 }

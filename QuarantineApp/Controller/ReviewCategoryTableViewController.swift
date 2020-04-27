@@ -14,7 +14,8 @@ class ReviewCategoryTableViewController: UITableViewController {
     //MARK: Properties
     var reviewCategories = [ReviewCategory]()
     var selectedCategory: String?
-
+    @IBOutlet weak var segmentControl: UINavigationItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -125,8 +126,8 @@ class ReviewCategoryTableViewController: UITableViewController {
     
     private func loadReviewCategories() {
         
-        let reviewCategoryPhoto1 = UIImage(named: "CommunityIcon")
-        let reviewCategoryPhoto2 = UIImage(named: "CommunityIcon")
+        let reviewCategoryPhoto1 = UIImage(named: "Reviews")
+        let reviewCategoryPhoto2 = UIImage(named: "Reviews")
         let reviewCategoryBooksPhoto = UIImage(named: "CommunityIcon")
         
         guard let reviewCategory1 = ReviewCategory(title: "Movies", image: reviewCategoryPhoto1) else {
