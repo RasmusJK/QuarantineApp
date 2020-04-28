@@ -10,7 +10,7 @@ import XCTest
 
 class QuarantineAppUITests: XCTestCase {
 
-     func setUpWithError() throws {
+    func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
@@ -22,18 +22,26 @@ class QuarantineAppUITests: XCTestCase {
      func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCommunity() {
+        
+        
+       
         
     }
-   
+    func testHome(){
+        
+        let app = XCUIApplication()
+        app/*@START_MENU_TOKEN@*/.buttons["Movies"]/*[[".segmentedControls.buttons[\"Movies\"]",".buttons[\"Movies\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Shows"]/*[[".segmentedControls.buttons[\"Shows\"]",".buttons[\"Shows\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Games"]/*[[".segmentedControls.buttons[\"Games\"]",".buttons[\"Games\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Streams"]/*[[".segmentedControls.buttons[\"Streams\"]",".buttons[\"Streams\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+                
+        
+    
+        
+    }
+
+
     func testInvalidLogin_alertAppears () {
         
         let app = XCUIApplication()
@@ -48,7 +56,7 @@ class QuarantineAppUITests: XCTestCase {
         
         let passField = app.secureTextFields["Password"]
         passField.tap()
-        passField.typeText(invalid)
+        passField.typeText("invalid")
         app.buttons["Login"].tap()
         
         let elementsQuery = app.alerts["Login error"].scrollViews.otherElements
@@ -57,6 +65,18 @@ class QuarantineAppUITests: XCTestCase {
         
         elementsQuery.buttons["OK"].tap()
        
+    }
+    func testJokes(){
+    
+        
+        let app = XCUIApplication()
+        app.launch()
+        app.navigationBars["QuarantineApp.HomeView"].buttons["line.horizontal.3"].tap()
+        app.tables/*@START_MENU_TOKEN@*/.cells.containing(.image, identifier:"trash")/*[[".cells.containing(.staticText, identifier:\"Jokes\")",".cells.containing(.image, identifier:\"trash\")"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.children(matching: .other).element(boundBy: 0).tap()
+        app.buttons["Next Joke"].tap()
+     let jokeText = app.staticTexts["Jokes"]
+        XCTAssert(jokeText.exists)
+        app.navigationBars.buttons["Back"].tap()
     }
     
 
