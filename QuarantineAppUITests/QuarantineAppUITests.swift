@@ -10,7 +10,8 @@ import XCTest
 
 class QuarantineAppUITests: XCTestCase {
     
-    
+    //MARK: Default tests
+    /*
     func setUpWithError() throws {
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,21 +25,9 @@ class QuarantineAppUITests: XCTestCase {
     func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    */
     
-    
-    func testCommunity() {
-        //wtf
-        //XCUIApplication().tabBars.buttons["Covid-19"].tap()
-        
-    }
-    func testHome(){
-        
-    }
-    
-    
-    
-    
-    
+    //MARK: Test login alerts
     func testInvalidLogin_alertAppears () { // 50/50 chance it works.
         
         let app = XCUIApplication()
@@ -71,6 +60,8 @@ class QuarantineAppUITests: XCTestCase {
         }
         
     }
+    
+    //MARK: Test CorrectLogin
     func testCorrectLogin (){
         
         let app = XCUIApplication()
@@ -103,6 +94,8 @@ class QuarantineAppUITests: XCTestCase {
             testCorrectLogin()
         }
     }
+    
+    //MARK: Test InvalidRegister
     func testInvalidRegister (){
         
         let app = XCUIApplication()
@@ -130,6 +123,8 @@ class QuarantineAppUITests: XCTestCase {
             testInvalidRegister()
         }
     }
+    
+    //MARK: Test Jokes
     func testJokes() {
         let app = XCUIApplication()
         app.launch()
@@ -163,7 +158,7 @@ class QuarantineAppUITests: XCTestCase {
         }
     }
     
-    
+    //MARK: Test LaunchPerformance
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
             // This measures how long it takes to launch your application.
