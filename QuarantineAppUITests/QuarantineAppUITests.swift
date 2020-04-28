@@ -11,6 +11,7 @@ import XCTest
 class QuarantineAppUITests: XCTestCase {
 
     func setUpWithError() throws {
+
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
@@ -22,14 +23,17 @@ class QuarantineAppUITests: XCTestCase {
      func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+
     func testCommunity() {
         
-        
-       
         
     }
     func testHome(){
         
+
+
+    func testExample() throws {
+        // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app/*@START_MENU_TOKEN@*/.buttons["Movies"]/*[[".segmentedControls.buttons[\"Movies\"]",".buttons[\"Movies\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app/*@START_MENU_TOKEN@*/.buttons["Shows"]/*[[".segmentedControls.buttons[\"Shows\"]",".buttons[\"Shows\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
@@ -88,4 +92,5 @@ class QuarantineAppUITests: XCTestCase {
             }
         }
     }
+}
 }

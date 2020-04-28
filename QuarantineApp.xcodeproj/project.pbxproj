@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FA8A1BD24583B2000B1BF88 /* JokesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8A1BC24583B2000B1BF88 /* JokesViewControllerTests.swift */; };
+		2FA8A1C0245845E500B1BF88 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA8A1C2245845E500B1BF88 /* Auth.storyboard */; };
+		2FA8A1C72458460000B1BF88 /* CovidTracker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA8A1C92458460000B1BF88 /* CovidTracker.storyboard */; };
+		2FA8A1CE2458460D00B1BF88 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA8A1D02458460D00B1BF88 /* Profile.storyboard */; };
+		2FA8A1D52458461C00B1BF88 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA8A1D72458461C00B1BF88 /* Community.storyboard */; };
+		2FA8A1DC2458462900B1BF88 /* Jokes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA8A1DE2458462900B1BF88 /* Jokes.storyboard */; };
 		2FEF1FAD2445C96100E9D75D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF1FAC2445C96100E9D75D /* AppDelegate.swift */; };
 		2FEF1FAF2445C96100E9D75D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF1FAE2445C96100E9D75D /* SceneDelegate.swift */; };
 		2FEF1FB12445C96100E9D75D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF1FB02445C96100E9D75D /* HomeViewController.swift */; };
@@ -16,13 +22,8 @@
 		2FEF1FBC2445C96300E9D75D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FBA2445C96300E9D75D /* LaunchScreen.storyboard */; };
 		2FEF1FC72445C96300E9D75D /* QuarantineAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF1FC62445C96300E9D75D /* QuarantineAppTests.swift */; };
 		2FEF1FD22445C96300E9D75D /* QuarantineAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF1FD12445C96300E9D75D /* QuarantineAppUITests.swift */; };
-		2FEF1FE12445CC6D00E9D75D /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FE02445CC6D00E9D75D /* Auth.storyboard */; };
-		2FEF1FE32445CC7900E9D75D /* CovidTracker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FE22445CC7900E9D75D /* CovidTracker.storyboard */; };
-		2FEF1FE52445CC8200E9D75D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FE42445CC8200E9D75D /* Profile.storyboard */; };
-		2FEF1FE72445CC8800E9D75D /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF1FE62445CC8800E9D75D /* Community.storyboard */; };
 		2FF9BEA7244F04D40090195D /* JokeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9BEA6244F04D40090195D /* JokeAPI.swift */; };
 		2FF9BEA9244F04F00090195D /* JokeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9BEA8244F04F00090195D /* JokeInfo.swift */; };
-		2FF9BEAB244F0C040090195D /* Jokes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF9BEAA244F0C040090195D /* Jokes.storyboard */; };
 		2FF9BEAD244F0D520090195D /* JokesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9BEAC244F0D520090195D /* JokesViewController.swift */; };
 		316D110E8EEB877BF18752CD /* Pods_QuarantineApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20EEE7C15EB1C194AF61146A /* Pods_QuarantineApp.framework */; };
 		535EFEFC35EA2E1324E266C7 /* Pods_QuarantineAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7591915F2A3C74BBCBB474F /* Pods_QuarantineAppTests.framework */; };
@@ -61,6 +62,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2FA8A1B624582E7F00B1BF88 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2FEF1FA12445C96100E9D75D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FEF1FA82445C96100E9D75D;
+			remoteInfo = QuarantineApp;
+		};
 		2FEF1FC32445C96300E9D75D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2FEF1FA12445C96100E9D75D /* Project object */;
@@ -81,6 +89,23 @@
 		0C75F4C655857B18E7F9E2B3 /* Pods-QuarantineApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarantineApp.debug.xcconfig"; path = "Target Support Files/Pods-QuarantineApp/Pods-QuarantineApp.debug.xcconfig"; sourceTree = "<group>"; };
 		20EEE7C15EB1C194AF61146A /* Pods_QuarantineApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuarantineApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A7103EC4B655441D45D715 /* Pods-QuarantineAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarantineAppTests.release.xcconfig"; path = "Target Support Files/Pods-QuarantineAppTests/Pods-QuarantineAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		2FA8A1B124582E7F00B1BF88 /* CommunityQuarantineAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommunityQuarantineAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FA8A1BC24583B2000B1BF88 /* JokesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesViewControllerTests.swift; sourceTree = "<group>"; };
+		2FA8A1C1245845E500B1BF88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Auth.storyboard; sourceTree = "<group>"; };
+		2FA8A1C4245845EF00B1BF88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Auth.strings; sourceTree = "<group>"; };
+		2FA8A1C6245845F700B1BF88 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Auth.strings; sourceTree = "<group>"; };
+		2FA8A1C82458460000B1BF88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CovidTracker.storyboard; sourceTree = "<group>"; };
+		2FA8A1CB2458460300B1BF88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CovidTracker.strings; sourceTree = "<group>"; };
+		2FA8A1CD2458460500B1BF88 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/CovidTracker.strings; sourceTree = "<group>"; };
+		2FA8A1CF2458460D00B1BF88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		2FA8A1D22458461000B1BF88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Profile.strings; sourceTree = "<group>"; };
+		2FA8A1D42458461200B1BF88 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Profile.strings; sourceTree = "<group>"; };
+		2FA8A1D62458461C00B1BF88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Community.storyboard; sourceTree = "<group>"; };
+		2FA8A1D92458461F00B1BF88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Community.strings; sourceTree = "<group>"; };
+		2FA8A1DB2458462200B1BF88 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Community.strings; sourceTree = "<group>"; };
+		2FA8A1DD2458462900B1BF88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Jokes.storyboard; sourceTree = "<group>"; };
+		2FA8A1E02458462D00B1BF88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Jokes.strings; sourceTree = "<group>"; };
+		2FA8A1E22458463100B1BF88 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Jokes.strings; sourceTree = "<group>"; };
 		2FEF1FA92445C96100E9D75D /* QuarantineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuarantineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FEF1FAC2445C96100E9D75D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FEF1FAE2445C96100E9D75D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,13 +121,8 @@
 		2FEF1FCD2445C96300E9D75D /* QuarantineAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuarantineAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FEF1FD12445C96300E9D75D /* QuarantineAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarantineAppUITests.swift; sourceTree = "<group>"; };
 		2FEF1FD32445C96300E9D75D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2FEF1FE02445CC6D00E9D75D /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
-		2FEF1FE22445CC7900E9D75D /* CovidTracker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CovidTracker.storyboard; sourceTree = "<group>"; };
-		2FEF1FE42445CC8200E9D75D /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		2FEF1FE62445CC8800E9D75D /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		2FF9BEA6244F04D40090195D /* JokeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeAPI.swift; sourceTree = "<group>"; };
 		2FF9BEA8244F04F00090195D /* JokeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeInfo.swift; sourceTree = "<group>"; };
-		2FF9BEAA244F0C040090195D /* Jokes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Jokes.storyboard; sourceTree = "<group>"; };
 		2FF9BEAC244F0D520090195D /* JokesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesViewController.swift; sourceTree = "<group>"; };
 		40D39FC0B2100AC966CA0CD6 /* Pods-QuarantineAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarantineAppTests.debug.xcconfig"; path = "Target Support Files/Pods-QuarantineAppTests/Pods-QuarantineAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5FE8B587D03D97857D8FDC78 /* Pods-QuarantineApp-QuarantineAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarantineApp-QuarantineAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-QuarantineApp-QuarantineAppUITests/Pods-QuarantineApp-QuarantineAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +168,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2FA8A1AE24582E7F00B1BF88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2FEF1FA62445C96100E9D75D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,6 +220,7 @@
 				2FEF1FA92445C96100E9D75D /* QuarantineApp.app */,
 				2FEF1FC22445C96300E9D75D /* QuarantineAppTests.xctest */,
 				2FEF1FCD2445C96300E9D75D /* QuarantineAppUITests.xctest */,
+				2FA8A1B124582E7F00B1BF88 /* CommunityQuarantineAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -222,6 +250,7 @@
 			children = (
 				2FEF1FC62445C96300E9D75D /* QuarantineAppTests.swift */,
 				2FEF1FC82445C96300E9D75D /* Info.plist */,
+				2FA8A1BC24583B2000B1BF88 /* JokesViewControllerTests.swift */,
 			);
 			path = QuarantineAppTests;
 			sourceTree = "<group>";
@@ -239,11 +268,11 @@
 			isa = PBXGroup;
 			children = (
 				2FEF1FB22445C96100E9D75D /* Main.storyboard */,
-				2FEF1FE02445CC6D00E9D75D /* Auth.storyboard */,
-				2FEF1FE22445CC7900E9D75D /* CovidTracker.storyboard */,
-				2FEF1FE42445CC8200E9D75D /* Profile.storyboard */,
-				2FEF1FE62445CC8800E9D75D /* Community.storyboard */,
-				2FF9BEAA244F0C040090195D /* Jokes.storyboard */,
+				2FA8A1C2245845E500B1BF88 /* Auth.storyboard */,
+				2FA8A1C92458460000B1BF88 /* CovidTracker.storyboard */,
+				2FA8A1D02458460D00B1BF88 /* Profile.storyboard */,
+				2FA8A1D72458461C00B1BF88 /* Community.storyboard */,
+				2FA8A1DE2458462900B1BF88 /* Jokes.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -343,6 +372,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2FA8A1B024582E7F00B1BF88 /* CommunityQuarantineAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FA8A1BA24582E7F00B1BF88 /* Build configuration list for PBXNativeTarget "CommunityQuarantineAppUITests" */;
+			buildPhases = (
+				2FA8A1AD24582E7F00B1BF88 /* Sources */,
+				2FA8A1AE24582E7F00B1BF88 /* Frameworks */,
+				2FA8A1AF24582E7F00B1BF88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2FA8A1B724582E7F00B1BF88 /* PBXTargetDependency */,
+			);
+			name = CommunityQuarantineAppUITests;
+			productName = CommunityQuarantineAppUITests;
+			productReference = 2FA8A1B124582E7F00B1BF88 /* CommunityQuarantineAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		2FEF1FA82445C96100E9D75D /* QuarantineApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FEF1FD62445C96300E9D75D /* Build configuration list for PBXNativeTarget "QuarantineApp" */;
@@ -411,6 +458,10 @@
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Roope Vaarama";
 				TargetAttributes = {
+					2FA8A1B024582E7F00B1BF88 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 2FEF1FA82445C96100E9D75D;
+					};
 					2FEF1FA82445C96100E9D75D = {
 						CreatedOnToolsVersion = 11.4;
 					};
@@ -441,25 +492,33 @@
 				2FEF1FA82445C96100E9D75D /* QuarantineApp */,
 				2FEF1FC12445C96300E9D75D /* QuarantineAppTests */,
 				2FEF1FCC2445C96300E9D75D /* QuarantineAppUITests */,
+				2FA8A1B024582E7F00B1BF88 /* CommunityQuarantineAppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2FA8A1AF24582E7F00B1BF88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2FEF1FA72445C96100E9D75D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6A13A5172449858E00EBC44B /* .gitignore in Resources */,
-				2FEF1FE52445CC8200E9D75D /* Profile.storyboard in Resources */,
+				2FA8A1CE2458460D00B1BF88 /* Profile.storyboard in Resources */,
 				6A1899512445E12A0038784B /* GoogleService-Info.plist in Resources */,
-				2FEF1FE32445CC7900E9D75D /* CovidTracker.storyboard in Resources */,
-				2FEF1FE12445CC6D00E9D75D /* Auth.storyboard in Resources */,
+				2FA8A1C72458460000B1BF88 /* CovidTracker.storyboard in Resources */,
+				2FA8A1C0245845E500B1BF88 /* Auth.storyboard in Resources */,
 				6A13A4FE244712A100EBC44B /* Localizable.strings in Resources */,
 				2FEF1FBC2445C96300E9D75D /* LaunchScreen.storyboard in Resources */,
 				2FEF1FB92445C96300E9D75D /* Assets.xcassets in Resources */,
-				2FF9BEAB244F0C040090195D /* Jokes.storyboard in Resources */,
-				2FEF1FE72445CC8800E9D75D /* Community.storyboard in Resources */,
+				2FA8A1DC2458462900B1BF88 /* Jokes.storyboard in Resources */,
+				2FA8A1D52458461C00B1BF88 /* Community.storyboard in Resources */,
 				2FEF1FB42445C96100E9D75D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,6 +643,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2FA8A1AD24582E7F00B1BF88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2FEF1FA52445C96100E9D75D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -631,6 +697,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FEF1FC72445C96300E9D75D /* QuarantineAppTests.swift in Sources */,
+				2FA8A1BD24583B2000B1BF88 /* JokesViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +712,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2FA8A1B724582E7F00B1BF88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2FEF1FA82445C96100E9D75D /* QuarantineApp */;
+			targetProxy = 2FA8A1B624582E7F00B1BF88 /* PBXContainerItemProxy */;
+		};
 		2FEF1FC42445C96300E9D75D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2FEF1FA82445C96100E9D75D /* QuarantineApp */;
@@ -658,6 +730,56 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2FA8A1C2245845E500B1BF88 /* Auth.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FA8A1C1245845E500B1BF88 /* Base */,
+				2FA8A1C4245845EF00B1BF88 /* en */,
+				2FA8A1C6245845F700B1BF88 /* fi */,
+			);
+			name = Auth.storyboard;
+			sourceTree = "<group>";
+		};
+		2FA8A1C92458460000B1BF88 /* CovidTracker.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FA8A1C82458460000B1BF88 /* Base */,
+				2FA8A1CB2458460300B1BF88 /* en */,
+				2FA8A1CD2458460500B1BF88 /* fi */,
+			);
+			name = CovidTracker.storyboard;
+			sourceTree = "<group>";
+		};
+		2FA8A1D02458460D00B1BF88 /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FA8A1CF2458460D00B1BF88 /* Base */,
+				2FA8A1D22458461000B1BF88 /* en */,
+				2FA8A1D42458461200B1BF88 /* fi */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
+		2FA8A1D72458461C00B1BF88 /* Community.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FA8A1D62458461C00B1BF88 /* Base */,
+				2FA8A1D92458461F00B1BF88 /* en */,
+				2FA8A1DB2458462200B1BF88 /* fi */,
+			);
+			name = Community.storyboard;
+			sourceTree = "<group>";
+		};
+		2FA8A1DE2458462900B1BF88 /* Jokes.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FA8A1DD2458462900B1BF88 /* Base */,
+				2FA8A1E02458462D00B1BF88 /* en */,
+				2FA8A1E22458463100B1BF88 /* fi */,
+			);
+			name = Jokes.storyboard;
+			sourceTree = "<group>";
+		};
 		2FEF1FB22445C96100E9D75D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -689,6 +811,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2FA8A1B824582E7F00B1BF88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CommunityQuarantineAppUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fi.metropolia.roopeva.CommunityQuarantineAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QuarantineApp;
+			};
+			name = Debug;
+		};
+		2FA8A1B924582E7F00B1BF88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CommunityQuarantineAppUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fi.metropolia.roopeva.CommunityQuarantineAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QuarantineApp;
+			};
+			name = Release;
+		};
 		2FEF1FD42445C96300E9D75D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -857,7 +1017,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = QuarantineAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -879,7 +1039,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = QuarantineAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -936,6 +1096,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2FA8A1BA24582E7F00B1BF88 /* Build configuration list for PBXNativeTarget "CommunityQuarantineAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FA8A1B824582E7F00B1BF88 /* Debug */,
+				2FA8A1B924582E7F00B1BF88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2FEF1FA42445C96100E9D75D /* Build configuration list for PBXProject "QuarantineApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

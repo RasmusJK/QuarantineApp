@@ -1,0 +1,45 @@
+
+/* Class = "UIButton"; normalTitle = "Continue as guest"; ObjectID = "3pM-k0-jtr"; */
+"3pM-k0-jtr.normalTitle" = "Continue as guest";
+
+/* Class = "UIButton"; normalTitle = "Continue as guest"; ObjectID = "DFL-Bt-n4H"; */
+"DFL-Bt-n4H.normalTitle" = "Continue as guest";
+
+/* Class = "UIViewController"; title = "Register"; ObjectID = "HkN-0l-uRS"; */
+"HkN-0l-uRS.title" = "Register";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "IWx-xN-9K6"; */
+"IWx-xN-9K6.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "LJC-dd-YDV"; */
+"LJC-dd-YDV.normalTitle" = "Register";
+
+/* Class = "UIViewController"; title = "Login"; ObjectID = "QxY-ve-y0u"; */
+"QxY-ve-y0u.title" = "Login";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "RGF-fG-8aP"; */
+"RGF-fG-8aP.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "bQY-7j-mmi"; */
+"bQY-7j-mmi.normalTitle" = "Login";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "c0i-XB-tmy"; */
+"c0i-XB-tmy.placeholder" = "Username";
+
+/* Class = "UIButton"; normalTitle = "Go to login"; ObjectID = "hbs-2K-Mbp"; */
+"hbs-2K-Mbp.normalTitle" = "Go to login";
+
+/* Class = "UITextField"; placeholder = "Re-enter password"; ObjectID = "npD-Nq-cLb"; */
+"npD-Nq-cLb.placeholder" = "Re-enter password";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "qez-GY-dmr"; */
+"qez-GY-dmr.normalTitle" = "Register";
+
+/* Class = "UILabel"; text = "Register"; ObjectID = "qkH-fZ-WcZ"; */
+"qkH-fZ-WcZ.text" = "Register";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "wPv-6s-ofv"; */
+"wPv-6s-ofv.placeholder" = "Username";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "zic-QW-lcA"; */
+"zic-QW-lcA.text" = "Login";

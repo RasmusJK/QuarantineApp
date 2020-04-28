@@ -9,6 +9,8 @@
 import UIKit
 import os.log
 import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 
 class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
