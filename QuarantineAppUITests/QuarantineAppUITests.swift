@@ -28,26 +28,16 @@ class QuarantineAppUITests: XCTestCase {
 
     func testCommunity() {
         
-        
+        XCUIApplication().tabBars.buttons["Covid-19"].tap()
+                        
     }
     func testHome(){
         
-
-
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app/*@START_MENU_TOKEN@*/.buttons["Movies"]/*[[".segmentedControls.buttons[\"Movies\"]",".buttons[\"Movies\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.buttons["Shows"]/*[[".segmentedControls.buttons[\"Shows\"]",".buttons[\"Shows\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.buttons["Games"]/*[[".segmentedControls.buttons[\"Games\"]",".buttons[\"Games\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.buttons["Streams"]/*[[".segmentedControls.buttons[\"Streams\"]",".buttons[\"Streams\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-                
-        
-    
-        
     }
 
+
+
+  
 
     func testInvalidLogin_alertAppears () {
         
@@ -55,7 +45,7 @@ class QuarantineAppUITests: XCTestCase {
         app.launch()
         
         let invalid = "invalid"
-        app.navigationBars["QuarantineApp.HomeView"].buttons["Auth"].tap()
+        app.navigationBars["Empty core data"].buttons["Auth"].tap()
         
        let userField = app.textFields["Username"]
         userField.tap()
@@ -63,7 +53,7 @@ class QuarantineAppUITests: XCTestCase {
         
         let passField = app.secureTextFields["Password"]
         passField.tap()
-        passField.typeText("invalid")
+        passField.typeText(invalid)
         app.buttons["Login"].tap()
         
         let elementsQuery = app.alerts["Login error"].scrollViews.otherElements
@@ -73,13 +63,55 @@ class QuarantineAppUITests: XCTestCase {
         elementsQuery.buttons["OK"].tap()
        
     }
-    func testJokes(){
-    
+    func testCorrectLogin (){
         
         let app = XCUIApplication()
         app.launch()
-        app.navigationBars["QuarantineApp.HomeView"].buttons["line.horizontal.3"].tap()
-        app.tables/*@START_MENU_TOKEN@*/.cells.containing(.image, identifier:"trash")/*[[".cells.containing(.staticText, identifier:\"Jokes\")",".cells.containing(.image, identifier:\"trash\")"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.children(matching: .other).element(boundBy: 0).tap()
+        let uName = "Testiukko"
+        let pass = "Test1!"
+        app.navigationBars["Empty core data"].buttons["Auth"].tap()
+        
+       let uField = app.textFields["Username"]
+        uField.tap()
+        uField.typeText(uName)
+        
+       let pField =  app.secureTextFields["Password"]
+        pField.tap()
+        pField.typeText(pass)
+        
+        XCUIApplication().buttons["Login"].tap()
+        
+        let allButton = XCUIApplication()/*@START_MENU_TOKEN@*/.buttons["All"]/*[[".segmentedControls.buttons[\"All\"]",".buttons[\"All\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        allButton.tap()
+        
+       
+        XCTAssertTrue(allButton.exists)
+        
+    }
+    func testInvalidRegister (){
+    
+        let app = XCUIApplication()
+        app.launch()
+        app.navigationBars["Empty core data"].buttons["Auth"].tap()
+        app.buttons["Go to register"].tap()
+        
+        let registerStaticText = app.buttons["Register"].staticTexts["Register"]
+        registerStaticText.tap()
+        
+        let elementsQuery = app.alerts["Register error"].scrollViews.otherElements
+        elementsQuery.staticTexts["The password must be 6 characters long or more."].tap()
+        
+        let okButton = elementsQuery.buttons["OK"]
+        XCTAssertTrue(okButton.exists)
+        okButton.tap()
+        
+    }
+    func testJokes(){
+    
+        let app = XCUIApplication()
+        app.launch()
+        app.navigationBars["Empty core data"].buttons["line.horizontal.3"].tap()
+        app.tables.cells.containing(.image, identifier:"trash").children(matching: .other).element(boundBy: 0).tap()
         app.buttons["Next Joke"].tap()
      let jokeText = app.staticTexts["Jokes"]
         XCTAssert(jokeText.exists)
@@ -96,4 +128,4 @@ class QuarantineAppUITests: XCTestCase {
         }
     }
 }
-}
+
