@@ -18,6 +18,7 @@
 "Logout" = "Kirjaudu ulos";
 "Help" = "Apu";
 
+<<<<<<< HEAD
 "Login" = "Kirjaudu"
 "Register" = "Rekisteröityminen"
 "Continue as guest" = "Jatka kirjautumatta"
@@ -45,3 +46,32 @@
 
 "Jokes" = "Vitsit"
 "Next Joke" = "Seuraava vitsi"
+=======
+"Login" = "Kirjaudu";
+"Register" = "Rekisteröityminen";
+"Continue as guest" = "Jatka kirjautumatta";
+"Go to login" = "Takaisin kirjautumiseen";
+
+"Cases" = "Tapauksia";
+"Deaths" = "Kuolemia";
+"Recovered" = "Parantuneet";
+"Total" = "Yhteensä";
+
+"Name" = "Nimi";
+"Usename" = "Käyttäjänimi";
+"Email" = "Sähköpostiosoite";
+
+"The Community" = "Yhteisö";
+"User Reviews" = "Käyttäjä arvostelut";
+"Other stuff" = "Muut";
+
+"Back" = "Takaisin";
+"Cancel" = "Peruuta";
+"Save" = "Tallenna";
+"Category" = "Kategoria";
+"Review" = "Arvostelu";
+"Create a Review" = "Luo arvostelu";
+
+"Jokes" = "Vitsit";
+"Next Joke" = "Seuraava vitsi";
+>>>>>>> eb4d8b670f941b4bb95a0c40aaf0485639b58065

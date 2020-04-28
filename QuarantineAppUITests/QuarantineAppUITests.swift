@@ -10,6 +10,7 @@ import XCTest
 
 class QuarantineAppUITests: XCTestCase {
 
+
     func setUpWithError() throws {
 
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,12 +25,14 @@ class QuarantineAppUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+
     func testCommunity() {
         
         
     }
     func testHome(){
         
+
 
 
     func testExample() throws {
