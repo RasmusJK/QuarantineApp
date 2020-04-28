@@ -12,7 +12,7 @@
 "IWx-xN-9K6.placeholder" = "Password";
 
 /* Class = "UIButton"; normalTitle = "Register"; ObjectID = "LJC-dd-YDV"; */
-"LJC-dd-YDV.normalTitle" = "Register";
+"LJC-dd-YDV.normalTitle" = "Go to register";
 
 /* Class = "UIViewController"; title = "Login"; ObjectID = "QxY-ve-y0u"; */
 "QxY-ve-y0u.title" = "Login";
