@@ -28,9 +28,11 @@ class QuarantineAppUITests: XCTestCase {
 
     func testCommunity() {
         
-        
+        XCUIApplication().tabBars.buttons["Covid-19"].tap()
+                        
     }
     func testHome(){
+        
     }
 
 
@@ -87,8 +89,7 @@ class QuarantineAppUITests: XCTestCase {
         
     }
     func testInvalidRegister (){
-        
-        
+    
         let app = XCUIApplication()
         app.launch()
         app.navigationBars["Empty core data"].buttons["Auth"].tap()
@@ -104,14 +105,9 @@ class QuarantineAppUITests: XCTestCase {
         XCTAssertTrue(okButton.exists)
         okButton.tap()
         
-      
-
-      
-        
     }
     func testJokes(){
     
-        
         let app = XCUIApplication()
         app.launch()
         app.navigationBars["Empty core data"].buttons["line.horizontal.3"].tap()
