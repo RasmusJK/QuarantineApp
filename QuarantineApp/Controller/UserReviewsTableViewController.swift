@@ -9,6 +9,8 @@
 import UIKit
 import os.log
 import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 class UserReviewsTableViewController: UITableViewController {
     

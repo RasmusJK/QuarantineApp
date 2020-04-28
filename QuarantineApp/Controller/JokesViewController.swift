@@ -26,8 +26,7 @@ class JokesViewController: UIViewController, JokeAPIDelegate {
     @IBOutlet var setupLabel: UILabel!
     @IBOutlet var deliveryLabel: UILabel!
     @IBAction func nextButton(_ sender: UIButton) {
-        number+=1
-        getJokes()
+        nextJoke()
     }
     
     
@@ -35,6 +34,11 @@ class JokesViewController: UIViewController, JokeAPIDelegate {
     var blacklist: String = "religious,political,racist"
     override func viewDidLoad() {
         super.viewDidLoad()
+        getJokes()
+    }
+    
+    func nextJoke(){
+        number+=1
         getJokes()
     }
     

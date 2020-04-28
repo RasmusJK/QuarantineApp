@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "Cases | Deaths | Recovered"; ObjectID = "VGN-0g-mxB"; */
+"VGN-0g-mxB.text" = "Cases | Deaths | Recovered";
+
+/* Class = "UITabBarItem"; title = "Covid-19"; ObjectID = "gxi-Bq-Lxr"; */
+"gxi-Bq-Lxr.title" = "Covid-19";
+
+/* Class = "UILabel"; text = "Total"; ObjectID = "qs2-1f-REo"; */
+"qs2-1f-REo.text" = "Total";

@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Games" representedClassName="Games" syncable="YES" codeGenerationType="class">
-        <attribute name="gameTitle" optional="YES" attributeType="String"/>
+        <attribute name="appid" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="avg2weeks" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="developer" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="NetflixMovie" representedClassName="NetflixMovie" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="imbdrating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="imgurl" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="NetflixSeries" representedClassName="NetflixSeries" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="imbdrating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="imgurl" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Games" positionX="-63" positionY="-18" width="128" height="58"/>
+        <element name="Games" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="NetflixSeries" positionX="-54" positionY="27" width="128" height="103"/>
+        <element name="NetflixMovie" positionX="-54" positionY="36" width="128" height="103"/>
     </elements>
 </model>

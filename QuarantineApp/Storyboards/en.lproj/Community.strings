@@ -1,0 +1,51 @@
+
+/* Class = "UILabel"; text = "username"; ObjectID = "4tC-OP-urg"; */
+"4tC-OP-urg.text" = "username";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "BJt-dw-ob2"; */
+"BJt-dw-ob2.text" = "Name";
+
+/* Class = "UIButton"; normalTitle = ">"; ObjectID = "IXp-EK-bGs"; */
+"IXp-EK-bGs.normalTitle" = ">";
+
+/* Class = "UILabel"; text = "BookMovieGame Title"; ObjectID = "K5p-EW-tmP"; */
+"K5p-EW-tmP.text" = "BookMovieGame Title";
+
+/* Class = "UILabel"; text = "The Community"; ObjectID = "MBR-aL-wE3"; */
+"MBR-aL-wE3.text" = "The Community";
+
+/* Class = "UIButton"; normalTitle = ">"; ObjectID = "SWO-WN-V5O"; */
+"SWO-WN-V5O.normalTitle" = ">";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Wcy-T5-2a2"; */
+"Wcy-T5-2a2.text" = "Label";
+
+/* Class = "UILabel"; text = "Review"; ObjectID = "bJj-c2-EWh"; */
+"bJj-c2-EWh.text" = "Review";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "blR-i5-blu"; */
+"blR-i5-blu.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Create a Review"; ObjectID = "esD-iE-jJQ"; */
+"esD-iE-jJQ.title" = "Create a Review";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "fZe-nk-00e"; */
+"fZe-nk-00e.text" = "Category";
+
+/* Class = "UITextField"; text = "Write a review!"; ObjectID = "ivv-iS-aRz"; */
+"ivv-iS-aRz.text" = "Write a review!";
+
+/* Class = "UILabel"; text = "User Reviews"; ObjectID = "jDY-bo-GNB"; */
+"jDY-bo-GNB.text" = "User Reviews";
+
+/* Class = "UILabel"; text = "Other stuff"; ObjectID = "lf8-dc-W8s"; */
+"lf8-dc-W8s.text" = "Other stuff";
+
+/* Class = "UITabBarItem"; title = "Community"; ObjectID = "web-6e-Idx"; */
+"web-6e-Idx.title" = "Community";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "wse-Te-TH9"; */
+"wse-Te-TH9.text" = "Label";
+
+/* Class = "UITextField"; text = "Game, movie, book name..."; ObjectID = "xRS-ri-byq"; */
+"xRS-ri-byq.text" = "Game, movie, book name...";
