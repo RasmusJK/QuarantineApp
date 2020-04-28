@@ -17,3 +17,31 @@
 "COVID Tracker" = "COVID Paikannin";
 "Logout" = "Kirjaudu ulos";
 "Help" = "Apu";
+
+"Login" = "Kirjaudu"
+"Register" = "Rekisteröityminen"
+"Continue as guest" = "Jatka kirjautumatta"
+"Go to login" = "Takaisin kirjautumiseen"
+
+"Cases" = "Tapauksia"
+"Deaths" = "Kuolemia"
+"Recovered" = "Parantuneet"
+"Total" = "Yhteensä"
+
+"Name" = "Nimi"
+"Usename" = "Käyttäjänimi"
+"Email" = "Sähköpostiosoite"
+
+"The Community" = "Yhteisö"
+"User Reviews" = "Käyttäjä arvostelut"
+"Other stuff" = "Muut"
+
+"Back" = "Takaisin"
+"Cancel" = "Peruuta"
+"Save" = "Tallenna"
+"Category" = "Kategoria"
+"Review" = "Arvostelu"
+"Create a Review" = "Luo arvostelu"
+
+"Jokes" = "Vitsit"
+"Next Joke" = "Seuraava vitsi"
