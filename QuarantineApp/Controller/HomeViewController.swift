@@ -69,6 +69,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return searchController.isActive && !isSearchBarEmpty
     }
     var MediaSource: String = "All"
+    var All = "All"
+    var Movies = "Movies"
+    var Shows = "Shows"
+    var Games = "Games"
+    var Search = "Search"
     
     
     @IBAction func emptyCoreDataDebug(_ sender: UIButton) {
@@ -383,16 +388,16 @@ extension HomeViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch categorySegment.selectedSegmentIndex {
         case 0:
-            MediaSource = "All"
-            searchController.searchBar.placeholder = "Search"
+            MediaSource = All
+            searchController.searchBar.placeholder = "\(Search)"
             let cell = tableView.dequeueReusableCell(withIdentifier: "TopItemCell", for: indexPath) as! TopItemTableViewCell
             cell.Title.text = "Top \(testTopMedia[0])"
             cell.DescOrDev.text = "Top \(testTopMedia[0])"
             cell.Rating.text = "Top \(testTopMedia[0])"
             return cell
         case 1:
-            MediaSource = "Movies"
-            searchController.searchBar.placeholder = "Search \(MediaSource)"
+            MediaSource = Movies
+            searchController.searchBar.placeholder = "\(Search) \(MediaSource)"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
             let movie = (movieFetchedResultsController?.object(at: indexPath))!
             cell.Title.text = movie.title
@@ -414,8 +419,8 @@ extension HomeViewController {
             }
             return cell
         case 2:
-            MediaSource = "Shows"
-            searchController.searchBar.placeholder = "Search \(MediaSource)"
+            MediaSource = Shows
+            searchController.searchBar.placeholder = "\(Search) \(MediaSource)"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
             let series = (seriesFetchedResultsController?.object(at: indexPath))!
             cell.Title.text = series.title
@@ -437,8 +442,8 @@ extension HomeViewController {
                 }
             return cell
         case 3:
-            MediaSource = "Games"
-            searchController.searchBar.placeholder = "Search \(MediaSource)"
+            MediaSource = Games
+            searchController.searchBar.placeholder = "\(Search) \(MediaSource)"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
             let game = (gamesFetchedResultsController?.object(at: indexPath))!
             cell.Title.text = game.title
@@ -446,8 +451,8 @@ extension HomeViewController {
             cell.Rating.text = String(format:"%.1f", game.avg2weeks )
             return cell
         default:
-            MediaSource = "All"
-            searchController.searchBar.placeholder = "Search"
+            MediaSource = All
+            searchController.searchBar.placeholder = "\(Search)"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
             cell.Title.text = testTopMedia[0]
             cell.DescOrDev.text = testTopMedia[0]
