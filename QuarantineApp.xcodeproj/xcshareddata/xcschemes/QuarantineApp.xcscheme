@@ -48,6 +48,16 @@
                ReferencedContainer = "container:QuarantineApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2FA8A1B024582E7F00B1BF88"
+               BuildableName = "CommunityQuarantineAppUITests.xctest"
+               BlueprintName = "CommunityQuarantineAppUITests"
+               ReferencedContainer = "container:QuarantineApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

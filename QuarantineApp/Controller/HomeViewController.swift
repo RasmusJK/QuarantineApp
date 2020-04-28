@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import CoreData
-
+import FirebaseAuth
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NetflixAPIDelegate {
     func newData(_ steamData: SteamData?) {
