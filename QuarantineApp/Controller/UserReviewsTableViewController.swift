@@ -44,7 +44,6 @@ class UserReviewsTableViewController: UITableViewController {
         //Calls a function that fetches the user reviews from database
         downloadUserReviewsNow() { reviewArray, error in
         if let error = error {
-          // self.alert(title: "Error", message: error.localizedDescription)
            return
         }
             self.list = reviewArray
@@ -64,21 +63,9 @@ class UserReviewsTableViewController: UITableViewController {
             username = self.list["reviewUser"] as! String
             }
                 
-            let object = UserReview(title: movietitle, rating: movierating, username: username, review: reviewtext)
-                
-            self.userReviews.append(object ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value")! )
+        let object = UserReview(title: movietitle, rating: movierating, username: username, review: reviewtext)
+        self.userReviews.append(object ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value")! )
 
-                
-                /*if key == "reviewItem" {
-                    titletest = String(describing: value)
-                    print("for now the title is: \(titletest)")
-                    thingsinlist.append(titletest)
-                    }
-                if key == "reviewText" {
-                     reviewTest = String(describing: value)
-                    }
-               // self.userReviews += [reviewParsed!]
-                */
         self.tableView.reloadData()
         }
     }
@@ -102,9 +89,6 @@ class UserReviewsTableViewController: UITableViewController {
         }
             
         let userRev = userReviews[indexPath.row]
-        
-      //  let movietitle = userReviews["reviewItem"] as! String
-        //let yetki = userDict["Yetki"] as! String
         
         cell.reviewItemTitleLabel.text = userRev.title
         cell.reviewerUsernameLabel.text = userRev.username
@@ -201,25 +185,10 @@ class UserReviewsTableViewController: UITableViewController {
             let data = doc.data()
             reviewArray = data
             
-        //    let decoder = JSONDecoder()
-              //Make a mutable copy of the NSDictionary
-            
-             /* var dictionaryreviews = Dictionary<String, Any>()
-            dictionaryreviews = doc.data()
-              for (key, value) in dictionaryreviews {
-
-                    //let movietitle = dictionaryreviews["reviewItem"] as! String
-                    //let yetki = userDict["Yetki"] as! String
+            completion(reviewArray, error)
             }
-                */
-               // print("sup hoe \(value)")
-                //dictionaryreviews[TabBarKey.tabBarColor]
-
-                //let val = lTabBarDictionary[TabBarKey.tabBarColor] as Array<String>
-//JSON STUFF
-          completion(reviewArray, error)
-    }
         }
+        
         /*
         guard let rev1 = UserReview(title: "Harry Potter", rating: "5", username: "testuser", review: "Harry Potter is the best book ever") else {
         fatalError("prob with the smhth")
@@ -257,22 +226,18 @@ class UserReviewsTableViewController: UITableViewController {
 
                 //Add a new review
                 let newIndexPath = IndexPath(row: userReviews.count, section: 0)
-            
                 let newReviewAsString = String(describing: "\(newReview)")
             
                 userReviews.append(newReview)
-               // list += [newReviewAsString]
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             
            downloadUserReviewsNow() { reviewArray, error in
             if let error = error {
-              // self.alert(title: "Error", message: error.localizedDescription)
                return
             }
               self.list = reviewArray
               self.tableView.reloadData()
             }
-          //   tableView.reloadData()
-            }
         }
+    }
 }
