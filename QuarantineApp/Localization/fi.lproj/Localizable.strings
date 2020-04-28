@@ -18,30 +18,30 @@
 "Logout" = "Kirjaudu ulos";
 "Help" = "Apu";
 
-"Login" = "Kirjaudu"
-"Register" = "Rekisteröityminen"
-"Continue as guest" = "Jatka kirjautumatta"
-"Go to login" = "Takaisin kirjautumiseen"
+"Login" = "Kirjaudu";
+"Register" = "Rekisteröityminen";
+"Continue as guest" = "Jatka kirjautumatta";
+"Go to login" = "Takaisin kirjautumiseen";
 
-"Cases" = "Tapauksia"
-"Deaths" = "Kuolemia"
-"Recovered" = "Parantuneet"
-"Total" = "Yhteensä"
+"Cases" = "Tapauksia";
+"Deaths" = "Kuolemia";
+"Recovered" = "Parantuneet";
+"Total" = "Yhteensä";
 
-"Name" = "Nimi"
-"Usename" = "Käyttäjänimi"
-"Email" = "Sähköpostiosoite"
+"Name" = "Nimi";
+"Usename" = "Käyttäjänimi";
+"Email" = "Sähköpostiosoite";
 
-"The Community" = "Yhteisö"
-"User Reviews" = "Käyttäjä arvostelut"
-"Other stuff" = "Muut"
+"The Community" = "Yhteisö";
+"User Reviews" = "Käyttäjä arvostelut";
+"Other stuff" = "Muut";
 
-"Back" = "Takaisin"
-"Cancel" = "Peruuta"
-"Save" = "Tallenna"
-"Category" = "Kategoria"
-"Review" = "Arvostelu"
-"Create a Review" = "Luo arvostelu"
+"Back" = "Takaisin";
+"Cancel" = "Peruuta";
+"Save" = "Tallenna";
+"Category" = "Kategoria";
+"Review" = "Arvostelu";
+"Create a Review" = "Luo arvostelu";
 
-"Jokes" = "Vitsit"
-"Next Joke" = "Seuraava vitsi"
+"Jokes" = "Vitsit";
+"Next Joke" = "Seuraava vitsi";
