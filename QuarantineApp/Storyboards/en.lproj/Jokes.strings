@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Jokes"; ObjectID = "CAt-Qi-mqj"; */
+"CAt-Qi-mqj.text" = "Jokes";
+
+/* Class = "UIButton"; normalTitle = "Next Joke"; ObjectID = "FvB-Ds-wVa"; */
+"FvB-Ds-wVa.normalTitle" = "Next Joke";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "X9e-fH-dSY"; */
+"X9e-fH-dSY.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "exd-6c-zbT"; */
+"exd-6c-zbT.title" = "Back";
