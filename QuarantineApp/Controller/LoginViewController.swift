@@ -20,11 +20,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         usernameField.delegate = self
         passwordField.delegate = self
-        
     }
     
     @IBAction func toRegister(_ sender: UIButton) {
         performSegue(withIdentifier: "ToRegisterSegue", sender: self)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if Auth.auth().currentUser?.uid != nil {
+            self.navigationController?.popToRootViewController(animated: true)
+            let alertController = UIAlertController(title: "Login error", message: "Logged in as \(Auth.auth().currentUser?.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "Anonymous")", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     //MARK: FirebaseAuth

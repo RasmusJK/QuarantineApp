@@ -16,7 +16,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmField: UITextField!
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameField.delegate = self
@@ -37,7 +37,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 self.present(alertController, animated: true, completion: nil)
                 return
             }
-            self.navigationController?.popToRootViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -54,7 +54,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBAction func guestButton(_ sender: UIButton) {
         Auth.auth().signInAnonymously() { (authResult, error) in
             guard (authResult?.user) != nil else { return }
-            self.navigationController?.popToRootViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }
