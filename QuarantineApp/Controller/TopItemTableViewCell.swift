@@ -11,8 +11,8 @@ import UIKit
 class TopItemTableViewCell: UITableViewCell {
     @IBOutlet var Thumbnail: UIImageView!
     @IBOutlet var Title: UILabel!
-    @IBOutlet var Users: UILabel!
-    @IBOutlet var Available: UILabel!
+    @IBOutlet var DescOrDev: UILabel!
+    @IBOutlet var Rating: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

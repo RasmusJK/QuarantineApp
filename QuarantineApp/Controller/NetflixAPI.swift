@@ -14,13 +14,21 @@ import Foundation
 class NetflixAPI {
     var netflixAPIDelegate : NetflixAPIDelegate?
     
-    func getData() {
+    func getData(categorySwitch : String) {
         let headers = [
             "x-rapidapi-host": "unogsng.p.rapidapi.com",
             "x-rapidapi-key": "87c1f7b623msh2c59183703224a2p125cedjsnfbe032e4e91e"
         ]
-
-        var request = URLRequest(url: URL(string: "https://unogsng.p.rapidapi.com/search?country_andorunique=unique&start_year=1972&orderby=rating&audiosubtitle_andor=and&limit=20&subtitle=english&countrylist=46&audio=english&offset=0&end_year=2020")!)
+        
+        var request : URLRequest
+        switch categorySwitch {
+        case "NetflixMovie":
+            request = URLRequest(url: URL(string: "https://unogsng.p.rapidapi.com/search?country_andorunique=unique&newdate=2018-01-01&type=movie&start_year=1972&orderby=rating%252C%20date&audiosubtitle_andor=and&limit=20&subtitle=english&countrylist=78&audio=english&offset=0&end_year=2020")!)
+        case "NetflixSeries":
+            request = URLRequest(url: URL(string: "https://unogsng.p.rapidapi.com/search?country_andorunique=unique&newdate=2018-01-01&type=series&start_year=1972&orderby=date%252Crating&audiosubtitle_andor=and&limit=20&subtitle=english&countrylist=78&audio=english&offset=0&end_year=2020")!)
+        default:
+            request = URLRequest(url: URL(string: "")!)
+        }
         request.httpMethod = "GET"
         request.cachePolicy = .useProtocolCachePolicy
         request.timeoutInterval = 10.0
@@ -43,7 +51,7 @@ class NetflixAPI {
             print("Fetch data: \(data)")
             do {
                 let netflixInfo = try JSONDecoder().decode(NetflixInfo.self, from: data)
-                self.netflixAPIDelegate?.newData(netflixInfo)
+                self.netflixAPIDelegate?.newData(netflixInfo, categorySwitch: categorySwitch)
             } catch let error as NSError  {
                 print(error)
                 return
@@ -55,5 +63,5 @@ class NetflixAPI {
 }
 
 protocol NetflixAPIDelegate {
-    func newData(_ netflixInfo : NetflixInfo?)
+    func newData(_ netflixInfo : NetflixInfo?, categorySwitch : String)
 }
