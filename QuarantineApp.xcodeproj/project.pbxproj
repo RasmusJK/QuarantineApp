@@ -58,6 +58,8 @@
 		6ACDB3142450B5CD00B53BBE /* UserReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACDB3132450B5CD00B53BBE /* UserReviewsTableViewController.swift */; };
 		6ACDB3162450B5DF00B53BBE /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACDB3152450B5DF00B53BBE /* UserReview.swift */; };
 		6ACDB3182451947200B53BBE /* CreateReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACDB3172451947200B53BBE /* CreateReviewViewController.swift */; };
+		6ACDB31C24582D1A00B53BBE /* UserReviewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACDB31B24582D1A00B53BBE /* UserReviewObject.swift */; };
+		6ACDB31E24582DF200B53BBE /* DatabaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACDB31D24582DF200B53BBE /* DatabaseAPI.swift */; };
 		DE48BCAD043D3448B87D3219 /* Pods_QuarantineApp_QuarantineAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE699EE72ABF7C9343C047B6 /* Pods_QuarantineApp_QuarantineAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -162,6 +164,8 @@
 		6ACDB3132450B5CD00B53BBE /* UserReviewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewsTableViewController.swift; sourceTree = "<group>"; };
 		6ACDB3152450B5DF00B53BBE /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		6ACDB3172451947200B53BBE /* CreateReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReviewViewController.swift; sourceTree = "<group>"; };
+		6ACDB31B24582D1A00B53BBE /* UserReviewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewObject.swift; sourceTree = "<group>"; };
+		6ACDB31D24582DF200B53BBE /* DatabaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAPI.swift; sourceTree = "<group>"; };
 		A7591915F2A3C74BBCBB474F /* Pods_QuarantineAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuarantineAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7147EC4EBA19A0C7E6A32B9 /* Pods-QuarantineApp-QuarantineAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarantineApp-QuarantineAppUITests.release.xcconfig"; path = "Target Support Files/Pods-QuarantineApp-QuarantineAppUITests/Pods-QuarantineApp-QuarantineAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EE699EE72ABF7C9343C047B6 /* Pods_QuarantineApp_QuarantineAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuarantineApp_QuarantineAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +310,7 @@
 				6A13A5262450464E00EBC44B /* NetflixInfo.swift */,
 				6A3F98562450427A00470B84 /* SteamData.swift */,
 				6A3F98582450985300470B84 /* SteamAPI.swift */,
+				6ACDB31D24582DF200B53BBE /* DatabaseAPI.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				6A47BF5B2448C1F600233528 /* ReviewCategory.swift */,
 				6A47BF612448CC5500233528 /* CommunityGroup.swift */,
 				6ACDB3152450B5DF00B53BBE /* UserReview.swift */,
+				6ACDB31B24582D1A00B53BBE /* UserReviewObject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -663,6 +669,7 @@
 				6A13A51B2449C6E800EBC44B /* RegisterViewController.swift in Sources */,
 				6A13A5192449C6DD00EBC44B /* LoginViewController.swift in Sources */,
 				2FEF1FAF2445C96100E9D75D /* SceneDelegate.swift in Sources */,
+				6ACDB31C24582D1A00B53BBE /* UserReviewObject.swift in Sources */,
 				6A47BF5C2448C1F600233528 /* ReviewCategory.swift in Sources */,
 				6A13A5062447163300EBC44B /* LocalizedUILabel.swift in Sources */,
 				6ACDB3142450B5CD00B53BBE /* UserReviewsTableViewController.swift in Sources */,
@@ -673,6 +680,7 @@
 				6A3F98592450985300470B84 /* SteamAPI.swift in Sources */,
 				6A47BF582448C0BA00233528 /* ReviewCategoryTableViewCell.swift in Sources */,
 				6A13A5112448D53100EBC44B /* ItemTableViewCell.swift in Sources */,
+				6ACDB31E24582DF200B53BBE /* DatabaseAPI.swift in Sources */,
 				6A13A50A24471F0A00EBC44B /* SlideInTransition.swift in Sources */,
 				6A47BF5A2448C1DC00233528 /* ReviewCategoryTableViewController.swift in Sources */,
 				6A47BF602448CC4300233528 /* CommunityGroupTableViewController.swift in Sources */,

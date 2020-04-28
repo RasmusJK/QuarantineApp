@@ -14,12 +14,9 @@ import FirebaseAuth
 import CoreData
 
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NetflixAPIDelegate, NSFetchedResultsControllerDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NetflixAPIDelegate, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
     
-    /**
-        Receives data from the Steam API and saves it to the FetchedResultsController
-     */
-
+    // Receives data from the Steam API and saves it to the FetchedResultsController
     func newData(_ steamData: SteamData?) {
         DispatchQueue.main.async {
             for item in steamData! {
@@ -29,9 +26,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    /**
-       Receives data from the Netflix API and saves it to the FetchedResultsController
-    */
+    //Receives data from the Netflix API and saves it to the FetchedResultsController
     func newData(_ netflixInfo: NetflixInfo?, categorySwitch : String) {
         DispatchQueue.main.async {
             if categorySwitch == "NetflixMovie" {
@@ -63,6 +58,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var gamesFetchedResultsController : NSFetchedResultsController<Games>!
     //Firebase Auth handler
     var handle: AuthStateDidChangeListenerHandle?
+    
+    //Search controller properties
+    let searchController = UISearchController(searchResultsController: nil)
+    //Var filtered : [?] = []
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    var isFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
+    }
+    var MediaSource: String = "All"
+    var All = "All"
+    var Movies = "Movies"
+    var Shows = "Shows"
+    var Games = "Games"
+    var Search = "Search"
+    
     
     @IBAction func emptyCoreDataDebug(_ sender: UIButton) {
         deleteAllCoreData(entity: "NetflixMovie")
@@ -134,6 +146,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("Auth: No user logged in, going to auth =>")
             performSegue(withIdentifier: "Auth", sender: self)
         }
+        
+        // Set up the search bar controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
         
     }
     
@@ -369,12 +388,16 @@ extension HomeViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch categorySegment.selectedSegmentIndex {
         case 0:
+            MediaSource = All
+            searchController.searchBar.placeholder = "\(Search)"
             let cell = tableView.dequeueReusableCell(withIdentifier: "TopItemCell", for: indexPath) as! TopItemTableViewCell
             cell.Title.text = "Top \(testTopMedia[0])"
             cell.DescOrDev.text = "Top \(testTopMedia[0])"
             cell.Rating.text = "Top \(testTopMedia[0])"
             return cell
         case 1:
+            MediaSource = Movies
+            searchController.searchBar.placeholder = "\(Search) \(MediaSource)"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
             let movie = (movieFetchedResultsController?.object(at: indexPath))!
             cell.Title.text = movie.title
@@ -396,6 +419,8 @@ extension HomeViewController {
             }
             return cell
         case 2:
+            MediaSource = Shows
+            searchController.searchBar.placeholder = "\(Search) \(MediaSource)"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
             let series = (seriesFetchedResultsController?.object(at: indexPath))!
             cell.Title.text = series.title
@@ -417,6 +442,8 @@ extension HomeViewController {
                 }
             return cell
         case 3:
+            MediaSource = Games
+            searchController.searchBar.placeholder = "\(Search) \(MediaSource)"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
             let game = (gamesFetchedResultsController?.object(at: indexPath))!
             cell.Title.text = game.title
@@ -424,6 +451,8 @@ extension HomeViewController {
             cell.Rating.text = String(format:"%.1f", game.avg2weeks )
             return cell
         default:
+            MediaSource = All
+            searchController.searchBar.placeholder = "\(Search)"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
             cell.Title.text = testTopMedia[0]
             cell.DescOrDev.text = testTopMedia[0]
@@ -504,5 +533,21 @@ extension HomeViewController : UIViewControllerTransitioningDelegate {
         transition.isActive = false
         return transition
     }
+    
+    func filterContentForSearchText(_ searchText: String){
+        /* Alter this for actually get it work
+         filteredArticles = fetchedResultsController.fetchedObjects!.filter { (news: News) -> Bool in
+            return news.newsTitle!.lowercased().contains(searchText.lowercased())
+        }
+        newsTableView.reloadData()*/
+    }
+    
+    //Update search results
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+        print("Search bar altered")
+    }
+
 }
 

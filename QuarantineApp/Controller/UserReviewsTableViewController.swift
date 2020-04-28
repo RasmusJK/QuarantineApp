@@ -23,7 +23,12 @@ class UserReviewsTableViewController: UITableViewController {
     var newReview: UserReview!
     var listofuserreviews = [String]()
     let db = Firestore.firestore()
-    var list = [String]()
+    var list = [String: Any]()
+    var titles = [String]()
+    var titleof = ""
+    var reviewof = ""
+    var finallist = [String: Any]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +39,34 @@ class UserReviewsTableViewController: UITableViewController {
             fatalError("dont have a category")
         }
         print("as string: \(currentCategory)")
-
+        
+        
         //Calls a function that fetches the user reviews from database
         downloadUserReviewsNow() { reviewArray, error in
         if let error = error {
-          // self.alert(title: "Error", message: error.localizedDescription)
            return
         }
-          self.list = reviewArray
-          self.tableView.reloadData()
+            self.list = reviewArray
+            print("this is the dictionary object \(reviewArray)")
+        
+            var movietitle = ""
+            var movierating = ""
+            var reviewtext = ""
+            var username = ""
+    
+        for (key, value) in self.list {
+                print(" single value and key:\(key) \(value)")
+                
+            movietitle = self.list["reviewItem"] as! String
+            movierating = self.list["reviewText"] as! String
+            reviewtext = self.list["reviewText"] as! String
+            username = self.list["reviewUser"] as! String
+            }
+                
+        let object = UserReview(title: movietitle, rating: movierating, username: username, review: reviewtext)
+        self.userReviews.append(object ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value")! )
+
+        self.tableView.reloadData()
         }
     }
 
@@ -55,7 +79,7 @@ class UserReviewsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return list.count
+        return userReviews.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,15 +88,15 @@ class UserReviewsTableViewController: UITableViewController {
             fatalError("fucked up loading data to userreview")
         }
             
-        /*let userRev = userReviews[indexPath.row]
+        let userRev = userReviews[indexPath.row]
         
         cell.reviewItemTitleLabel.text = userRev.title
         cell.reviewerUsernameLabel.text = userRev.username
         cell.reviewTextLabel.text = userRev.review
- */
-        let userRev = String(describing: list[indexPath.row])
-        print("for the cell: \(userRev)")
-        cell.reviewTextLabel.text = userRev
+ 
+    //    let userRev = String(describing: list[indexPath.row])
+      //  print("for the cell: \(userRev)")
+      //  cell.reviewTextLabel.text = userRev
         // Configure the cell...
 
         return cell
@@ -148,21 +172,22 @@ class UserReviewsTableViewController: UITableViewController {
     */
 
     //Function for fetching user reviews from database that's called on the viewDidLoad
-    func downloadUserReviewsNow(completion: @escaping ([String], Error?) -> Void) {
-       var reviewArray = [String]()
+    func downloadUserReviewsNow(completion: @escaping ([String: Any], Error?) -> Void) {
+        var reviewArray = [String: Any]()
         db.collection("reviews").getDocuments { QuerySnapshot, error in
           if let error = error {
             print(error)
             completion(reviewArray, error)
             return
           }
+            
           for doc in QuerySnapshot!.documents {
-            let data = ("\(doc.data())")
-            reviewArray.append(data)
-          }
-          completion(reviewArray, error)
+            let data = doc.data()
+            reviewArray = data
+            
+            completion(reviewArray, error)
+            }
         }
-      }
         
         /*
         guard let rev1 = UserReview(title: "Harry Potter", rating: "5", username: "testuser", review: "Harry Potter is the best book ever") else {
@@ -190,20 +215,29 @@ class UserReviewsTableViewController: UITableViewController {
                 userReviews += [i]
             }
  */
+    }
     
     //MARK: Actions
     
-    //This should receive the new revie from the add view but its not working atm will check later
+    //This should receive the new review from the add view but its not working atm will check later
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.source as? CreateReviewViewController, let newReview = sourceViewController.review {
 
                 //Add a new review
                 let newIndexPath = IndexPath(row: userReviews.count, section: 0)
-                
+                let newReviewAsString = String(describing: "\(newReview)")
+            
                 userReviews.append(newReview)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
-            tableView.reloadData()
+            
+           downloadUserReviewsNow() { reviewArray, error in
+            if let error = error {
+               return
+            }
+              self.list = reviewArray
+              self.tableView.reloadData()
             }
         }
+    }
 }
