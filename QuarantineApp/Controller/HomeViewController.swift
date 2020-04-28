@@ -13,15 +13,13 @@ import FirebaseFirestore
 import FirebaseAuth
 import CoreData
 
-<<<<<<< HEAD
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NetflixAPIDelegate {
-=======
+
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NetflixAPIDelegate, NSFetchedResultsControllerDelegate {
     
     /**
         Receives data from the Steam API and saves it to the FetchedResultsController
      */
->>>>>>> eb4d8b670f941b4bb95a0c40aaf0485639b58065
+
     func newData(_ steamData: SteamData?) {
         DispatchQueue.main.async {
             for item in steamData! {
