@@ -22,7 +22,7 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var review: UserReview?
-    var category:String = ""
+    var category:String = "Books"
     var rating: String = ""
     var reviewTitle:String = ""
     var reviewText2:String = ""
