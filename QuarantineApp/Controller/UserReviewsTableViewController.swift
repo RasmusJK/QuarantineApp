@@ -72,7 +72,6 @@ class UserReviewsTableViewController: UITableViewController {
             }
         self.tableView.reloadData()
         }
-        
     }
 
     
