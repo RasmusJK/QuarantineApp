@@ -10,8 +10,6 @@ import UIKit
 
 class CovidTrackerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CovidAPIDelegate {
     //MARK: Properties
-    let transition = SlideInTransition()
-    var menuIsActive = false
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var countryTableView: UITableView!
     @IBOutlet var menuButton: UIButton!
@@ -24,9 +22,6 @@ class CovidTrackerViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         countryTableView.dataSource = self
         countryTableView.delegate = self
-        
-        // Set action for menu button
-        menuButton.addTarget(self, action: #selector(menuPressed), for: .touchUpInside)
         
         covidApi.url = "https://coronavirus-19-api.herokuapp.com/countries"
         covidApi.covidAPIDelegate = self
@@ -65,49 +60,3 @@ class CovidTrackerViewController: UIViewController, UITableViewDelegate, UITable
     
 }
 
-//MARK: Nav?
-extension CovidTrackerViewController : UIViewControllerTransitioningDelegate {
-    /**
-        Shows and dismisses the side/burger menu
-    */
-    @objc func menuPressed() {
-        if !menuIsActive {
-            guard let menuViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController else { return }
-            menuViewController.didTapMenuItem = { menuItem in
-                print(menuItem)
-                //self.changeView(menuItem)
-                }
-            menuViewController.modalPresentationStyle = .overCurrentContext
-            menuViewController.transitioningDelegate = self
-            menuIsActive = false
-            present(menuViewController, animated: true)
-        } else {
-            menuIsActive = true
-            dismiss(animated: true, completion: {
-                print("Dismissing menu")
-            })
-        }
-    }
-    func changeView(_ menuItem: menuItem)  {
-        switch menuItem {
-            case .profile:
-                present(((storyboard?.instantiateViewController(withIdentifier: "Profile"))!), animated: true)
-            case .tracker:
-                performSegue(withIdentifier: "tracker", sender: self)
-            case .help:
-                print("ASD")
-            case .logout:
-                print("asd")
-            case .jokes:
-                print("ASD")
-        }
-    }
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.isActive = true
-        return transition
-    }
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.isActive = false
-        return transition
-    }
-}

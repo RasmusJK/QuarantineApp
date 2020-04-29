@@ -77,19 +77,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KAS-k2-ZVa"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vfC-YM-AVd">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="rm6-cX-qlF">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Onu-8d-Ika">
-                                <rect key="frame" x="20" y="11" width="21" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="line.horizontal.3" catalog="system"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="vfC-YM-AVd"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="menuButton" destination="Onu-8d-Ika" id="uos-nc-DJ1"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVE-WM-sIj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,7 +105,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

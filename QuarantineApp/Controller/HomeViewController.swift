@@ -47,9 +47,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: Properties
     @IBOutlet var itemTableView: UITableView!
     @IBOutlet var categorySegment: LocalizedUISegmentedControl!
-    let transition = SlideInTransition()
     let steamAPI = SteamAPI()
-    var menuIsActive = false
     let netflixAPI : NetflixAPI = NetflixAPI()
     var topMedia = [TopMediaItem]()
     @IBOutlet var menuButton: UIButton!
@@ -139,9 +137,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Setting an event for segment changing
         categorySegment.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
         
-        // Set action for menu button
-        menuButton.addTarget(self, action: #selector(menuPressed), for: .touchUpInside)
-        /*
         //Firebase Auth handler (filter console to "Auth")
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let userId = user?.uid {
@@ -154,9 +149,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Check auth at start
         if Auth.auth().currentUser?.uid == nil {
             print("Auth: No user logged in, going to auth =>")
-            performSegue(withIdentifier: "Auth", sender: self)
+            //performSegue(withIdentifier: "Auth", sender: self)
         }
-        */
+        
         // Set up the search bar controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -551,61 +546,6 @@ extension HomeViewController {
     Extension for handling the burger/side menu functionality and animation
  */
 extension HomeViewController : UIViewControllerTransitioningDelegate {
-    /**
-     Shows and dismisses the side/burger menu
-     */
-    @objc func menuPressed() {
-        print(menuIsActive)
-        if !menuIsActive {
-            guard let menuViewController = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController else { return }
-            menuViewController.didTapMenuItem = { menuItem in
-                print(menuItem)
-                self.changeView(menuItem)
-            }
-            menuViewController.modalPresentationStyle = .overCurrentContext
-            menuViewController.transitioningDelegate = self
-            menuIsActive = false
-            present(menuViewController, animated: true)
-        } else {
-            menuIsActive = true
-            dismiss(animated: true, completion: {
-                print("Dismissing menu")
-            })
-        }
-    }
-    func changeView(_ menuItem: menuItem)  {
-        switch menuItem {
-        //Broken?
-        case .profile:
-            print("ASD")
-        //present(((storyboard?.instantiateViewController(withIdentifier: "Profile"))!), animated: true)
-        case .tracker:
-            print("ASD")
-        //performSegue(withIdentifier: "tracker", sender: self)
-        case .help:
-            print("ASD")
-        case .jokes:
-            print("ASD")
-        case .logout:
-            //Logout from firebase
-            do {
-                try Auth.auth().signOut()
-            } catch let err as NSError {
-                print ("Auth: \(err)")
-            }
-            print("Auth: Logged out")
-            performSegue(withIdentifier: "Auth", sender: self)
-        }
-    }
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.isActive = true
-        return transition
-    }
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.isActive = false
-        return transition
-    }
-    
     func filterContentForSearchText(_ searchText: String){
         /* Alter this for actually get it work
          filteredArticles = fetchedResultsController.fetchedObjects!.filter { (news: News) -> Bool in
@@ -620,6 +560,5 @@ extension HomeViewController : UIViewControllerTransitioningDelegate {
         filterContentForSearchText(searchBar.text!)
         print("Search bar altered")
     }
-
 }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -68,19 +68,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DjW-Bd-Z04"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oM3-sY-C3P">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="EUg-PI-s7t">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="e2C-tX-jdM">
-                                <rect key="frame" x="20" y="11" width="21" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="line.horizontal.3" catalog="system"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="oM3-sY-C3P"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="countryTableView" destination="uDG-Zc-zKL" id="u6U-jD-GZS"/>
-                        <outlet property="menuButton" destination="e2C-tX-jdM" id="hyP-cK-k4v"/>
                         <outlet property="totalLabel" destination="qs2-1f-REo" id="2la-ri-0y2"/>
                     </connections>
                 </viewController>
@@ -110,7 +101,6 @@
     </scenes>
     <resources>
         <image name="CovidMap" width="156.5" height="80.5"/>
-        <image name="doc.circle" catalog="system" width="128" height="121"/>
-        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <image name="doc.circle" catalog="system" width="64" height="60"/>
     </resources>
 </document>

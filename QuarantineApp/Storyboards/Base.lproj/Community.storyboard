@@ -84,19 +84,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KIe-ek-fG7"/>
                     </view>
-                    <navigationItem key="navigationItem" id="kep-Q4-cCq">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="jAD-f5-oYo">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1qI-JO-flS">
-                                <rect key="frame" x="20" y="11" width="21" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="line.horizontal.3" catalog="system"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="kep-Q4-cCq"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="menuButton" destination="1qI-JO-flS" id="kgT-vr-e29"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elE-Wy-Wi3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -396,7 +385,6 @@
     <resources>
         <image name="CommunityIcon" width="132" height="95.5"/>
         <image name="Reviews" width="166" height="76"/>
-        <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
         <image name="message.fill" catalog="system" width="64" height="56"/>
     </resources>
 </document>
