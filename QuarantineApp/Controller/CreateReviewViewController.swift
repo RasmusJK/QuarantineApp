@@ -20,6 +20,8 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     @IBOutlet weak var reviewInputField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var ratingInputField: UITextField!
+    
     
     var review: UserReview?
     var category:String = "Books"
@@ -35,10 +37,24 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         titleInputField.delegate = self
         reviewInputField.delegate = self
         categoryPicker.delegate = self
+        ratingInputField.delegate = self
+        
+        titleInputField.becomeFirstResponder()
+        reviewInputField.becomeFirstResponder()
+        ratingInputField.becomeFirstResponder()
+        
+        // create the alert
+                      let alert = UIAlertController(title: "New features coming soon!", message: "User reviews will soon be behind a user login. If you don't want to create an account add your reviews now.", preferredStyle: UIAlertController.Style.alert)
+
+                      // add an action (button)
+                      alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                      // show the alert
+                      self.present(alert, animated: true, completion: nil)
         
     }
     
-    var categoriesForPicker = ["Books", "Games", "Movies"]
+    var categoriesForPicker = ["Books", "Games", "Movies", "TV Series"]
     
     /*
     // MARK: - Navigation
@@ -64,10 +80,13 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         if textField.restorationIdentifier == "titleInput" {
             reviewTitle = textField.text ?? "No title"
         }
-        else {
+        else if textField.restorationIdentifier == "reviewInput" {
             reviewText2 = textField.text ?? "No review"
         }
-        print("current title is: \(reviewTitle) and current review is: \(reviewText2)")
+        else if textField.restorationIdentifier == "ratingInput"{
+            rating = textField.text ?? "-"
+        }
+        print("current title is: \(reviewTitle) and current review is: \(reviewText2) and current rating is: \(rating)")
     }
     
     
@@ -99,7 +118,7 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         //MARK: Firebase User review testing
         let db = Firestore.firestore()
         let reviewItem = reviewTitle
-        let reviewRating = "5"
+        let reviewRating = rating
         let reviewText = reviewText2
         let reviewUser = "testuser"
         let reviewCategory = category

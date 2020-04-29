@@ -59,7 +59,7 @@ class UserReviewsTableViewController: UITableViewController {
                 print(" single value and key:\(key) \(value)")
                 
             movietitle = self.list["reviewItem"] as! String
-            movierating = self.list["reviewText"] as! String
+            movierating = self.list["reviewRating"] as! String
             reviewtext = self.list["reviewText"] as! String
             username = self.list["reviewUser"] as! String
             reviewCategory = self.list["reviewCategory"] as? String ?? "no category"
@@ -97,6 +97,7 @@ class UserReviewsTableViewController: UITableViewController {
         cell.reviewItemTitleLabel.text = userRev.title
         cell.reviewerUsernameLabel.text = userRev.username
         cell.reviewTextLabel.text = userRev.review
+        cell.ratingTextLabel.text = userRev.rating
  
     //    let userRev = String(describing: list[indexPath.row])
       //  print("for the cell: \(userRev)")
@@ -222,6 +223,7 @@ class UserReviewsTableViewController: UITableViewController {
     }
     
     //MARK: Actions
+    
     
     //This should receive the new review from the add view but its not working atm will check later
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
