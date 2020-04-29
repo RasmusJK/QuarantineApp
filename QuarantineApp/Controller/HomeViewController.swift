@@ -14,7 +14,8 @@ import FirebaseAuth
 import CoreData
 
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NetflixAPIDelegate, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NetflixAPIDelegate, NSFetchedResultsControllerDelegate {
+    
     
     // Receives data from the Steam API and saves it to the FetchedResultsController
     func newData(_ steamData: SteamData?) {
@@ -56,8 +57,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var gamesFetchedResultsController : NSFetchedResultsController<Games>!
     //Firebase Auth handler
     var handle: AuthStateDidChangeListenerHandle?
-    
+    let searchBar = UISearchBar()
     //Search controller properties
+    @objc func handleShowSearchBar() {
+        searchBar.becomeFirstResponder()
+        search(shouldShow: true)
+    }
+    
+    func search(shouldShow: Bool){
+        showBarButtons(shouldShow: !shouldShow)
+        searchBar.showsCancelButton = shouldShow
+        navigationItem.titleView = shouldShow ? searchBar: nil
+    }
     let searchController = UISearchController(searchResultsController: nil)
     //Var filtered : [?] = []
     var isSearchBarEmpty: Bool {
@@ -72,6 +83,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var Shows = "Shows"
     var Games = "Games"
     var Search = "Search"
+    
+    func showBarButtons(shouldShow: Bool) {
+        if shouldShow {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
+                                                                target: self,
+                                                                action: #selector(handleShowSearchBar))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash,
+            target: self,
+            action: #selector(handleShowSearchBar))
+        } else {
+            navigationItem.rightBarButtonItem = nil
+            navigationItem.leftBarButtonItem = nil
+        }
+    }
     
     
     @IBAction func emptyCoreDataDebug(_ sender: UIButton) {
@@ -104,6 +129,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Search bar setup
+        searchBar.sizeToFit()
+        searchBar.delegate = self
+        showBarButtons(shouldShow: true)
         
         itemTableView.delegate = self
         itemTableView.dataSource = self
@@ -153,11 +182,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         // Set up the search bar controller
-        searchController.searchResultsUpdater = self
+        /* searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = searchController
-        definesPresentationContext = true
+        definesPresentationContext = true */
         
     }
     
@@ -541,11 +570,6 @@ extension HomeViewController {
             return 0
         }
     }
-}
-/**
-    Extension for handling the burger/side menu functionality and animation
- */
-extension HomeViewController : UIViewControllerTransitioningDelegate {
     func filterContentForSearchText(_ searchText: String){
         /* Alter this for actually get it work
          filteredArticles = fetchedResultsController.fetchedObjects!.filter { (news: News) -> Bool in
@@ -553,12 +577,23 @@ extension HomeViewController : UIViewControllerTransitioningDelegate {
         }
         newsTableView.reloadData()*/
     }
-    
-    //Update search results
-    func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        filterContentForSearchText(searchBar.text!)
-        print("Search bar altered")
-    }
 }
 
+
+extension HomeViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("Search bar editing did begin..")
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("Search bar editing did end..")
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        search(shouldShow: false)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("Search text is \(searchText)")
+    }
+}
