@@ -16,9 +16,10 @@ class UserReview {
     var rating: String
     var username: String
     var review: String
+    var category: String
 
 //MARK: Initialization
-    init?(title: String, rating: String, username: String, review: String) {
+    init?(title: String, rating: String, username: String, review: String, category: String) {
    
     guard !title.isEmpty else {
     return nil
@@ -35,11 +36,16 @@ class UserReview {
     guard !review.isEmpty else {
     return nil
     }
+        
+    guard !category.isEmpty else {
+    return nil
+    }
     
     self.title = title
     self.rating = rating
     self.username = username
     self.review = review
+    self.category = category
         
     }
 }

@@ -102,13 +102,15 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         let reviewRating = "5"
         let reviewText = reviewText2
         let reviewUser = "testuser"
+        let reviewCategory = category
         
         //Add
         db.collection("reviews").addDocument(data: [
             "reviewItem": reviewItem,
             "reviewRating": reviewRating,
             "reviewText": reviewText,
-            "reviewUser": reviewUser
+            "reviewUser": reviewUser,
+            "reviewCategory": reviewCategory
         ])
         
         //Get

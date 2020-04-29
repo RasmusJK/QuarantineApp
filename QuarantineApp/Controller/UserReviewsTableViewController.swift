@@ -53,6 +53,7 @@ class UserReviewsTableViewController: UITableViewController {
             var movierating = ""
             var reviewtext = ""
             var username = ""
+            var reviewCategory = ""
     
         for (key, value) in self.list {
                 print(" single value and key:\(key) \(value)")
@@ -61,13 +62,17 @@ class UserReviewsTableViewController: UITableViewController {
             movierating = self.list["reviewText"] as! String
             reviewtext = self.list["reviewText"] as! String
             username = self.list["reviewUser"] as! String
+            reviewCategory = self.list["reviewCategory"] as? String ?? "no category"
             }
                 
-        let object = UserReview(title: movietitle, rating: movierating, username: username, review: reviewtext)
-        self.userReviews.append(object ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value")! )
-
+        let object = UserReview(title: movietitle, rating: movierating, username: username, review: reviewtext, category: reviewCategory) ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value", category: "no value")!
+            
+            if object.category == self.selectedCategory {
+                self.userReviews.append(object ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value", category: "no value")! )
+            }
         self.tableView.reloadData()
         }
+        
     }
 
     
