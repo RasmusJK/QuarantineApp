@@ -13,6 +13,7 @@ class UserReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewItemTitleLabel: UILabel!
     @IBOutlet weak var reviewerUsernameLabel: UILabel!
     @IBOutlet weak var reviewTextLabel: UILabel!
+    @IBOutlet weak var ratingTextLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

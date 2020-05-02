@@ -53,19 +53,23 @@ class UserReviewsTableViewController: UITableViewController {
             var movierating = ""
             var reviewtext = ""
             var username = ""
+            var reviewCategory = ""
     
         for (key, value) in self.list {
                 print(" single value and key:\(key) \(value)")
                 
             movietitle = self.list["reviewItem"] as! String
-            movierating = self.list["reviewText"] as! String
+            movierating = self.list["reviewRating"] as! String
             reviewtext = self.list["reviewText"] as! String
             username = self.list["reviewUser"] as! String
+            reviewCategory = self.list["reviewCategory"] as? String ?? "no category"
             }
                 
-        let object = UserReview(title: movietitle, rating: movierating, username: username, review: reviewtext)
-        self.userReviews.append(object ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value")! )
-
+        let object = UserReview(title: movietitle, rating: movierating, username: username, review: reviewtext, category: reviewCategory) ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value", category: "no value")!
+            
+            if object.category == self.selectedCategory {
+                self.userReviews.append(object ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value", category: "no value")! )
+            }
         self.tableView.reloadData()
         }
     }
@@ -93,6 +97,7 @@ class UserReviewsTableViewController: UITableViewController {
         cell.reviewItemTitleLabel.text = userRev.title
         cell.reviewerUsernameLabel.text = userRev.username
         cell.reviewTextLabel.text = userRev.review
+        cell.ratingTextLabel.text = userRev.rating
  
     //    let userRev = String(describing: list[indexPath.row])
       //  print("for the cell: \(userRev)")
@@ -218,6 +223,7 @@ class UserReviewsTableViewController: UITableViewController {
     }
     
     //MARK: Actions
+    
     
     //This should receive the new review from the add view but its not working atm will check later
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {

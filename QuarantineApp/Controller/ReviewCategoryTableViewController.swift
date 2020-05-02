@@ -134,6 +134,10 @@ class ReviewCategoryTableViewController: UITableViewController {
             print("fucked up with title")
             fatalError("Unable to get reviewCategory")
         }
+        guard let reviewCategory4 = ReviewCategory(title: "TV Series", image: reviewCategoryPhoto1) else {
+            print("fucked up with title")
+            fatalError("Unable to get reviewCategory")
+        }
         guard let reviewCategory2 = ReviewCategory(title: "Games", image: reviewCategoryPhoto2) else {
             print("fucked up with image")
             fatalError("Unable to get reviewCategory")
@@ -147,7 +151,7 @@ class ReviewCategoryTableViewController: UITableViewController {
             fatalError("Unable to get reviewCategory")
         } */
         
-        reviewCategories += [reviewCategory1, reviewCategory2, reviewCategory3]
+        reviewCategories += [reviewCategory1, reviewCategory2, reviewCategory3, reviewCategory4]
     }
  /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
