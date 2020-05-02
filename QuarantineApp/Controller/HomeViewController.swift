@@ -95,14 +95,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         topMedia = []
         itemTableView.reloadData()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        if (topMedia.isEmpty) {
-            getTopMedia()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
         
         itemTableView.delegate = self
@@ -111,27 +107,26 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         steamAPI.steamAPIDelegate = self
         steamAPI.url = "https://steamspy.com/api.php?request=top100in2weeks"
         
-        fetchResultsToController(entity: "NetflixMovie")
-        fetchResultsToController(entity: "NetflixSeries")
-        fetchResultsToController(entity: "Games")
-        var categorySwitch : String
-        
-        if (movieFetchedResultsController.fetchedObjects!.count == 0) {
-            categorySwitch = "NetflixMovie"
-            //MARK: UNCOMMENT THIS ONLY WHEN NEEDED OTHERWISE TOPI GETS CHARGED >:D
-            //netflixAPI.getData(categorySwitch: categorySwitch)
-        }
-        if (seriesFetchedResultsController.fetchedObjects!.count == 0) {
-            categorySwitch = "NetflixSeries"
-            //MARK: UNCOMMENT THIS ONLY WHEN NEEDED OTHERWISE TOPI GETS CHARGED >:D
-            //netflixAPI.getData(categorySwitch: categorySwitch)
-        }
-        if (gamesFetchedResultsController.fetchedObjects!.count == 0) {
-            steamAPI.getData()
-        }
-        print(topMedia)
-        if (topMedia.isEmpty) {
-            getTopMedia()
+        DispatchQueue.global(qos: .userInitiated).sync {
+            self.fetchResultsToController(entity: "NetflixMovie")
+            self.fetchResultsToController(entity: "NetflixSeries")
+            self.fetchResultsToController(entity: "Games")
+            
+            var categorySwitch : String
+            if (self.movieFetchedResultsController.fetchedObjects!.count == 0) {
+                categorySwitch = "NetflixMovie"
+                //MARK: UNCOMMENT THIS ONLY WHEN NEEDED OTHERWISE TOPI GETS CHARGED >:D
+                self.netflixAPI.getData(categorySwitch: categorySwitch)
+            }
+            if (self.seriesFetchedResultsController.fetchedObjects!.count == 0) {
+                categorySwitch = "NetflixSeries"
+                //MARK: UNCOMMENT THIS ONLY WHEN NEEDED OTHERWISE TOPI GETS CHARGED >:D
+                self.netflixAPI.getData(categorySwitch: categorySwitch)
+            }
+            if (self.gamesFetchedResultsController.fetchedObjects!.count == 0) {
+                self.steamAPI.getData()
+            }
+            self.getTopMedia()
         }
         
         // Setting an event for segment changing
@@ -262,7 +257,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let topMovieFRC = movieFetchedResultsController.fetchedObjects?.first
         let topSeriesFRC = seriesFetchedResultsController.fetchedObjects?.first
         let topGameFRC = gamesFetchedResultsController.fetchedObjects?.first
-        print(topMovieFRC)
+        print("Top movie FRC: \(movieFetchedResultsController.fetchedObjects!.count)")
+        print("Top series FRC: \(topSeriesFRC)")
+        print("Top game FRC: \(topGameFRC)")
         
         if (topMovieFRC != nil) {
             let topMovieClass = TopMediaItem(title: topMovieFRC?.title ?? "", descOrDev: topMovieFRC?.desc ?? "", avgOrRating: String(format:"%.1f", topMovieFRC?.imbdrating ?? ""), imgurl: topMovieFRC?.imgurl ?? "", type: "movie")
@@ -276,8 +273,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let topGameClass = TopMediaItem(title: topGameFRC?.title ?? "", descOrDev: topGameFRC?.developer ?? "", avgOrRating: topGameFRC?.avg2weeks.description ?? "", imgurl: "", type: "game")
             topMedia.append(topGameClass)
         }
-        
-        itemTableView.reloadData()
+        DispatchQueue.main.async{
+            self.itemTableView.reloadData()
+        }
     }
     
     /**
@@ -528,18 +526,18 @@ extension HomeViewController {
         return 0
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        switch categorySegment.selectedSegmentIndex {
-        case 0:
-            return topMedia.count
-        case 1:
-            return movieFetchedResultsController.sections!.count
-        case 2:
-            return seriesFetchedResultsController.sections!.count
-        case 3:
-            return gamesFetchedResultsController.sections!.count
-        default:
-            return 0
-        }
+            switch categorySegment.selectedSegmentIndex {
+            case 0:
+                return topMedia.count
+            case 1:
+                return movieFetchedResultsController.sections!.count
+            case 2:
+                return seriesFetchedResultsController.sections!.count
+            case 3:
+                return gamesFetchedResultsController.sections!.count
+            default:
+                return 0
+            }
     }
 }
 /**
