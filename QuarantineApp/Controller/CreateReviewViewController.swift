@@ -44,13 +44,23 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         ratingInputField.becomeFirstResponder()
         
         // create the alert
-                      let alert = UIAlertController(title: "New features coming soon!", message: "User reviews will soon be behind a user login. If you don't want to create an account add your reviews now.", preferredStyle: UIAlertController.Style.alert)
+        
+        if Auth.auth().currentUser!.email != nil {
+                      let alert = UIAlertController(title: "Welcome logged in user!", message: "User reviews are now behind a login functionality.", preferredStyle: UIAlertController.Style.alert)
 
                       // add an action (button)
                       alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
 
                       // show the alert
                       self.present(alert, animated: true, completion: nil)
+        } else {
+            
+            performSegue(withIdentifier: "toAuth", sender: nil)
+            
+        }
+        
+        updateSaveButtonState()
+        print("\(Auth.auth().currentUser!.email)")
         
     }
     
@@ -117,10 +127,10 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         
         //MARK: Firebase User review testing
         let db = Firestore.firestore()
-        let reviewItem = reviewTitle
-        let reviewRating = rating
-        let reviewText = reviewText2
-        let reviewUser = "testuser"
+        let reviewItem = titleInputField.text ?? "No title"
+        let reviewRating = ratingInputField.text ?? "-"
+        let reviewText = reviewInputField.text ?? "No review"
+        let reviewUser = String(describing: Auth.auth().currentUser!.email)
         let reviewCategory = category
         
         //Add
@@ -152,6 +162,10 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         */
         
      //   review = UserReview(title: reviewTitle, rating: "5", username: "defaultuser", review: reviewText2)
+    }
+    
+    private func updateSaveButtonState() {
+        saveButton.isEnabled = Auth.auth().currentUser!.email != nil
     }
     
 }

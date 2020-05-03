@@ -371,12 +371,21 @@
                         <outlet property="reviewInputField" destination="ivv-iS-aRz" id="1oJ-K2-moI"/>
                         <outlet property="saveButton" destination="x6R-Q0-4tJ" id="hwz-1U-AkI"/>
                         <outlet property="titleInputField" destination="xRS-ri-byq" id="6lX-i6-3Hz"/>
+                        <segue destination="SA1-pM-EQQ" kind="presentation" identifier="toAuth" id="cL6-mn-DEN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jc-0d-H7J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="8U0-lo-suE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4565.217391304348" y="-297.32142857142856"/>
+            <point key="canvasLocation" x="4670" y="-297"/>
+        </scene>
+        <!--Auth-->
+        <scene sceneID="NrU-zf-tUi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Auth" referencedIdentifier="Auth" id="SA1-pM-EQQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IFT-HX-6b7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5362" y="-712"/>
         </scene>
         <!--Community-->
         <scene sceneID="hIY-B4-4gQ">
@@ -402,6 +411,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eC1-qm-nyZ" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="9Aw-Zh-bGD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eKJ-pu-Yam">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
