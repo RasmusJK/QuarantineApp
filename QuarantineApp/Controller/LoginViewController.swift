@@ -26,7 +26,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         performSegue(withIdentifier: "ToRegisterSegue", sender: self)
     }
     
-    
+    /*
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if Auth.auth().currentUser?.uid != nil {
@@ -36,6 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.present(alertController, animated: true, completion: nil)
         }
     }
+ */
     
     //MARK: FirebaseAuth
     func loginUser(loginEmail: String, loginPassword: String) {
@@ -46,7 +47,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self!.present(alertController, animated: true, completion: nil)
                 return
             }
-            self?.navigationController?.popToRootViewController(animated: true)
+            self!.performSegue(withIdentifier: "toMain", sender: nil)
         }
     }
     
@@ -57,7 +58,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func guestButton(_ sender: UIButton) {
         Auth.auth().signInAnonymously() { (authResult, error) in
             guard (authResult?.user) != nil else { return }
-            self.navigationController?.popToRootViewController(animated: true)
+            self.performSegue(withIdentifier: "toMain", sender: nil)
         }
     }
 }
