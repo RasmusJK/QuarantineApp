@@ -78,14 +78,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationItem.titleView = shouldShow ? searchBar: nil
     }
     let searchController = UISearchController(searchResultsController: nil)
+    var combinedMedia : [AnyObject] = []
+    var filteredMedia : [AnyObject] = []
     var filteredMovies: [NetflixMovie] = []
     var filteredShows: [NetflixSeries] = []
     var filteredGames: [Games] = []
+    var searchIsActive : Bool = false
     //var filteredTop: topMedia = []
     
     var isSearchBarEmpty: Bool {
         return searchBar.text?.isEmpty ?? true
     }
+    var isFiltering : Bool {
+        return searchIsActive && !isSearchBarEmpty
+    }
+    
     var MediaSource: String = "All"
     var All = "All"
     var Movies = "Movies"
@@ -145,6 +152,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         netflixAPI.netflixAPIDelegate = self
         steamAPI.steamAPIDelegate = self
         steamAPI.url = "https://steamspy.com/api.php?request=top100in2weeks"
+        
         
         DispatchQueue.global(qos: .userInitiated).sync {
             self.fetchResultsToController(entity: "NetflixMovie")
@@ -415,6 +423,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             print(error)
         }
     }
+    func combineFetchedResults() {
+        print("Combining fetch results")
+        for item in movieFetchedResultsController.fetchedObjects! {
+            combinedMedia.append(item)
+        }
+        for item in seriesFetchedResultsController.fetchedObjects! {
+            combinedMedia.append(item)
+        }
+        for item in gamesFetchedResultsController.fetchedObjects! {
+            combinedMedia.append(item)
+        }
+    }
  
     @objc fileprivate func handleSegmentChange(){
         itemTableView.reloadData()
@@ -430,134 +450,249 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
  */
 extension HomeViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch categorySegment.selectedSegmentIndex {
-        case 0:
-            if (!topMedia.isEmpty) {
+        if (isFiltering) {
+            switch (MediaSource) {
+            case "All":
                 return 1
-            } else {
+            case "Movies":
+                return 1
+            case "Shows":
+                return 1
+            case "Games":
+                return 1
+            default:
                 return 0
             }
-        case 1:
-            return (movieFetchedResultsController.sections?[section].numberOfObjects)!
-        case 2:
-            return (seriesFetchedResultsController.sections?[section].numberOfObjects)!
-        case 3:
-            return (gamesFetchedResultsController.sections?[section].numberOfObjects)!
-        default:
-            return 0
+        } else {
+            switch categorySegment.selectedSegmentIndex {
+            case 0:
+                if (!topMedia.isEmpty) {
+                    return 1
+                } else {
+                    return 0
+                }
+            case 1:
+                return (movieFetchedResultsController.sections?[section].numberOfObjects)!
+            case 2:
+                return (seriesFetchedResultsController.sections?[section].numberOfObjects)!
+            case 3:
+                return (gamesFetchedResultsController.sections?[section].numberOfObjects)!
+            default:
+                return 0
+            }
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch categorySegment.selectedSegmentIndex {
-        case 0:
-            MediaSource = All
-            searchBar.placeholder = "\(Search)"
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TopItemCell", for: indexPath) as! TopItemTableViewCell
-            cell.Title.text = topMedia[indexPath.section].title
-            cell.DescOrDev.text = topMedia[indexPath.section].descOrDev
-            if topMedia[indexPath.section].type == "game" {
-                cell.Rating.text = "Avg time played: \(topMedia[indexPath.section].avgOrRating) minutes"
-            } else {
-                cell.Rating.text = "IMBD: \(topMedia[indexPath.section].avgOrRating)"
-            }
-            
-            cell.Title.sizeToFit()
-            cell.DescOrDev.sizeToFit()
-            cell.Rating.sizeToFit()
-            
-            //Make the image thumbnail data
-            if (topMedia[indexPath.section].type == "game") {
-                let image : UIImage = UIImage()
-                cell.Thumbnail.image = image
-            } else {
-                let imgUrl = URL(string: topMedia[indexPath.section].imgurl )
-                if (imgUrl != nil && imgUrl?.absoluteString != "") {
-                    let imgData = try? Data(contentsOf: imgUrl!)
-                    if (imgData != nil) {
-                        let image : UIImage = UIImage(data: imgData!)!
-                        cell.Thumbnail.image = image
+        if (isFiltering) {
+            switch (MediaSource) {
+            case "All":
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+                let media = filteredMedia[indexPath.section]
+                cell.Title.text = media.title
+                if let movie = media as? NetflixMovie {
+                    cell.DescOrDev.text = movie.desc
+                    cell.Rating.text = "IMBD: \(String(format:"%.1f", movie.imbdrating ))"
+                    if (movie.imgurl != "" && movie.imgurl != nil) {
+                        let image = CustomImageView()
+                        image.loadImageWithURLString(urlString: movie.imgurl!)
+                        cell.img.image = image.image
                     }
                 }
-            }
-            
-            return cell
-        case 1:
-            MediaSource = Movies
-            searchBar.placeholder = "\(Search) \(MediaSource)"
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
-            let movie = (movieFetchedResultsController?.object(at: indexPath))!
-            cell.Title.text = movie.title
-            cell.DescOrDev.text = movie.desc
-            cell.Rating.text = "IMBD: \(String(format:"%.1f", movie.imbdrating ))"
-            
-            cell.Title.sizeToFit()
-            cell.DescOrDev.sizeToFit()
-            cell.Rating.sizeToFit()
-            
-            //Make the image thumbnail data
-            let imgUrl = URL(string: movie.imgurl ?? "")
-            if (imgUrl != nil) {
-                let imgData = try? Data(contentsOf: imgUrl!)
-                if (imgData != nil) {
-                    let image : UIImage = UIImage(data: imgData!)!
-                    cell.img.image = image
-                }
-            }
-            return cell
-        case 2:
-            MediaSource = Shows
-            searchBar.placeholder = "\(Search) \(MediaSource)"
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
-            let series = (seriesFetchedResultsController?.object(at: indexPath))!
-            cell.Title.text = series.title
-            cell.DescOrDev.text = series.desc
-            cell.Rating.text = "IMBD: \(String(format:"%.1f", series.imbdrating ))"
-            
-            cell.Title.sizeToFit()
-            cell.DescOrDev.sizeToFit()
-            cell.Rating.sizeToFit()
-            
-            //Make the image thumbnail data
-            let imgUrl = URL(string: series.imgurl ?? "")
-            if (imgUrl != nil) {
-                let imgData = try? Data(contentsOf: imgUrl!)
-                if (imgData != nil) {
-                    let image : UIImage = UIImage(data: imgData!)!
-                    cell.img.image = image
+                if let series = media as? NetflixSeries {
+                    cell.DescOrDev.text = series.desc
+                    cell.Rating.text = "IMBD: \(String(format:"%.1f", series.imbdrating ))"
+                    if (series.imgurl != "" && series.imgurl != nil) {
+                        let image = CustomImageView()
+                        image.loadImageWithURLString(urlString: series.imgurl!)
+                        cell.img.image = image.image
                     }
                 }
-            return cell
-        case 3:
-            MediaSource = Games
-            searchBar.placeholder = "\(Search) \(MediaSource)"
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
-            let game = (gamesFetchedResultsController?.object(at: indexPath))!
-            cell.Title.text = game.title
-            cell.DescOrDev.text = game.developer
-            cell.Rating.text = "Avg time played: \(String(format:"%.1f", game.avg2weeks )) minutes."
-            
-            cell.Title.sizeToFit()
-            cell.DescOrDev.sizeToFit()
-            cell.Rating.sizeToFit()
-            
-            //Make the image thumbnail data
-            let image : UIImage = UIImage(named: "Profile") ?? UIImage()
-            cell.img.image = image
-            return cell
-        default:
-            MediaSource = All
-            searchBar.placeholder = "\(Search)"
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
-            cell.Title.text = ""
-            cell.DescOrDev.text = ""
-            cell.Rating.text = ""
-            return cell
+                if let game = media as? Games {
+                    cell.DescOrDev.text = game.developer
+                    cell.Rating.text = "Avg time played: \(game.avg2weeks) minutes"
+                    //Make the image thumbnail data
+                    let image : UIImage = UIImage(named: "Profile") ?? UIImage()
+                    cell.img.image = image
+                }
+                
+                cell.Title.sizeToFit()
+                cell.DescOrDev.sizeToFit()
+                cell.Rating.sizeToFit()
+                
+                return cell
+            case "Movies":
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+                let media = filteredMovies[indexPath.section]
+                cell.Title.text = media.title
+                cell.DescOrDev.text = media.desc
+                cell.Rating.text = "IMBD: \(String(format:"%.1f", media.imbdrating ))"
+                
+                cell.Title.sizeToFit()
+                cell.DescOrDev.sizeToFit()
+                cell.Rating.sizeToFit()
+                
+                if (media.imgurl != "" && media.imgurl != nil) {
+                    let image = CustomImageView()
+                    image.loadImageWithURLString(urlString: media.imgurl!)
+                    cell.img.image = image.image
+                }
+                return cell
+            case "Shows":
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+                let media = filteredShows[indexPath.section]
+                cell.Title.text = media.title
+                cell.DescOrDev.text = media.desc
+                cell.Rating.text = "IMBD: \(String(format:"%.1f", media.imbdrating ))"
+                
+                cell.Title.sizeToFit()
+                cell.DescOrDev.sizeToFit()
+                cell.Rating.sizeToFit()
+                
+                if (media.imgurl != "" && media.imgurl != nil) {
+                    let image = CustomImageView()
+                    image.loadImageWithURLString(urlString: media.imgurl!)
+                    cell.img.image = image.image
+                }
+                return cell
+            case "Games":
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+                let media = filteredGames[indexPath.section]
+                cell.Title.text = media.title
+                cell.DescOrDev.text = media.developer
+                cell.Rating.text = "Avg time played: \(media.avg2weeks) minutes"
+                
+                cell.Title.sizeToFit()
+                cell.DescOrDev.sizeToFit()
+                cell.Rating.sizeToFit()
+                
+                //Make the image thumbnail data
+                let image : UIImage = UIImage(named: "Profile") ?? UIImage()
+                cell.img.image = image
+                
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+                cell.Title.text = ""
+                cell.DescOrDev.text = ""
+                cell.Rating.text = ""
+                return cell
+            }
+        } else {
+            switch categorySegment.selectedSegmentIndex {
+            case 0:
+                MediaSource = All
+                searchBar.placeholder = "\(Search)"
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TopItemCell", for: indexPath) as! TopItemTableViewCell
+                cell.Title.text = topMedia[indexPath.section].title
+                cell.DescOrDev.text = topMedia[indexPath.section].descOrDev
+                if topMedia[indexPath.section].type == "game" {
+                    cell.Rating.text = "Avg time played: \(topMedia[indexPath.section].avgOrRating) minutes"
+                } else {
+                    cell.Rating.text = "IMBD: \(topMedia[indexPath.section].avgOrRating)"
+                }
+                
+                cell.Title.sizeToFit()
+                cell.DescOrDev.sizeToFit()
+                cell.Rating.sizeToFit()
+                
+                //Make the image thumbnail data
+                if (topMedia[indexPath.section].type == "game") {
+                    let image : UIImage = UIImage()
+                    cell.Thumbnail.image = image
+                } else {
+                    if (topMedia[indexPath.section].imgurl != "" && topMedia[indexPath.section].imgurl != nil) {
+                        let image = CustomImageView()
+                        image.loadImageWithURLString(urlString: topMedia[indexPath.section].imgurl)
+                        cell.Thumbnail.image = image.image
+                    }
+                }
+                
+                return cell
+            case 1:
+                MediaSource = Movies
+                searchBar.placeholder = "\(Search) \(MediaSource)"
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+                let movie = (movieFetchedResultsController?.object(at: indexPath))!
+                cell.Title.text = movie.title
+                cell.DescOrDev.text = movie.desc
+                cell.Rating.text = "IMBD: \(String(format:"%.1f", movie.imbdrating ))"
+                
+                cell.Title.sizeToFit()
+                cell.DescOrDev.sizeToFit()
+                cell.Rating.sizeToFit()
+                
+                if (movie.imgurl != "" && movie.imgurl != nil) {
+                    let image = CustomImageView()
+                    image.loadImageWithURLString(urlString: movie.imgurl!)
+                    cell.img.image = image.image
+                }
+                
+                return cell
+            case 2:
+                MediaSource = Shows
+                searchBar.placeholder = "\(Search) \(MediaSource)"
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+                let series = (seriesFetchedResultsController?.object(at: indexPath))!
+                cell.Title.text = series.title
+                cell.DescOrDev.text = series.desc
+                cell.Rating.text = "IMBD: \(String(format:"%.1f", series.imbdrating ))"
+                
+                cell.Title.sizeToFit()
+                cell.DescOrDev.sizeToFit()
+                cell.Rating.sizeToFit()
+                
+                if (series.imgurl != "" && series.imgurl != nil) {
+                    let image = CustomImageView()
+                    image.loadImageWithURLString(urlString: series.imgurl!)
+                    cell.img.image = image.image
+                }
+                return cell
+            case 3:
+                MediaSource = Games
+                searchBar.placeholder = "\(Search) \(MediaSource)"
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+                let game = (gamesFetchedResultsController?.object(at: indexPath))!
+                cell.Title.text = game.title
+                cell.DescOrDev.text = game.developer
+                cell.Rating.text = "Avg time played: \(String(format:"%.1f", game.avg2weeks )) minutes."
+                
+                cell.Title.sizeToFit()
+                cell.DescOrDev.sizeToFit()
+                cell.Rating.sizeToFit()
+                
+                //Make the image thumbnail data
+                let image : UIImage = UIImage(named: "Profile") ?? UIImage()
+                cell.img.image = image
+                return cell
+            default:
+                MediaSource = All
+                searchBar.placeholder = "\(Search)"
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+                cell.Title.text = ""
+                cell.DescOrDev.text = ""
+                cell.Rating.text = ""
+                return cell
+            }
         }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
     func numberOfSections(in tableView: UITableView) -> Int {
+        if (isFiltering) {
+            switch (MediaSource) {
+            case "All":
+                return filteredMedia.count
+            case "Movies":
+                return filteredMovies.count
+            case "Shows":
+                return filteredShows.count
+            case "Games":
+                return filteredGames.count
+            default:
+                return 0
+            }
+        } else {
             switch categorySegment.selectedSegmentIndex {
             case 0:
                 return topMedia.count
@@ -570,23 +705,21 @@ extension HomeViewController {
             default:
                 return 0
             }
-    }
-    func filterContentForSearchText(_ searchText: String){
-        /* Alter this for actually get it work
-         filteredArticles = fetchedResultsController.fetchedObjects!.filter { (news: News) -> Bool in
-            return news.newsTitle!.lowercased().contains(searchText.lowercased())
         }
-        newsTableView.reloadData()*/
     }
 }
 
 
-extension HomeViewController: UISearchBarDelegate {
+extension HomeViewController: UISearchBarDelegate{
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchIsActive = true
+        combineFetchedResults()
         print("Search bar editing did begin..")
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchIsActive = false
         print("Search bar editing did end..")
     }
     
@@ -601,10 +734,9 @@ extension HomeViewController: UISearchBarDelegate {
     
     func filterContentForSearch(_ searchText: String) {
         if(MediaSource == All){
-            /*filteredtTop = fetchedResultsController.fetchedObjects!.filter { (news: News) -> Bool in
-                return news.newsTitle!.lowercased().contains(searchText.lowercased())
+            filteredMedia = combinedMedia.filter{(object : AnyObject) -> Bool in
+                return object.title!.lowercased().contains(searchText.lowercased())
             }
-            newsTableView.reloadData()*/
         } else if(MediaSource == Movies) {
             filteredMovies = movieFetchedResultsController.fetchedObjects!.filter {(movies: NetflixMovie) -> Bool in
                 return movies.title!.lowercased().contains(searchText.lowercased())
