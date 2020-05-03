@@ -91,7 +91,7 @@
                         <outlet property="passwordField" destination="RGF-fG-8aP" id="XG3-8i-4Sh"/>
                         <outlet property="usernameField" destination="wPv-6s-ofv" id="YiC-og-dfJ"/>
                         <segue destination="HkN-0l-uRS" kind="presentation" identifier="ToRegisterSegue" id="n2T-7c-9z9"/>
-                        <segue destination="DrV-ej-EON" kind="presentation" id="FPv-di-vX2"/>
+                        <segue destination="DrV-ej-EON" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" id="FPv-di-vX2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Skk-L8-GPz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
