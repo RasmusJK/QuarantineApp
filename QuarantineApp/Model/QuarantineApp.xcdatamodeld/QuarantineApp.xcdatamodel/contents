@@ -20,7 +20,7 @@
     </entity>
     <elements>
         <element name="Games" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="NetflixSeries" positionX="-54" positionY="27" width="128" height="103"/>
         <element name="NetflixMovie" positionX="-54" positionY="36" width="128" height="103"/>
+        <element name="NetflixSeries" positionX="-54" positionY="27" width="128" height="103"/>
     </elements>
 </model>
