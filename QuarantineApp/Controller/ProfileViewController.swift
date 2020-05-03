@@ -47,7 +47,7 @@ class ProfileViewController: UIViewController {
             print ("Auth: \(err)")
         }
         print("Auth: Logged out")
-
+        performSegue(withIdentifier: "toAuth", sender: nil)
     }
     
 }

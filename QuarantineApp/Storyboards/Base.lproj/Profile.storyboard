@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="048-IR-lYn">
             <objects>
                 <viewController id="RTb-fj-SeJ" customClass="ProfileViewController" customModule="QuarantineApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,7 +83,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KAS-k2-ZVa"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vfC-YM-AVd"/>
+                    <navigationItem key="navigationItem" title="Profile" id="vfC-YM-AVd"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profileTableView" destination="9qp-ac-hGX" id="J7Z-xB-XwN"/>
