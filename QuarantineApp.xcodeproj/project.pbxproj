@@ -51,6 +51,7 @@
 		6A47BF5E2448CBBE00233528 /* CommunityGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47BF5D2448CBBE00233528 /* CommunityGroupTableViewCell.swift */; };
 		6A47BF602448CC4300233528 /* CommunityGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47BF5F2448CC4300233528 /* CommunityGroupTableViewController.swift */; };
 		6A47BF622448CC5500233528 /* CommunityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47BF612448CC5500233528 /* CommunityGroup.swift */; };
+		6A4A3BEB245F4DE90011AB8E /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A3BEA245F4DE90011AB8E /* ProfileTableViewCell.swift */; };
 		6AB111D02446038800B02BD8 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB111CF2446038800B02BD8 /* CommunityViewController.swift */; };
 		6ACA8E072446068700B9339C /* CovidTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACA8E062446068700B9339C /* CovidTrackerViewController.swift */; };
 		6ACA8E092446076B00B9339C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACA8E082446076B00B9339C /* ProfileViewController.swift */; };
@@ -157,6 +158,7 @@
 		6A47BF5D2448CBBE00233528 /* CommunityGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommunityGroupTableViewCell.swift; path = QuarantineApp/Controller/CommunityGroupTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6A47BF5F2448CC4300233528 /* CommunityGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroupTableViewController.swift; sourceTree = "<group>"; };
 		6A47BF612448CC5500233528 /* CommunityGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroup.swift; sourceTree = "<group>"; };
+		6A4A3BEA245F4DE90011AB8E /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		6AB111CF2446038800B02BD8 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		6ACA8E062446068700B9339C /* CovidTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidTrackerViewController.swift; sourceTree = "<group>"; };
 		6ACA8E082446076B00B9339C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				6A3F98562450427A00470B84 /* SteamData.swift */,
 				6A3F98582450985300470B84 /* SteamAPI.swift */,
 				6ACDB31D24582DF200B53BBE /* DatabaseAPI.swift */,
+				6A4A3BEA245F4DE90011AB8E /* ProfileTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				2FEF1FAD2445C96100E9D75D /* AppDelegate.swift in Sources */,
 				6ACDB3162450B5DF00B53BBE /* UserReview.swift in Sources */,
 				6A13A51B2449C6E800EBC44B /* RegisterViewController.swift in Sources */,
+				6A4A3BEB245F4DE90011AB8E /* ProfileTableViewCell.swift in Sources */,
 				6A13A5192449C6DD00EBC44B /* LoginViewController.swift in Sources */,
 				2FEF1FAF2445C96100E9D75D /* SceneDelegate.swift in Sources */,
 				6ACDB31C24582D1A00B53BBE /* UserReviewObject.swift in Sources */,
