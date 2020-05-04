@@ -60,8 +60,6 @@
                                         <connections>
                                             <outlet property="profileTextLabel" destination="3ec-2B-Z9I" id="VYL-AI-iij"/>
                                             <outlet property="profileTitleLabel" destination="2o2-w6-qrP" id="mpV-OJ-REK"/>
-                                            <outlet property="textLabel" destination="3ec-2B-Z9I" id="P89-Q5-c9b"/>
-                                            <outlet property="titleLabel" destination="2o2-w6-qrP" id="eoL-Bc-lf9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
