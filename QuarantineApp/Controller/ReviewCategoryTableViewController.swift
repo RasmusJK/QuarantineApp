@@ -127,18 +127,19 @@ class ReviewCategoryTableViewController: UITableViewController {
     private func loadReviewCategories() {
         
         let reviewCategoryPhoto1 = UIImage(named: "Reviews")
-        let reviewCategoryPhoto2 = UIImage(named: "Reviews")
-        let reviewCategoryBooksPhoto = UIImage(named: "CommunityIcon")
+        let reviewCategoryPhoto2 = UIImage(named: "tvshows")
+        let reviewCategoryBooksPhoto = UIImage(named: "books")
+        let reviewCategoryGames = UIImage(named: "games")
         
         guard let reviewCategory1 = ReviewCategory(title: "Movies", image: reviewCategoryPhoto1) else {
             print("fucked up with title")
             fatalError("Unable to get reviewCategory")
         }
-        guard let reviewCategory4 = ReviewCategory(title: "TV Series", image: reviewCategoryPhoto1) else {
+        guard let reviewCategory4 = ReviewCategory(title: "TV Series", image: reviewCategoryPhoto2) else {
             print("fucked up with title")
             fatalError("Unable to get reviewCategory")
         }
-        guard let reviewCategory2 = ReviewCategory(title: "Games", image: reviewCategoryPhoto2) else {
+        guard let reviewCategory2 = ReviewCategory(title: "Games", image: reviewCategoryGames) else {
             print("fucked up with image")
             fatalError("Unable to get reviewCategory")
         }
