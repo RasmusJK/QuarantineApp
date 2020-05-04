@@ -56,7 +56,7 @@ class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UI
         
     }
     
-    var categoriesForPicker = ["Helsinki", "Vantaa", "Espoo", "Tampere"]
+    var categoriesForPicker = ["Helsinki", "Vantaa", "Espoo", "Tampere", "Jee", "Broken"]
     
     /*
     // MARK: - Navigation

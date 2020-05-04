@@ -9,7 +9,7 @@
 import UIKit
 
 class ReviewCategoryTableViewCell: UITableViewCell {
-    //MARK: Properties
+  /Users/iosdev/IosApps/wtf2/quarantineapp/QuarantineApp/Controller/CovidData.swift  //MARK: Properties
     
     @IBOutlet weak var reviewCategoryTitle: UILabel!
     @IBOutlet weak var reviewCategoryImage: UIImageView!
