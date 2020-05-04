@@ -14,6 +14,7 @@ class ProfileTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileTextLabel: UILabel!
     
+    @IBOutlet weak var profileRatingLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
