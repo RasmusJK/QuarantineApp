@@ -29,6 +29,7 @@ class ChatMessageTableViewController: UITableViewController {
     var titleof = ""
     var reviewof = ""
     var finallist = [String: Any]()
+    var chatMessages = [ChatMessage]()
     
 
     override func viewDidLoad() {
@@ -50,26 +51,22 @@ class ChatMessageTableViewController: UITableViewController {
             self.list = reviewArray
             print("this is the dictionary object \(reviewArray)")
         
-            var movietitle = ""
-            var movierating = ""
-            var reviewtext = ""
-            var username = ""
-            var reviewCategory = ""
+            var chatRoom = ""
+            var chatUsername = ""
+            var chatMessage = ""
     
         for (key, value) in self.list {
                 print(" single value and key:\(key) \(value)")
                 
-            movietitle = self.list["reviewItem"] as! String
-            movierating = self.list["reviewRating"] as! String
-            reviewtext = self.list["reviewText"] as! String
-            username = self.list["reviewUser"] as! String
-            reviewCategory = self.list["reviewCategory"] as? String ?? "no category"
+            chatRoom = self.list["chatRoom"] as! String
+            chatUsername = self.list["chatUser"] as! String
+            chatMessage = self.list["chatText"] as! String
             }
-                
-        let object = UserReview(title: movietitle, rating: movierating, username: username, review: reviewtext, category: reviewCategory) ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value", category: "no value")!
             
-            if object.category == self.selectedCategory {
-                self.userReviews.append(object ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value", category: "no value")! )
+        let object = ChatMessage(chatRoom: chatRoom, chatUsername: chatUsername, chatMessage: chatMessage) ?? ChatMessage(chatRoom: "No Room", chatUsername: "no user", chatMessage: "no message")!
+            
+            if object.chatRoom == self.selectedCity {
+                self.chatMessages.append(object ?? ChatMessage(chatRoom: "No Room", chatUsername: "no user", chatMessage: "no message")!)
             }
         self.tableView.reloadData()
         }
@@ -84,7 +81,7 @@ class ChatMessageTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return userReviews.count
+        return chatMessages.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,9 +90,9 @@ class ChatMessageTableViewController: UITableViewController {
             fatalError("fucked up loading data to userreview")
         }
             
-        let userRev = userReviews[indexPath.row]
-        
-        cell.chatMessageLabel.text = userRev.title
+        let userRev = chatMessages[indexPath.row]
+
+        cell.chatMessageLabel.text = userRev.chatMessage
  
     //    let userRev = String(describing: list[indexPath.row])
       //  print("for the cell: \(userRev)")
@@ -177,7 +174,7 @@ class ChatMessageTableViewController: UITableViewController {
     //Function for fetching user reviews from database that's called on the viewDidLoad
     func downloadUserReviewsNow(completion: @escaping ([String: Any], Error?) -> Void) {
         var reviewArray = [String: Any]()
-        db.collection("reviews").getDocuments { QuerySnapshot, error in
+        db.collection("chat").getDocuments { QuerySnapshot, error in
           if let error = error {
             print(error)
             completion(reviewArray, error)
