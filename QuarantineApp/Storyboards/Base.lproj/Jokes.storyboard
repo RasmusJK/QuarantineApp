@@ -64,7 +64,9 @@
                     <tabBarItem key="tabBarItem" title="Jokes" image="hare" catalog="system" id="qeX-m3-2jO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="button" destination="FvB-Ds-wVa" id="xhr-og-g6K"/>
                         <outlet property="deliveryLabel" destination="zsG-VT-rHW" id="R84-gI-dFs"/>
+                        <outlet property="navigationbar" destination="PB3-zg-hic" id="cOr-zK-j1f"/>
                         <outlet property="setupLabel" destination="rYw-tS-hcL" id="0EA-dl-MXj"/>
                     </connections>
                 </viewController>

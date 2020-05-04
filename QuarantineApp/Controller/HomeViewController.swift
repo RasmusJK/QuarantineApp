@@ -93,12 +93,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return searchIsActive && !isSearchBarEmpty
     }
     
-    var MediaSource: String = "All"
+    var MediaSource: String = "asd"
     var All = "All"
-    var Movies = "Movies"
-    var Shows = "Shows"
-    var Games = "Games"
-    var Search = "Search"
+    var Movies = NSLocalizedString("Movies", comment: "")
+    var Shows = NSLocalizedString("Shows", comment: "")
+    var Games = NSLocalizedString("Games", comment: "")
+    var Search = NSLocalizedString("Search", comment: "")
     
     func showBarButtons(shouldShow: Bool) {
         if shouldShow {
