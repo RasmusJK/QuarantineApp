@@ -18,7 +18,7 @@ class ChatTableViewController: UITableViewController {
     //MARK: Properties
     //var cities = [String]()
     var selectedCity: String?
-    var cities = ["Helsinki", "Vantaa", "Espoo", "Tampere", "Games", "Movies"]
+    var cities = ["Helsinki", "Vantaa", "Espoo", "Tampere"]
     @IBOutlet weak var segmentControl: UINavigationItem!
     
     override func viewDidLoad() {

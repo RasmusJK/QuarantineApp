@@ -65,6 +65,7 @@
 		6ACDB32624604DD400B53BBE /* ChatMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACDB32524604DD400B53BBE /* ChatMessageTableViewCell.swift */; };
 		6ACDB32824604DFF00B53BBE /* ChatMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACDB32724604DFF00B53BBE /* ChatMessageTableViewController.swift */; };
 		6ACDB32A24607C0800B53BBE /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACDB32924607C0800B53BBE /* ChatMessage.swift */; };
+		6ACDB32E24607FB100B53BBE /* CreateChatMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACDB32D24607FB100B53BBE /* CreateChatMessageViewController.swift */; };
 		DE48BCAD043D3448B87D3219 /* Pods_QuarantineApp_QuarantineAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE699EE72ABF7C9343C047B6 /* Pods_QuarantineApp_QuarantineAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +177,7 @@
 		6ACDB32524604DD400B53BBE /* ChatMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageTableViewCell.swift; sourceTree = "<group>"; };
 		6ACDB32724604DFF00B53BBE /* ChatMessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageTableViewController.swift; sourceTree = "<group>"; };
 		6ACDB32924607C0800B53BBE /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		6ACDB32D24607FB100B53BBE /* CreateChatMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatMessageViewController.swift; sourceTree = "<group>"; };
 		A7591915F2A3C74BBCBB474F /* Pods_QuarantineAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuarantineAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7147EC4EBA19A0C7E6A32B9 /* Pods-QuarantineApp-QuarantineAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarantineApp-QuarantineAppUITests.release.xcconfig"; path = "Target Support Files/Pods-QuarantineApp-QuarantineAppUITests/Pods-QuarantineApp-QuarantineAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EE699EE72ABF7C9343C047B6 /* Pods_QuarantineApp_QuarantineAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuarantineApp_QuarantineAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -324,6 +326,7 @@
 				6ACDB323246020A900B53BBE /* ChatTableViewCell.swift */,
 				6ACDB32524604DD400B53BBE /* ChatMessageTableViewCell.swift */,
 				6ACDB32724604DFF00B53BBE /* ChatMessageTableViewController.swift */,
+				6ACDB32D24607FB100B53BBE /* CreateChatMessageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				6A13A5192449C6DD00EBC44B /* LoginViewController.swift in Sources */,
 				2FEF1FAF2445C96100E9D75D /* SceneDelegate.swift in Sources */,
 				6ACDB32624604DD400B53BBE /* ChatMessageTableViewCell.swift in Sources */,
+				6ACDB32E24607FB100B53BBE /* CreateChatMessageViewController.swift in Sources */,
 				6ACDB31C24582D1A00B53BBE /* UserReviewObject.swift in Sources */,
 				6A47BF5C2448C1F600233528 /* ReviewCategory.swift in Sources */,
 				6ACDB32224601F7F00B53BBE /* ChatTableViewController.swift in Sources */,

@@ -223,13 +223,13 @@ class ChatMessageTableViewController: UITableViewController {
     //This should receive the new review from the add view but its not working atm will check later
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         
-        if let sourceViewController = sender.source as? CreateReviewViewController, let newReview = sourceViewController.review {
+        if let sourceViewController = sender.source as? CreateChatMessageViewController, let newMessage = sourceViewController.message{
 
                 //Add a new review
-                let newIndexPath = IndexPath(row: userReviews.count, section: 0)
-                let newReviewAsString = String(describing: "\(newReview)")
+                let newIndexPath = IndexPath(row: chatMessages.count, section: 0)
+                let newMessageAsString = String(describing: "\(newMessage)")
             
-                userReviews.append(newReview)
+                chatMessages.append(newMessage)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             
            downloadUserReviewsNow() { reviewArray, error in
