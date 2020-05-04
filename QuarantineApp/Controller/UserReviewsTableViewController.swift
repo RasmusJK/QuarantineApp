@@ -28,6 +28,7 @@ class UserReviewsTableViewController: UITableViewController {
     var titleof = ""
     var reviewof = ""
     var finallist = [String: Any]()
+    var userOptional: String?
     
 
     override func viewDidLoad() {
@@ -61,7 +62,7 @@ class UserReviewsTableViewController: UITableViewController {
             movietitle = self.list["reviewItem"] as! String
             movierating = self.list["reviewRating"] as! String
             reviewtext = self.list["reviewText"] as! String
-            username = self.list["reviewUser"] as! String
+            username = self.list["reviewUser"]! as! String
             reviewCategory = self.list["reviewCategory"] as? String ?? "no category"
             }
                 
