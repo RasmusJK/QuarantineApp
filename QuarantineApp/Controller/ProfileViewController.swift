@@ -85,7 +85,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.profileTitleLabel.text = myRev.title
         cell.profileTextLabel.text = myRev.review
-        cell.profileRatingLabel.text = myRev.rating
+        cell.profileRatingLabel.text = "\(myRev.rating)/5"
     
         
         return cell
