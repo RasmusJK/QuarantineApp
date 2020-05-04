@@ -91,7 +91,7 @@
                         <outlet property="passwordField" destination="RGF-fG-8aP" id="XG3-8i-4Sh"/>
                         <outlet property="usernameField" destination="wPv-6s-ofv" id="YiC-og-dfJ"/>
                         <segue destination="HkN-0l-uRS" kind="presentation" identifier="ToRegisterSegue" id="n2T-7c-9z9"/>
-                        <segue destination="DrV-ej-EON" kind="presentation" identifier="loginToMain" modalPresentationStyle="fullScreen" id="FPv-di-vX2"/>
+                        <segue destination="DrV-ej-EON" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" id="FPv-di-vX2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Skk-L8-GPz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -201,16 +201,14 @@
                         <outlet property="passwordField" destination="IWx-xN-9K6" id="SSw-bk-DYZ"/>
                         <outlet property="usernameField" destination="c0i-XB-tmy" id="JCm-TP-dva"/>
                         <segue destination="QxY-ve-y0u" kind="presentation" id="ptF-Hn-ni4"/>
-                        <segue destination="DrV-ej-EON" kind="presentation" identifier="registerToMain" modalPresentationStyle="fullScreen" id="LWl-n6-Bi6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcQ-8s-IiT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1310" y="-889"/>
+            <point key="canvasLocation" x="1194" y="-889"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ptF-Hn-ni4"/>
-        <segue reference="FPv-di-vX2"/>
+        <segue reference="n2T-7c-9z9"/>
     </inferredMetricsTieBreakers>
 </document>

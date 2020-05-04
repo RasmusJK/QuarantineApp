@@ -117,7 +117,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             print ("Auth: \(err)")
         }
         print("Auth: Logged out")
-        performSegue(withIdentifier: "toAuth", sender: nil)
+
     }
     
     

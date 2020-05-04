@@ -33,7 +33,7 @@ class CovidTrackerViewController: UIViewController, UITableViewDelegate, UITable
         DispatchQueue.main.async {
             let notCountry = ["Africa", "Asia", "Europe", "North America", "South America", "Oceania", "World", " ", "", "Total:"]
             if covidData?.country == "World" {
-                self.totalLabel.text = "World: \(covidData?.cases ?? 0) | \(covidData?.deaths ?? 0) | \(covidData?.recovered ?? 0)"
+                self.totalLabel.text = "Total: \(covidData?.cases ?? 0) | \(covidData?.deaths ?? 0) | \(covidData?.recovered ?? 0)"
             }
             if !notCountry.contains(covidData!.country)  {
                 self.covidCountryList.append("\(covidData?.country ?? "error"): \(covidData?.cases ?? 0) | \(covidData?.deaths ?? 0) | \(covidData?.recovered ?? 0)")

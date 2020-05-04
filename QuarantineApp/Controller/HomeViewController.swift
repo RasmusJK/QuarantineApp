@@ -13,6 +13,7 @@ import FirebaseFirestore
 import FirebaseAuth
 import CoreData
 
+
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NetflixAPIDelegate, NSFetchedResultsControllerDelegate {
     
     
@@ -58,6 +59,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //Firebase Auth handler
     var handle: AuthStateDidChangeListenerHandle?
     
+    //Localization button
+    @objc func handleLocalization(){
+        print("changing language")
+    }
     
     //Search bar properties and functions
     let searchBar = UISearchBar()
@@ -88,20 +93,25 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return searchIsActive && !isSearchBarEmpty
     }
     
-    var MediaSource: String = "asd"
+    var MediaSource: String = "All"
     var All = "All"
-    var Movies = NSLocalizedString("Movies", comment: "")
-    var Shows = NSLocalizedString("Shows", comment: "")
-    var Games = NSLocalizedString("Games", comment: "")
-    var Search = NSLocalizedString("Search", comment: "")
+    var Movies = "Movies"
+    var Shows = "Shows"
+    var Games = "Games"
+    var Search = "Search"
     
     func showBarButtons(shouldShow: Bool) {
         if shouldShow {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
                                                                 target: self,
                                                                 action: #selector(handleShowSearchBar))
+            // Change icon for language
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash,
+            target: self,
+            action: #selector(handleLocalization))
         } else {
             navigationItem.rightBarButtonItem = nil
+            navigationItem.leftBarButtonItem = nil
         }
     }
     
@@ -143,12 +153,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         steamAPI.steamAPIDelegate = self
         steamAPI.url = "https://steamspy.com/api.php?request=top100in2weeks"
         
-        let semaphore = DispatchSemaphore(value: 0)
+        
         DispatchQueue.global(qos: .userInitiated).sync {
             self.fetchResultsToController(entity: "NetflixMovie")
             self.fetchResultsToController(entity: "NetflixSeries")
             self.fetchResultsToController(entity: "Games")
-            print("Current thread in home is: \(Thread.current)")
             
             var categorySwitch : String
             if (self.movieFetchedResultsController.fetchedObjects!.count == 0) {
@@ -222,109 +231,26 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }*/
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "ToSingle") {
-            guard let singleVC = segue.destination as? SingleViewController else { return }
-            let indexPath = itemTableView.indexPathForSelectedRow
-            let index = indexPath?.section
-            switch categorySegment.selectedSegmentIndex {
-                case 0:
-                    if (isFiltering) {
-                        // First check if object is game
-                        if let object = filteredMedia[index!] as? Games {
-                            singleVC.singleTitleText = object.title ?? ""
-                            singleVC.descOrDevText = object.developer ?? ""
-                            singleVC.ratingText = "Average play time in two weeks: \(String(object.avg2weeks))"
-                        } else {
-                            // Else assume it is movie or series
-                            let object = filteredMedia[index!]
-                            singleVC.singleTitleText = object.title ?? ""
-                            singleVC.descOrDevText = object.desc ?? ""
-                            singleVC.ratingText = "IMBD: \(String(object.imbdrating))"
-                            if (object.imgurl != "" && object.imgurl != nil) {
-                                let image = CustomImageView()
-                                image.loadImageWithURLString(urlString: object.imgurl!)
-                                singleVC.imgurl = image.image!
-                            }
-                        }
-                        
-                    } else {
-                        let object = topMedia[index!]
-                        singleVC.singleTitleText = object.title
-                        singleVC.descOrDevText = object.descOrDev
-                        if object.type == "game" {
-                            singleVC.ratingText = "Average play time in two weeks: \(object.avgOrRating)"
-                        } else {
-                            singleVC.ratingText = "IMBD: \(object.avgOrRating)"
-                        }
-                        if (object.imgurl != "") {
-                            let image = CustomImageView()
-                            image.loadImageWithURLString(urlString: object.imgurl)
-                            singleVC.imgurl = image.image!
-                        }
-                    }
-                case 1:
-                    if (isFiltering) {
-                        let object = filteredMovies[index!]
-                        singleVC.singleTitleText = object.title ?? ""
-                        singleVC.descOrDevText = object.desc ?? ""
-                        singleVC.ratingText = "IMBD: \(String(object.imbdrating))"
-                        if (object.imgurl != "" && object.imgurl != nil) {
-                            let image = CustomImageView()
-                            image.loadImageWithURLString(urlString: object.imgurl!)
-                            singleVC.imgurl = image.image!
-                        }
-                    } else {
-                        let object = movieFetchedResultsController.object(at: indexPath!)
-                        singleVC.singleTitleText = object.title ?? ""
-                        singleVC.descOrDevText = object.desc ?? ""
-                        singleVC.ratingText = "IMBD: \(String(object.imbdrating))"
-                        if (object.imgurl != "" && object.imgurl != nil) {
-                            let image = CustomImageView()
-                            image.loadImageWithURLString(urlString: object.imgurl!)
-                            singleVC.imgurl = image.image!
-                        }
-                    }
-                case 2:
-                    if (isFiltering) {
-                        let object = filteredShows[index!]
-                        singleVC.singleTitleText = object.title ?? ""
-                        singleVC.descOrDevText = object.desc ?? ""
-                        singleVC.ratingText = "IMBD: \(String(object.imbdrating))"
-                        if (object.imgurl != "" && object.imgurl != nil) {
-                            let image = CustomImageView()
-                            image.loadImageWithURLString(urlString: object.imgurl!)
-                            singleVC.imgurl = image.image!
-                        }
-                    } else {
-                        let object = seriesFetchedResultsController.object(at: indexPath!)
-                        singleVC.singleTitleText = object.title ?? ""
-                        singleVC.descOrDevText = object.desc ?? ""
-                        singleVC.ratingText = "IMBD: \(String(object.imbdrating))"
-                        if (object.imgurl != "" && object.imgurl != nil) {
-                            let image = CustomImageView()
-                            image.loadImageWithURLString(urlString: object.imgurl!)
-                            singleVC.imgurl = image.image!
-                        }
-                    }
-                case 3:
-                    if (isFiltering) {
-                        let object = filteredGames[index!]
-                        singleVC.singleTitleText = object.title ?? ""
-                        singleVC.descOrDevText = object.developer ?? ""
-                        singleVC.ratingText = "Average play time in two weeks: \(String(object.avg2weeks))"
-                    } else {
-                        let object = gamesFetchedResultsController.object(at: indexPath!)
-                        singleVC.singleTitleText = object.title ?? ""
-                        singleVC.descOrDevText = object.developer ?? ""
-                        singleVC.ratingText = "Average play time in two weeks: \(String(object.avg2weeks))"
-                    }
-                default:
-                    print("ASD")
-                }
-            
-            }
+    func saveToCoreData(gameTitle : String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
         }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Games", in: managedContext)!
+        
+        let gameItem = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        gameItem.setValue(gameTitle, forKeyPath: "gameTitle")
+        
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
     
     //MARK: Private methods
     
@@ -364,27 +290,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 try? gamesFetchedResultsController?.performFetch()
             default:
             print("shit dont work")
-        }
-    }
-    
-    func saveToCoreData(gameTitle : String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let entity = NSEntityDescription.entity(forEntityName: "Games", in: managedContext)!
-        
-        let gameItem = NSManagedObject(entity: entity, insertInto: managedContext)
-        
-        gameItem.setValue(gameTitle, forKeyPath: "gameTitle")
-        
-        
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print(error)
         }
     }
     
@@ -769,9 +674,6 @@ extension HomeViewController {
                 return cell
             }
         }
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ToSingle", sender: self)
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0

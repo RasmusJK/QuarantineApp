@@ -227,73 +227,11 @@
                     <connections>
                         <outlet property="categorySegment" destination="xXF-WR-gza" id="FGr-KS-ffh"/>
                         <outlet property="itemTableView" destination="IkF-eP-bs9" id="no2-iW-8I5"/>
-                        <segue destination="IiF-dS-VOW" kind="show" identifier="ToSingle" id="c3m-Lu-9DP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="138.61607142857142"/>
-        </scene>
-        <!--Single-->
-        <scene sceneID="lVZ-m7-oN1">
-            <objects>
-                <viewController id="IiF-dS-VOW" userLabel="Single" customClass="SingleViewController" customModule="QuarantineApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="juB-Ri-c46">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J5U-3L-xmG" userLabel="Img">
-                                <rect key="frame" x="45" y="152" width="320" height="320"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="pp4-Mi-qMz"/>
-                                </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="jAx-hE-G6T">
-                                <rect key="frame" x="16" y="480" width="382" height="239.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zC-DR-eLd" userLabel="singleTitle">
-                                        <rect key="frame" x="174.5" y="0.0" width="33.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DescOrDev" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ck-yV-Q9S" userLabel="DescOrDev">
-                                        <rect key="frame" x="147" y="109.5" width="88" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShE-KM-SaQ" userLabel="Rating">
-                                        <rect key="frame" x="166.5" y="219" width="49" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="jAx-hE-G6T" firstAttribute="top" secondItem="J5U-3L-xmG" secondAttribute="bottom" constant="8" id="9xN-tb-Fky"/>
-                            <constraint firstItem="J5U-3L-xmG" firstAttribute="leading" secondItem="5GG-9N-eA4" secondAttribute="leading" constant="45" id="Nj2-6z-GBb"/>
-                            <constraint firstItem="5GG-9N-eA4" firstAttribute="trailing" secondItem="J5U-3L-xmG" secondAttribute="trailing" constant="49" id="Ohb-w7-FJW"/>
-                            <constraint firstItem="J5U-3L-xmG" firstAttribute="top" secondItem="5GG-9N-eA4" secondAttribute="top" constant="64" id="djv-UQ-4Wh"/>
-                            <constraint firstItem="jAx-hE-G6T" firstAttribute="centerX" secondItem="juB-Ri-c46" secondAttribute="centerX" id="qVZ-aH-GEE"/>
-                            <constraint firstItem="jAx-hE-G6T" firstAttribute="leading" secondItem="5GG-9N-eA4" secondAttribute="leading" constant="16" id="v8z-xA-ZVT"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="5GG-9N-eA4"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="81p-0P-zVv"/>
-                    <connections>
-                        <outlet property="descOrDev_" destination="1Ck-yV-Q9S" id="vt9-Za-4XR"/>
-                        <outlet property="img" destination="J5U-3L-xmG" id="Aqa-Gr-nLj"/>
-                        <outlet property="rating_" destination="ShE-KM-SaQ" id="MpG-fh-ynA"/>
-                        <outlet property="singleTitle_" destination="7zC-DR-eLd" id="NqT-zI-k5K"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KWw-cH-b9m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1860.8695652173915" y="138.61607142857142"/>
         </scene>
         <!--CovidTracker-->
         <scene sceneID="Yp8-0a-mjl">

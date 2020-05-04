@@ -37,7 +37,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 self.present(alertController, animated: true, completion: nil)
                 return
             }
-            self.performSegue(withIdentifier: "registerToMain", sender: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -54,7 +54,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBAction func guestButton(_ sender: UIButton) {
         Auth.auth().signInAnonymously() { (authResult, error) in
             guard (authResult?.user) != nil else { return }
-            self.performSegue(withIdentifier: "registerToMain", sender: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }

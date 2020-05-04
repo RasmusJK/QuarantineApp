@@ -130,7 +130,7 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         let reviewItem = titleInputField.text ?? "No title"
         let reviewRating = ratingInputField.text ?? "-"
         let reviewText = reviewInputField.text ?? "No review"
-        let reviewUser = Auth.auth().currentUser!.email!.replacingOccurrences(of: "@quarantodo.info", with: "")
+        let reviewUser = String(describing: Auth.auth().currentUser!.email)
         let reviewCategory = category
         
         //Add
