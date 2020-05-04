@@ -13,7 +13,6 @@ import FirebaseFirestore
 import FirebaseAuth
 import CoreData
 
-
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SteamAPIDelegate, NetflixAPIDelegate, NSFetchedResultsControllerDelegate {
     
     
@@ -59,10 +58,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //Firebase Auth handler
     var handle: AuthStateDidChangeListenerHandle?
     
-    //Localization button
-    @objc func handleLocalization(){
-        print("changing language")
-    }
     
     //Search bar properties and functions
     let searchBar = UISearchBar()
@@ -93,25 +88,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return searchIsActive && !isSearchBarEmpty
     }
     
-    var MediaSource: String = "All"
+    var MediaSource: String = "asd"
     var All = "All"
-    var Movies = "Movies"
-    var Shows = "Shows"
-    var Games = "Games"
-    var Search = "Search"
+    var Movies = NSLocalizedString("Movies", comment: "")
+    var Shows = NSLocalizedString("Shows", comment: "")
+    var Games = NSLocalizedString("Games", comment: "")
+    var Search = NSLocalizedString("Search", comment: "")
     
     func showBarButtons(shouldShow: Bool) {
         if shouldShow {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
                                                                 target: self,
                                                                 action: #selector(handleShowSearchBar))
-            // Change icon for language
-            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash,
-            target: self,
-            action: #selector(handleLocalization))
         } else {
             navigationItem.rightBarButtonItem = nil
-            navigationItem.leftBarButtonItem = nil
         }
     }
     
