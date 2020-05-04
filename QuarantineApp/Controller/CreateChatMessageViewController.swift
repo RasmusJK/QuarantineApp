@@ -1,8 +1,8 @@
 //
-//  CreateReviewViewController.swift
+//  CreateChatMessageViewController.swift
 //  QuarantineApp
 //
-//  Created by iosdev on 23.4.2020.
+//  Created by iosdev on 4.5.2020.
 //  Copyright © 2020 Roope Vaarama. All rights reserved.
 //
 
@@ -12,41 +12,33 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
-class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
     //MARK: Properties
-    @IBOutlet weak var categoryPicker: UIPickerView!
-    @IBOutlet weak var titleInputField: UITextField!
-    @IBOutlet weak var reviewInputField: UITextField!
-    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var chatMessageInputField: UITextField!
+    @IBOutlet weak var chatRoomPicker: UIPickerView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var ratingInputField: UITextField!
     
     
-    var review: UserReview?
-    var category:String = "Books"
-    var rating: String = ""
-    var reviewTitle:String = ""
-    var reviewText2:String = ""
+    var message: ChatMessage?
+    var chatRoom:String = "Helsinki"
+    var chatUser: String = "no user"
+    var chatMessageText:String = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        titleInputField.delegate = self
-        reviewInputField.delegate = self
-        categoryPicker.delegate = self
-        ratingInputField.delegate = self
+        chatRoomPicker.delegate = self
+        chatMessageInputField.delegate = self
         
-        titleInputField.becomeFirstResponder()
-        reviewInputField.becomeFirstResponder()
-        ratingInputField.becomeFirstResponder()
+        chatMessageInputField.becomeFirstResponder()
         
         // create the alert
         
         if Auth.auth().currentUser!.email != nil {
-                      let alert = UIAlertController(title: "Welcome logged in user!", message: "User reviews are now behind a login functionality.", preferredStyle: UIAlertController.Style.alert)
+                      let alert = UIAlertController(title: "Welcome logged in user!", message: "You can post messages on chat.", preferredStyle: UIAlertController.Style.alert)
 
                       // add an action (button)
                       alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -64,7 +56,7 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         
     }
     
-    var categoriesForPicker = ["Books", "Games", "Movies", "TV Series"]
+    var categoriesForPicker = ["Helsinki", "Vantaa", "Espoo", "Tampere"]
     
     /*
     // MARK: - Navigation
@@ -86,17 +78,9 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        if textField.restorationIdentifier == "titleInput" {
-            reviewTitle = textField.text ?? "No title"
-        }
-        else if textField.restorationIdentifier == "reviewInput" {
-            reviewText2 = textField.text ?? "No review"
-        }
-        else if textField.restorationIdentifier == "ratingInput"{
-            rating = textField.text ?? "-"
-        }
-        print("current title is: \(reviewTitle) and current review is: \(reviewText2) and current rating is: \(rating)")
+
+            chatMessageText = textField.text ?? "No title"
+
     }
     
     
@@ -118,7 +102,7 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             let pickedCategory = categoriesForPicker[row] as String
             print("currently picked category for review: \(pickedCategory)")
-            category = categoriesForPicker[row]
+            chatRoom = categoriesForPicker[row]
     }
     
     //MARK: Navigation
@@ -127,23 +111,19 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         
         //MARK: Firebase User review testing
         let db = Firestore.firestore()
-        let reviewItem = titleInputField.text ?? "No title"
-        let reviewRating = ratingInputField.text ?? "-"
-        let reviewText = reviewInputField.text ?? "No review"
-        let reviewUser = Auth.auth().currentUser!.email!.replacingOccurrences(of: "@quarantodo.info", with: "")
-        let reviewCategory = category
+        let chatRoom2 = chatRoom ?? "No room"
+        let chatText = chatMessageInputField.text ?? "No message"
+        let chatUser = String(describing: Auth.auth().currentUser!.email)
         
         //Add
-        db.collection("reviews").addDocument(data: [
-            "reviewItem": reviewItem,
-            "reviewRating": reviewRating,
-            "reviewText": reviewText,
-            "reviewUser": reviewUser,
-            "reviewCategory": reviewCategory
+        db.collection("chat").addDocument(data: [
+            "chatRoom": chatRoom2,
+            "chatUser": chatUser,
+            "chatText": chatText,
         ])
         
         //Get
-        db.collection("reviews").whereField("reviewItem", isEqualTo: reviewItem).getDocuments() { (querySnapshot, err) in
+        db.collection("chat").whereField("chatText", isEqualTo: chatText).getDocuments() { (querySnapshot, err) in
         if let err = err {
         print("Error getting Firestore data: \(err)")
         } else {

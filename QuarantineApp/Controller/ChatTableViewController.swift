@@ -1,7 +1,11 @@
 //
-//  ReviewCategoryTableViewController.swift
+//  ChatTableViewController.swift
 //  QuarantineApp
 //
+//  Created by iosdev on 4.5.2020.
+//  Copyright © 2020 Roope Vaarama. All rights reserved.
+//
+
 //  Created by iosdev on 16.4.2020.
 //  Copyright © 2020 Roope Vaarama. All rights reserved.
 //
@@ -9,11 +13,12 @@
 import UIKit
 import os.log
 
-class ReviewCategoryTableViewController: UITableViewController {
+class ChatTableViewController: UITableViewController {
     
     //MARK: Properties
-    var reviewCategories = [ReviewCategory]()
-    var selectedCategory: String?
+    //var cities = [String]()
+    var selectedCity: String?
+    var cities = ["Helsinki", "Vantaa", "Espoo", "Tampere"]
     @IBOutlet weak var segmentControl: UINavigationItem!
     
     override func viewDidLoad() {
@@ -37,22 +42,20 @@ class ReviewCategoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return reviewCategories.count
+        return cities.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "ReviewCategoryTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ReviewCategoryTableViewCell else {
+        let cellIdentifier = "ChatCityCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ChatTableViewCell else {
             fatalError("")
         }
         
-        let reviewCategoryCreated = reviewCategories[indexPath.row]
+        let city = cities[indexPath.row]
         
-        cell.reviewCategoryTitle.text = reviewCategoryCreated.title
-        cell.reviewCategoryImage.image = reviewCategoryCreated.image
+        cell.cityLabel.text = city
         
-        selectedCategory = reviewCategoryCreated.title
-        print("category option: \(String(describing: selectedCategory))")
+        selectedCity = city
         
         // Configure the cell...
 
@@ -75,7 +78,7 @@ class ReviewCategoryTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 
@@ -102,21 +105,21 @@ class ReviewCategoryTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
         switch(segue.identifier ?? "") {
-        case "userReviewSegue":
-            guard let userReviewsTableViewController2 = segue.destination as? UserReviewsTableViewController else {
+        case "chatmessageSeque":
+            guard let chatTableViewController2 = segue.destination as? ChatMessageTableViewController else {
                 fatalError("somethings wrong with the userreview segue")
             }
             
-            guard let selectedReviewCategory = sender as? ReviewCategoryTableViewCell else {
+            guard let selectedCity = sender as? ChatTableViewCell else {
                 fatalError("issue cell")
             }
             
-            guard let indexPath = tableView.indexPath(for: selectedReviewCategory) else {
+            guard let indexPath = tableView.indexPath(for: selectedCity) else {
                 fatalError("")
             }
             
-            let selectedC = reviewCategories[indexPath.row]
-            userReviewsTableViewController2.selectedCategory = selectedC.title
+            let selectedC = cities[indexPath.row]
+            chatTableViewController2.selectedCity = selectedC
         default:
             fatalError("")
         }
@@ -126,12 +129,7 @@ class ReviewCategoryTableViewController: UITableViewController {
     
     private func loadReviewCategories() {
         
-        let reviewCategoryPhoto1 = UIImage(named: "Reviews")
-        let reviewCategoryPhoto2 = UIImage(named: "tvshows")
-        let reviewCategoryBooksPhoto = UIImage(named: "books")
-        let reviewCategoryGames = UIImage(named: "games")
-        
-        guard let reviewCategory1 = ReviewCategory(title: "Movies", image: reviewCategoryPhoto1) else {
+      /*  guard let reviewCategory1 = ReviewCategory(title: "Movies", image: reviewCategoryPhoto1) else {
             print("fucked up with title")
             fatalError("Unable to get reviewCategory")
         }
@@ -162,6 +160,6 @@ class ReviewCategoryTableViewController: UITableViewController {
                 destination.selectedCategory = "\(selectedCategory)"
             }
         }
-    } */
-
+    } */ */
+    }
 }

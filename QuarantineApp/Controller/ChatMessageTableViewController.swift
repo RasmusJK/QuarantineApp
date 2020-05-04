@@ -1,8 +1,8 @@
 //
-//  UserReviewsTableViewController.swift
+//  ChatMessageTableViewController.swift
 //  QuarantineApp
 //
-//  Created by iosdev on 22.4.2020.
+//  Created by iosdev on 4.5.2020.
 //  Copyright © 2020 Roope Vaarama. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
-class UserReviewsTableViewController: UITableViewController {
+class ChatMessageTableViewController: UITableViewController {
     
     //MARK: Properties
     var allUserReviews = [UserReview]()
@@ -20,6 +20,7 @@ class UserReviewsTableViewController: UITableViewController {
     var userReviews = [UserReview]()
     var listtt = [String]()
     var selectedCategory: String?
+    var selectedCity: String?
     var newReview: UserReview!
     var listofuserreviews = [String]()
     let db = Firestore.firestore()
@@ -28,15 +29,15 @@ class UserReviewsTableViewController: UITableViewController {
     var titleof = ""
     var reviewof = ""
     var finallist = [String: Any]()
-    var userOptional: String?
+    var chatMessages = [ChatMessage]()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Just showing the category, doesnt matter at the moment tho
-        print("this is what u got as a category \(String(describing: selectedCategory))")
-        guard let currentCategory = selectedCategory else {
+        print("this is what u got as a category \(String(describing: selectedCity))")
+        guard let currentCategory = selectedCity else {
             fatalError("dont have a category")
         }
         print("as string: \(currentCategory)")
@@ -50,26 +51,22 @@ class UserReviewsTableViewController: UITableViewController {
             self.list = reviewArray
             print("this is the dictionary object \(reviewArray)")
         
-            var movietitle = ""
-            var movierating = ""
-            var reviewtext = ""
-            var username = ""
-            var reviewCategory = ""
+            var chatRoom = ""
+            var chatUsername = ""
+            var chatMessage = ""
     
         for (key, value) in self.list {
                 print(" single value and key:\(key) \(value)")
                 
-            movietitle = self.list["reviewItem"] as! String
-            movierating = self.list["reviewRating"] as! String
-            reviewtext = self.list["reviewText"] as! String
-            username = self.list["reviewUser"]! as! String
-            reviewCategory = self.list["reviewCategory"] as? String ?? "no category"
+            chatRoom = self.list["chatRoom"] as! String
+            chatUsername = self.list["chatUser"] as! String
+            chatMessage = self.list["chatText"] as! String
             }
-                
-        let object = UserReview(title: movietitle, rating: movierating, username: username, review: reviewtext, category: reviewCategory) ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value", category: "no value")!
             
-            if object.category == self.selectedCategory {
-                self.userReviews.append(object ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value", category: "no value")! )
+        let object = ChatMessage(chatRoom: chatRoom, chatUsername: chatUsername, chatMessage: chatMessage) ?? ChatMessage(chatRoom: "No Room", chatUsername: "no user", chatMessage: "no message")!
+            
+            if object.chatRoom == self.selectedCity {
+                self.chatMessages.append(object ?? ChatMessage(chatRoom: "No Room", chatUsername: "no user", chatMessage: "no message")!)
             }
         self.tableView.reloadData()
         }
@@ -84,21 +81,19 @@ class UserReviewsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return userReviews.count
+        return chatMessages.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "userReviewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? UserReviewTableViewCell else {
+        let cellIdentifier = "messageCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ChatMessageTableViewCell else {
             fatalError("fucked up loading data to userreview")
         }
             
-        let userRev = userReviews[indexPath.row]
-        
-        cell.reviewItemTitleLabel.text = userRev.title
-        cell.reviewerUsernameLabel.text = userRev.username
-        cell.reviewTextLabel.text = userRev.review
-        cell.ratingTextLabel.text = userRev.rating
+        let userRev = chatMessages[indexPath.row]
+
+        cell.chatMessageLabel.text = userRev.chatMessage
+        cell.usernameLabel.text = userRev.chatUsername
  
     //    let userRev = String(describing: list[indexPath.row])
       //  print("for the cell: \(userRev)")
@@ -124,7 +119,7 @@ class UserReviewsTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 
@@ -180,7 +175,7 @@ class UserReviewsTableViewController: UITableViewController {
     //Function for fetching user reviews from database that's called on the viewDidLoad
     func downloadUserReviewsNow(completion: @escaping ([String: Any], Error?) -> Void) {
         var reviewArray = [String: Any]()
-        db.collection("reviews").getDocuments { QuerySnapshot, error in
+        db.collection("chat").getDocuments { QuerySnapshot, error in
           if let error = error {
             print(error)
             completion(reviewArray, error)
@@ -229,13 +224,13 @@ class UserReviewsTableViewController: UITableViewController {
     //This should receive the new review from the add view but its not working atm will check later
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         
-        if let sourceViewController = sender.source as? CreateReviewViewController, let newReview = sourceViewController.review {
+        if let sourceViewController = sender.source as? CreateChatMessageViewController, let newMessage = sourceViewController.message{
 
                 //Add a new review
-                let newIndexPath = IndexPath(row: userReviews.count, section: 0)
-                let newReviewAsString = String(describing: "\(newReview)")
+                let newIndexPath = IndexPath(row: chatMessages.count, section: 0)
+                let newMessageAsString = String(describing: "\(newMessage)")
             
-                userReviews.append(newReview)
+                chatMessages.append(newMessage)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             
            downloadUserReviewsNow() { reviewArray, error in

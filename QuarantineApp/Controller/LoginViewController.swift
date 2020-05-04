@@ -47,7 +47,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self!.present(alertController, animated: true, completion: nil)
                 return
             }
-            self!.performSegue(withIdentifier: "toMain", sender: nil)
+            self!.performSegue(withIdentifier: "loginToMain", sender: nil)
         }
     }
     
@@ -58,7 +58,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func guestButton(_ sender: UIButton) {
         Auth.auth().signInAnonymously() { (authResult, error) in
             guard (authResult?.user) != nil else { return }
-            self.performSegue(withIdentifier: "toMain", sender: nil)
+            self.performSegue(withIdentifier: "loginToMain", sender: nil)
         }
     }
 }
