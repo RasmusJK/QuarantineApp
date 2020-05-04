@@ -34,7 +34,6 @@ class NetflixAPI {
         request.timeoutInterval = 10.0
         request.allHTTPHeaderFields = headers
         print("REQUEST: \(request)")
-        
         let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
             if let error = error {
                 print(error)
@@ -49,6 +48,7 @@ class NetflixAPI {
                 return
             }
             print("Fetch data: \(data)")
+            print("Current thread is: \(Thread.current)")
             do {
                 let netflixInfo = try JSONDecoder().decode(NetflixInfo.self, from: data)
                 self.netflixAPIDelegate?.newData(netflixInfo, categorySwitch: categorySwitch)
@@ -57,9 +57,8 @@ class NetflixAPI {
                 return
             }
         })
-
         dataTask.resume()
-    }
+        }
 }
 
 protocol NetflixAPIDelegate {

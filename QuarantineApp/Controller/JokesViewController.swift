@@ -22,7 +22,10 @@ class JokesViewController: UIViewController, JokeAPIDelegate {
             self.deliveryLabel.text = jokeInfo?.delivery
         }
     }
-    
+    @IBOutlet var navigationbar: UINavigationItem!
+    var nextjoke = NSLocalizedString("Next Joke", comment: "")
+    var jokes = NSLocalizedString("Jokes", comment: "")
+    @IBOutlet var button: UIButton!
     @IBOutlet var setupLabel: UILabel!
     @IBOutlet var deliveryLabel: UILabel!
     @IBAction func nextButton(_ sender: UIButton) {
@@ -34,6 +37,8 @@ class JokesViewController: UIViewController, JokeAPIDelegate {
     var blacklist: String = "religious,political,racist"
     override func viewDidLoad() {
         super.viewDidLoad()
+        button.setTitle(nextjoke, for: .normal)
+        navigationbar.title = jokes
         getJokes()
     }
     
