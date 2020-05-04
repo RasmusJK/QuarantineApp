@@ -93,6 +93,7 @@ class ChatMessageTableViewController: UITableViewController {
         let userRev = chatMessages[indexPath.row]
 
         cell.chatMessageLabel.text = userRev.chatMessage
+        cell.usernameLabel.text = userRev.chatUsername
  
     //    let userRev = String(describing: list[indexPath.row])
       //  print("for the cell: \(userRev)")
