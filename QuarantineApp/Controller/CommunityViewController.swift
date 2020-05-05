@@ -11,9 +11,16 @@ import UIKit
 class CommunityViewController: UIViewController {
     //MARK: Properties
     @IBOutlet var menuButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var communityInfoLabel: UILabel!
+    
+    var communitytitle = NSLocalizedString("The community is here!", comment: "")
+    var communityInfoText = NSLocalizedString("See what other users are recommending and share your own reviews of things to do online!", comment: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = communitytitle
+        communityInfoLabel.text = communityInfoText
         
     }
     

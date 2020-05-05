@@ -15,6 +15,11 @@ class ReviewCategoryTableViewController: UITableViewController {
     var reviewCategories = [ReviewCategory]()
     var selectedCategory: String?
     @IBOutlet weak var segmentControl: UINavigationItem!
+    var movies = NSLocalizedString("Movies", comment: "")
+    var tvshows = NSLocalizedString("TV Shows", comment: "")
+    var games = NSLocalizedString("Games", comment: "")
+    var books = NSLocalizedString("Books", comment: "")
+    var sports = NSLocalizedString("Sports", comment: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,19 +136,19 @@ class ReviewCategoryTableViewController: UITableViewController {
         let reviewCategoryBooksPhoto = UIImage(named: "books")
         let reviewCategoryGames = UIImage(named: "games")
         
-        guard let reviewCategory1 = ReviewCategory(title: "Movies", image: reviewCategoryPhoto1) else {
+        guard let reviewCategory1 = ReviewCategory(title: movies, image: reviewCategoryPhoto1) else {
             print("fucked up with title")
             fatalError("Unable to get reviewCategory")
         }
-        guard let reviewCategory4 = ReviewCategory(title: "TV Series", image: reviewCategoryPhoto2) else {
+        guard let reviewCategory4 = ReviewCategory(title: tvshows, image: reviewCategoryPhoto2) else {
             print("fucked up with title")
             fatalError("Unable to get reviewCategory")
         }
-        guard let reviewCategory2 = ReviewCategory(title: "Games", image: reviewCategoryGames) else {
+        guard let reviewCategory2 = ReviewCategory(title: games, image: reviewCategoryGames) else {
             print("fucked up with image")
             fatalError("Unable to get reviewCategory")
         }
-        guard let reviewCategory3 = ReviewCategory(title: "Books", image: reviewCategoryBooksPhoto) else {
+        guard let reviewCategory3 = ReviewCategory(title: books, image: reviewCategoryBooksPhoto) else {
             print("fucked up with image")
             fatalError("Unable to get reviewCategory")
         }
