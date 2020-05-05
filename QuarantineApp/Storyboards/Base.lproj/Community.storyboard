@@ -507,6 +507,7 @@
                         <outlet property="reviewerStaticText" destination="WuM-oI-l8J" id="xER-Fj-Ked"/>
                         <outlet property="saveButton" destination="x6R-Q0-4tJ" id="hwz-1U-AkI"/>
                         <outlet property="titleInputField" destination="xRS-ri-byq" id="6lX-i6-3Hz"/>
+                        <outlet property="usernameLabel" destination="EPc-eq-xA2" id="Zc1-gf-GXZ"/>
                         <segue destination="SA1-pM-EQQ" kind="presentation" identifier="toAuth" id="cL6-mn-DEN"/>
                     </connections>
                 </viewController>

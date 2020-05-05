@@ -29,6 +29,11 @@ class UserReviewsTableViewController: UITableViewController {
     var reviewof = ""
     var finallist = [String: Any]()
     var userOptional: String?
+    var movies = NSLocalizedString("Movies", comment: "")
+    var tvshows = NSLocalizedString("TV Shows", comment: "")
+    var games = NSLocalizedString("Games", comment: "")
+    var books = NSLocalizedString("Books", comment: "")
+    var sports = NSLocalizedString("Sports", comment: "")
     
 
     override func viewDidLoad() {
@@ -36,6 +41,19 @@ class UserReviewsTableViewController: UITableViewController {
         
         //Just showing the category, doesnt matter at the moment tho
         print("this is what u got as a category \(String(describing: selectedCategory))")
+        if selectedCategory == "Elokuvat" {
+            selectedCategory = "Movies"
+        }
+        else if selectedCategory == "TV Sarjat" {
+            selectedCategory = "TV Shows"
+        }
+        else if selectedCategory == "Kirjat" {
+            selectedCategory = "Books"
+        }
+        else if selectedCategory == "Pelit" {
+            selectedCategory = "Games"
+        }
+        
         guard let currentCategory = selectedCategory else {
             fatalError("dont have a category")
         }
