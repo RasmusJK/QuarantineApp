@@ -25,6 +25,7 @@
 "Continue as guest" = "Jatka kirjautumatta";
 "Go to login" = "Takaisin kirjautumiseen";
 
+"World" = "Maailma";
 "Cases" = "Tapauksia";
 "Deaths" = "Kuolemia";
 "Recovered" = "Parantuneet";
@@ -34,6 +35,7 @@
 "Usename" = "Käyttäjänimi";
 "Email" = "Sähköpostiosoite";
 
+"Community" = "Yhteisö";
 "The Community" = "Yhteisö";
 "User Reviews" = "Käyttäjäarvostelut";
 "Other stuff" = "Muut";
