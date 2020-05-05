@@ -26,18 +26,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         performSegue(withIdentifier: "ToRegisterSegue", sender: self)
     }
     
-    /*
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if Auth.auth().currentUser?.uid != nil {
-            self.navigationController?.popToRootViewController(animated: true)
-            let alertController = UIAlertController(title: "Login error", message: "Logged in as \(Auth.auth().currentUser?.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "Anonymous")", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
- */
-    
     //MARK: FirebaseAuth
     func loginUser(loginEmail: String, loginPassword: String) {
         Auth.auth().signIn(withEmail: ("\(loginEmail)@quarantodo.info"), password: loginPassword) { [weak self] authResult, error in
