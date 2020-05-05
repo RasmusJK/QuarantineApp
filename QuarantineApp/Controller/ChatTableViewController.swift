@@ -22,9 +22,9 @@ class ChatTableViewController: UITableViewController {
     @IBOutlet weak var segmentControl: UINavigationItem!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        loadReviewCategories()
     }
 
     // MARK: - Table view data source
@@ -46,7 +46,7 @@ class ChatTableViewController: UITableViewController {
         }
         
         let city = cities[indexPath.row]
-        
+
         cell.cityLabel.text = city
         
         selectedCity = city
@@ -83,42 +83,5 @@ class ChatTableViewController: UITableViewController {
             fatalError("")
         }
     }
-    
-    //MARK: Private functions
-    
-    private func loadReviewCategories() {
-        
-      /*  guard let reviewCategory1 = ReviewCategory(title: "Movies", image: reviewCategoryPhoto1) else {
-            print("fucked up with title")
-            fatalError("Unable to get reviewCategory")
-        }
-        guard let reviewCategory4 = ReviewCategory(title: "TV Series", image: reviewCategoryPhoto2) else {
-            print("fucked up with title")
-            fatalError("Unable to get reviewCategory")
-        }
-        guard let reviewCategory2 = ReviewCategory(title: "Games", image: reviewCategoryGames) else {
-            print("fucked up with image")
-            fatalError("Unable to get reviewCategory")
-        }
-        guard let reviewCategory3 = ReviewCategory(title: "Books", image: reviewCategoryBooksPhoto) else {
-            print("fucked up with image")
-            fatalError("Unable to get reviewCategory")
-        }
-    /*    guard let reviewCategory4 = ReviewCategory(title: "TV Show Reviews", image: reviewCategoryTvPhoto) else {
-            print("fucked up with image")
-            fatalError("Unable to get reviewCategory")
-        } */
-        
-        reviewCategories += [reviewCategory1, reviewCategory2, reviewCategory3, reviewCategory4]
-    }
- /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "userReviewSegue") {
-            if let destination = segue.destination as? UserReviewsTableViewController {
-                print("you are going to see reviews from the category: \(selectedCategory)")
-                destination.selectedCategory = "\(selectedCategory)"
-            }
-        }
-    } */ */
-    }
+
 }

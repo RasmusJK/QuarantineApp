@@ -39,7 +39,8 @@ class UserReviewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Just showing the category, doesnt matter at the moment tho
+        //Showing the selected category gotten from the previous viewcontroller
+        //and translates it into english if application language is Finnish
         print("this is what u got as a category \(String(describing: selectedCategory))")
         if selectedCategory == "Elokuvat" {
             selectedCategory = "Movies"
@@ -74,6 +75,7 @@ class UserReviewsTableViewController: UITableViewController {
             var username = ""
             var reviewCategory = ""
     
+        //Maps through the key value pairs and gets each reviews info
         for (key, value) in self.list {
                 print(" single value and key:\(key) \(value)")
                 
@@ -83,9 +85,12 @@ class UserReviewsTableViewController: UITableViewController {
             username = self.list["reviewUser"]! as! String
             reviewCategory = self.list["reviewCategory"] as? String ?? "no category"
             }
-                
+          
+        //Creates a UserReview object of the fetched review
         let object = UserReview(title: movietitle, rating: movierating, username: username, review: reviewtext, category: reviewCategory) ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value", category: "no value")!
-            
+         
+            //If objects category matches the selected category the object is
+            //added to the list shown on the tableview
             if object.category == self.selectedCategory {
                 self.userReviews.append(object ?? UserReview(title: "no value", rating: "no value", username: "no value", review: "no value", category: "no value")! )
             }
@@ -95,6 +100,7 @@ class UserReviewsTableViewController: UITableViewController {
 
     
     // MARK: - Table view data source
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -117,11 +123,6 @@ class UserReviewsTableViewController: UITableViewController {
         cell.reviewerUsernameLabel.text = userRev.username
         cell.reviewTextLabel.text = userRev.review
         cell.ratingTextLabel.text = userRev.rating
- 
-    //    let userRev = String(describing: list[indexPath.row])
-      //  print("for the cell: \(userRev)")
-      //  cell.reviewTextLabel.text = userRev
-        // Configure the cell...
 
         return cell
     }
@@ -159,8 +160,7 @@ class UserReviewsTableViewController: UITableViewController {
     
     //MARK: Actions
     
-    
-    //This should receive the new review from the add view but its not working atm will check later
+    //This receives the new review from the add view
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.source as? CreateReviewViewController, let newReview = sourceViewController.review {

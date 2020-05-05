@@ -40,7 +40,7 @@ class CommunityGroupTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "CommunityGroupTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CommunityGroupTableViewCell else {
-            fatalError("fucked up loading data to groupcell")
+            fatalError("issues with loading data to groupcell")
         }
             
         let communityGroupCreated = communityGroups[indexPath.row]

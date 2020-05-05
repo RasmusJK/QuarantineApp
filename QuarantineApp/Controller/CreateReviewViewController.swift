@@ -45,7 +45,6 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         titleInputField.delegate = self
         reviewInputField.delegate = self
         categoryPicker.delegate = self
@@ -55,18 +54,22 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         reviewInputField.becomeFirstResponder()
         ratingInputField.becomeFirstResponder()
         
+        //Sets localized strings to text labels
         reviewerStaticText.text = reviewerInfoText
         ratingLabelInfoText.text = ratingInfo
         categoryPickerInfoText.text = categoryInfo
         nameFieldInfoText.text = titleInfo
         reviewFieldInfoText.text = reviewInfo
         
+        //If user is not logged in it redirects the user to Auth view. User is able to come back to
+        //create a review page but the save button is disabled
         if Auth.auth().currentUser!.email != nil {
             usernameLabel.text = Auth.auth().currentUser!.email!.replacingOccurrences(of: "@quarantodo.info", with: "")
         } else {
             performSegue(withIdentifier: "toAuth", sender: nil)
         }
         
+        //Checks whether the user is logged in nd disables or enables the save button
         updateSaveButtonState()
         print("\(Auth.auth().currentUser!.email ?? "Anonymous")")
     }
@@ -106,7 +109,6 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         print("current title is: \(reviewTitle) and current review is: \(reviewText2) and current rating is: \(rating)")
     }
     
-    
     //MARK: Picker view methods
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -130,6 +132,8 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     //MARK: Navigation
     
+    //When user clicks the save button the review info is gotten from textfields and picker
+    //and saved to the database
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         //MARK: Firebase User review testing
@@ -149,7 +153,7 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
             "reviewCategory": reviewCategory
         ])
         
-        //Get
+        //Get for printing the new review
         db.collection("reviews").whereField("reviewItem", isEqualTo: reviewItem).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting Firestore data: \(err)")

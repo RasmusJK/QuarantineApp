@@ -17,6 +17,7 @@ class CommunityViewController: UIViewController {
     var communitytitle = NSLocalizedString("The community is here!", comment: "")
     var communityInfoText = NSLocalizedString("See what other users are recommending and share your own reviews of things to do online!", comment: "")
     
+    //Sets the localized strings to text labels
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = communitytitle

@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Defines the review category tableview cells
 class ReviewCategoryTableViewCell: UITableViewCell {
  //MARK: Properties
     

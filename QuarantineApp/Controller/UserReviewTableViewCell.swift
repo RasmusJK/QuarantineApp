@@ -7,6 +7,7 @@
 
 import UIKit
 
+//This class defines the user review tableview cell
 class UserReviewTableViewCell: UITableViewCell {
     
     //MARK: Properties

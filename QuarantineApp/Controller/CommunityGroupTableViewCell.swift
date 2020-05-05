@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Defines the community groups tableview cell
 class CommunityGroupTableViewCell: UITableViewCell {
     //MARK: Properties
     @IBOutlet weak var communityGroupTitle: UILabel!

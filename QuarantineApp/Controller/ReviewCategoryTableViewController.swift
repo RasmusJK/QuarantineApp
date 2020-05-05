@@ -24,6 +24,7 @@ class ReviewCategoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Calls the function that loads review categories to table view
         loadReviewCategories()
     }
 
@@ -58,12 +59,11 @@ class ReviewCategoryTableViewController: UITableViewController {
         return cell
     }
 
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // MARK: Navigation to selected category's user reviews
+    
+    //The segue sends the selected category as string to the next viewcontroller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+ 
         super.prepare(for: segue, sender: sender)
         switch(segue.identifier ?? "") {
         case "userReviewSegue":
@@ -87,7 +87,8 @@ class ReviewCategoryTableViewController: UITableViewController {
     }
     
     //MARK: Private functions
-    
+
+    //This function loads the review categories to the table view
     private func loadReviewCategories() {
         
         let reviewCategoryPhoto1 = UIImage(named: "Reviews")
@@ -96,21 +97,20 @@ class ReviewCategoryTableViewController: UITableViewController {
         let reviewCategoryGames = UIImage(named: "games")
         
         guard let reviewCategory1 = ReviewCategory(title: movies, image: reviewCategoryPhoto1) else {
-            print("fucked up with title")
+            print("issue with the category")
             fatalError("Unable to get reviewCategory")
         }
 
         guard let reviewCategory4 = ReviewCategory(title: tvshows, image: reviewCategoryPhoto2) else {
-            print("fucked up with title")
+            print("issue with the category")
             fatalError("Unable to get reviewCategory")
         }
         guard let reviewCategory2 = ReviewCategory(title: games, image: reviewCategoryGames) else {
-
-            print("fucked up with image")
+            print("issue with the category")
             fatalError("Unable to get reviewCategory")
         }
         guard let reviewCategory3 = ReviewCategory(title: books, image: reviewCategoryBooksPhoto) else {
-            print("fucked up with image")
+            print("issue with the category")
             fatalError("Unable to get reviewCategory")
         }
         
