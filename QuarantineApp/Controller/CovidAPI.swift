@@ -7,8 +7,8 @@
 //
 import Foundation
 
+//Gets data from API
 class CovidAPI {
-    
     private var _url: URL?
     var covidAPIDelegate: CovidAPIDelegate?
     var url: String {
@@ -19,6 +19,7 @@ class CovidAPI {
             return _url?.absoluteString ?? "no value"
         }
     }
+    //Get data from CovidAPI
     func getData() {
         let dataTask = URLSession.shared.dataTask(with: _url!) { data, response, error in
             if let error = error {

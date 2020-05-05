@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
+//Register to firebase
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var usernameField: UITextField!
@@ -30,6 +31,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: FirebaseAuth
     func registerUser(registerEmail: String, registerPassword: String) {
+        //hardcoding email since firebase requires it
         Auth.auth().createUser(withEmail: ("\(registerEmail)@quarantodo.info"), password: registerPassword) { authResult, error in
             guard error == nil else {
                 let alertController = UIAlertController(title: "Register error", message: error!.localizedDescription.replacingOccurrences(of: "email address", with: "username"), preferredStyle: .alert)
@@ -52,6 +54,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func guestButton(_ sender: UIButton) {
+        //Sing anonymously to firebase
         Auth.auth().signInAnonymously() { (authResult, error) in
             guard (authResult?.user) != nil else { return }
             self.performSegue(withIdentifier: "registerToMain", sender: nil)

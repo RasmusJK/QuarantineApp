@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Gets data from CovidAPI and prints it to tableView
 class CovidTrackerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CovidAPIDelegate {
     //MARK: Properties
     @IBOutlet weak var totalLabel: UILabel!
@@ -31,6 +32,7 @@ class CovidTrackerViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: Delegated data
     func newData(_ covidData: CovidData?) {
         DispatchQueue.main.async {
+            //Some rows from APi weren't countries, hard coded them away
             let notCountry = ["Africa", "Asia", "Europe", "North America", "South America", "Oceania", "World", " ", "", "Total:"]
             if covidData?.country == "World" {
                 self.totalLabel.text = "World: \(covidData?.cases ?? 0) | \(covidData?.deaths ?? 0) | \(covidData?.recovered ?? 0)"

@@ -45,7 +45,7 @@ class ChatMessageTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //Calls a function that fetches the user reviews from database
+        chatMessages.removeAll()
         downloadUserReviewsNow() { reviewArray, error in
             if error != nil {
                 return
