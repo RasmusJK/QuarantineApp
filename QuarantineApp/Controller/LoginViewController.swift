@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
+//Login to firebase
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var usernameField: UITextField!
@@ -27,7 +28,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     //MARK: FirebaseAuth
+    //Authenticate to firebase
     func loginUser(loginEmail: String, loginPassword: String) {
+        //Since firebase requires email usage, we are hardcoding it
         Auth.auth().signIn(withEmail: ("\(loginEmail)@quarantodo.info"), password: loginPassword) { [weak self] authResult, error in
             guard error == nil else {
                 let alertController = UIAlertController(title: "Login error", message: error!.localizedDescription.replacingOccurrences(of: "email address", with: "username"), preferredStyle: .alert)
@@ -44,6 +47,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func guestButton(_ sender: UIButton) {
+        //Sing anonymously to firebase
         Auth.auth().signInAnonymously() { (authResult, error) in
             guard (authResult?.user) != nil else { return }
             self.performSegue(withIdentifier: "loginToMain", sender: nil)

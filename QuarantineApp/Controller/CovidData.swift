@@ -8,6 +8,7 @@
 
 import Foundation
 
+//API call returns JSON, this decodes it?
 struct CovidData: Codable {
     let country: String
     let cases, todayCases, deaths, todayDeaths: Int
