@@ -16,7 +16,7 @@ class ReviewCategoryTableViewController: UITableViewController {
     var selectedCategory: String?
     @IBOutlet weak var segmentControl: UINavigationItem!
     var movies = NSLocalizedString("Movies", comment: "")
-    var tvshows = NSLocalizedString("TV Shows", comment: "")
+    var tvshows = NSLocalizedString("TV Series", comment: "")
     var games = NSLocalizedString("Games", comment: "")
     var books = NSLocalizedString("Books", comment: "")
     var sports = NSLocalizedString("Sports", comment: "")
