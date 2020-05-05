@@ -10,6 +10,7 @@ import UIKit
 
 class JokesViewController: UIViewController, JokeAPIDelegate {
     
+    //Protocol for new data
     func newData(_ jokeInfo: JokeInfo?) {
         DispatchQueue.main.async {
             print("newData in viewcontroller")
@@ -22,6 +23,11 @@ class JokesViewController: UIViewController, JokeAPIDelegate {
             self.deliveryLabel.text = jokeInfo?.delivery
         }
     }
+
+    
+    //MARK: Properties
+
+
     @IBOutlet var navigationbar: UINavigationItem!
     var nextjoke = NSLocalizedString("Next Joke", comment: "")
     var jokes = NSLocalizedString("Jokes", comment: "")
@@ -29,12 +35,10 @@ class JokesViewController: UIViewController, JokeAPIDelegate {
     @IBOutlet var setupLabel: UILabel!
     @IBOutlet var deliveryLabel: UILabel!
     @IBAction func nextButton(_ sender: UIButton) {
-        nextJoke()
+        getJokes()
     }
-    
-    
-    var number: Int = 1
     var blacklist: String = "religious,political,racist"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         button.setTitle(nextjoke, for: .normal)
@@ -42,11 +46,7 @@ class JokesViewController: UIViewController, JokeAPIDelegate {
         getJokes()
     }
     
-    func nextJoke(){
-        number+=1
-        getJokes()
-    }
-    
+    //Function to get jokes
     func getJokes(){
         let jokeApi = JokeAPI()
         jokeApi.url = "https://sv443.net/jokeapi/v2/joke/Any?blacklistFlags=\(blacklist)&idRange=1-184"

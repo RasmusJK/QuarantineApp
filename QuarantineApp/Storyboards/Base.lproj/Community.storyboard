@@ -21,7 +21,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Community is here!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2X-JO-Y6e">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Community title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2X-JO-Y6e">
                                 <rect key="frame" x="20" y="167" width="374" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -78,6 +78,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Community" id="kep-Q4-cCq"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="communityInfoLabel" destination="e7z-r4-92d" id="vIi-vh-Pzh"/>
+                        <outlet property="titleLabel" destination="I2X-JO-Y6e" id="tOk-PH-hMM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elE-Wy-Wi3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -494,10 +498,16 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoryPicker" destination="MYC-hh-wGP" id="fyQ-C0-arO"/>
+                        <outlet property="categoryPickerInfoText" destination="fZe-nk-00e" id="3JQ-Dq-sba"/>
+                        <outlet property="nameFieldInfoText" destination="BJt-dw-ob2" id="KgM-sW-h9W"/>
                         <outlet property="ratingInputField" destination="yKQ-4D-NM8" id="oFI-vr-t6q"/>
+                        <outlet property="ratingLabelInfoText" destination="bWz-Zc-kBC" id="G17-f6-Ap6"/>
+                        <outlet property="reviewFieldInfoText" destination="bJj-c2-EWh" id="Vx2-Pv-bBF"/>
                         <outlet property="reviewInputField" destination="ivv-iS-aRz" id="1oJ-K2-moI"/>
+                        <outlet property="reviewerStaticText" destination="WuM-oI-l8J" id="xER-Fj-Ked"/>
                         <outlet property="saveButton" destination="x6R-Q0-4tJ" id="hwz-1U-AkI"/>
                         <outlet property="titleInputField" destination="xRS-ri-byq" id="6lX-i6-3Hz"/>
+                        <outlet property="usernameLabel" destination="EPc-eq-xA2" id="Zc1-gf-GXZ"/>
                         <segue destination="SA1-pM-EQQ" kind="presentation" identifier="toAuth" id="cL6-mn-DEN"/>
                     </connections>
                 </viewController>

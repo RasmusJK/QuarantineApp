@@ -15,15 +15,14 @@ class ReviewCategoryTableViewController: UITableViewController {
     var reviewCategories = [ReviewCategory]()
     var selectedCategory: String?
     @IBOutlet weak var segmentControl: UINavigationItem!
+    var movies = NSLocalizedString("Movies", comment: "")
+    var tvshows = NSLocalizedString("TV Shows", comment: "")
+    var games = NSLocalizedString("Games", comment: "")
+    var books = NSLocalizedString("Books", comment: "")
+    var sports = NSLocalizedString("Sports", comment: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         loadReviewCategories()
     }
@@ -58,41 +57,6 @@ class ReviewCategoryTableViewController: UITableViewController {
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     // MARK: - Navigation
 
@@ -131,37 +95,26 @@ class ReviewCategoryTableViewController: UITableViewController {
         let reviewCategoryBooksPhoto = UIImage(named: "books")
         let reviewCategoryGames = UIImage(named: "games")
         
-        guard let reviewCategory1 = ReviewCategory(title: "Movies", image: reviewCategoryPhoto1) else {
+        guard let reviewCategory1 = ReviewCategory(title: movies, image: reviewCategoryPhoto1) else {
             print("fucked up with title")
             fatalError("Unable to get reviewCategory")
         }
-        guard let reviewCategory4 = ReviewCategory(title: "TV Series", image: reviewCategoryPhoto2) else {
+
+        guard let reviewCategory4 = ReviewCategory(title: tvshows, image: reviewCategoryPhoto2) else {
             print("fucked up with title")
             fatalError("Unable to get reviewCategory")
         }
-        guard let reviewCategory2 = ReviewCategory(title: "Games", image: reviewCategoryGames) else {
+        guard let reviewCategory2 = ReviewCategory(title: games, image: reviewCategoryGames) else {
+
             print("fucked up with image")
             fatalError("Unable to get reviewCategory")
         }
-        guard let reviewCategory3 = ReviewCategory(title: "Books", image: reviewCategoryBooksPhoto) else {
+        guard let reviewCategory3 = ReviewCategory(title: books, image: reviewCategoryBooksPhoto) else {
             print("fucked up with image")
             fatalError("Unable to get reviewCategory")
         }
-    /*    guard let reviewCategory4 = ReviewCategory(title: "TV Show Reviews", image: reviewCategoryTvPhoto) else {
-            print("fucked up with image")
-            fatalError("Unable to get reviewCategory")
-        } */
         
         reviewCategories += [reviewCategory1, reviewCategory2, reviewCategory3, reviewCategory4]
     }
- /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "userReviewSegue") {
-            if let destination = segue.destination as? UserReviewsTableViewController {
-                print("you are going to see reviews from the category: \(selectedCategory)")
-                destination.selectedCategory = "\(selectedCategory)"
-            }
-        }
-    } */
 
 }

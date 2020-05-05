@@ -21,42 +21,53 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9qp-ac-hGX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9qp-ac-hGX" userLabel="ProfileTableView">
                                 <rect key="frame" x="20" y="172" width="374" height="579"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="90" id="FjE-fE-xN7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileCell" rowHeight="90" id="FjE-fE-xN7" customClass="ProfileTableViewCell" customModule="QuarantineApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FjE-fE-xN7" id="1U4-pp-vPC">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QxP-BU-RE8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2o2-w6-qrP">
-                                                    <rect key="frame" x="98" y="11" width="254" height="19"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2o2-w6-qrP">
+                                                    <rect key="frame" x="20" y="11" width="52.5" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ec-2B-Z9I">
-                                                    <rect key="frame" x="98" y="47" width="191" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ec-2B-Z9I">
+                                                    <rect key="frame" x="20" y="47" width="191" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o76-mw-N9D">
-                                                    <rect key="frame" x="314" y="53" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="&gt;"/>
-                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sb1-Ig-4ZD">
+                                                    <rect key="frame" x="262" y="14" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3ec-2B-Z9I" firstAttribute="top" secondItem="2o2-w6-qrP" secondAttribute="bottom" constant="9.5" id="04e-qW-cff"/>
+                                                <constraint firstItem="Sb1-Ig-4ZD" firstAttribute="top" secondItem="1U4-pp-vPC" secondAttribute="topMargin" id="DHs-uK-PCB"/>
+                                                <constraint firstItem="2o2-w6-qrP" firstAttribute="leading" secondItem="1U4-pp-vPC" secondAttribute="leadingMargin" id="MVs-MM-Phd"/>
+                                                <constraint firstAttribute="trailing" secondItem="3ec-2B-Z9I" secondAttribute="trailing" constant="163" id="QqL-1C-EkF"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Sb1-Ig-4ZD" secondAttribute="trailing" constant="20" id="ZOc-wJ-bz4"/>
+                                                <constraint firstAttribute="bottom" secondItem="3ec-2B-Z9I" secondAttribute="bottom" constant="20" symbolic="YES" id="aGk-sj-cse"/>
+                                                <constraint firstItem="3ec-2B-Z9I" firstAttribute="leading" secondItem="1U4-pp-vPC" secondAttribute="leading" constant="20" id="bD1-nH-EIl"/>
+                                                <constraint firstItem="Sb1-Ig-4ZD" firstAttribute="leading" secondItem="2o2-w6-qrP" secondAttribute="trailing" constant="8" id="fUm-Xi-aWU"/>
+                                                <constraint firstItem="2o2-w6-qrP" firstAttribute="top" secondItem="1U4-pp-vPC" secondAttribute="topMargin" id="klu-48-fxy"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="profileRatingLabel" destination="Sb1-Ig-4ZD" id="Viq-Uw-NjR"/>
+                                            <outlet property="profileTextLabel" destination="3ec-2B-Z9I" id="VYL-AI-iij"/>
+                                            <outlet property="profileTitleLabel" destination="2o2-w6-qrP" id="mpV-OJ-REK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -86,7 +97,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="vfC-YM-AVd"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="profileTableView" destination="9qp-ac-hGX" id="J7Z-xB-XwN"/>
+                        <outlet property="profileTableView" destination="9qp-ac-hGX" id="FhU-mq-X8F"/>
                         <outlet property="usernameLabel" destination="VOP-2B-tGj" id="BFL-94-Iq6"/>
                         <segue destination="WL6-RR-3k7" kind="presentation" identifier="toAuth" modalPresentationStyle="fullScreen" id="gx8-05-Y8f"/>
                     </connections>

@@ -25,6 +25,7 @@
 "Continue as guest" = "Jatka kirjautumatta";
 "Go to login" = "Takaisin kirjautumiseen";
 
+"World" = "Maailma";
 "Cases" = "Tapauksia";
 "Deaths" = "Kuolemia";
 "Recovered" = "Parantuneet";
@@ -34,9 +35,20 @@
 "Usename" = "Käyttäjänimi";
 "Email" = "Sähköpostiosoite";
 
+"Community" = "Yhteisö";
 "The Community" = "Yhteisö";
-"User Reviews" = "Käyttäjä arvostelut";
+"User Reviews" = "Käyttäjäarvostelut";
 "Other stuff" = "Muut";
+"The community is here!" = "Tervetuloa Yhteisöön!";
+"See what other users are recommending and share your own reviews of things to do online!" = "Katso mitä muut käyttäjät suosittelevat sekä jaa omat suosituksesi!";
+"TV Shows" = "TV Ohjelmat";
+"Books" = "Kirjat";
+"Sports" = "Urheilu";
+"Reviewer" = "Arvostelija";
+"Rating (out of 5 stars)" = "Arvio (0-5 tähteä)";
+"Category" = "Kategoria";
+"Name" = "Nimi";
+"Review" = "Arvostelu";
 
 "Back" = "Takaisin";
 "Cancel" = "Peruuta";

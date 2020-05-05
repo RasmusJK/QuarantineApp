@@ -5,7 +5,7 @@
 //  Created by Roope Vaarama on 21.4.2020.
 //  Copyright © 2020 Roope Vaarama. All rights reserved.
 //
-
+//Joke json struct
 import Foundation
 // MARK: - Jokes
 struct JokeInfo: Codable {

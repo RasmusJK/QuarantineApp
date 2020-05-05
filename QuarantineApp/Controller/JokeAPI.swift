@@ -5,7 +5,7 @@
 //  Created by Roope Vaarama on 21.4.2020.
 //  Copyright © 2020 Roope Vaarama. All rights reserved.
 //
-
+//JokeApi class for fetching api data
 import Foundation
 class JokeAPI {
     private var _url : URL?
@@ -46,6 +46,7 @@ class JokeAPI {
     }
 }
 
+//JokeApiDelegate protocol for newdata
 protocol JokeAPIDelegate {
     func newData(_ jokeInfo : JokeInfo?)
 }

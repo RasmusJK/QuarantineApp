@@ -58,16 +58,6 @@ class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UI
     
     var categoriesForPicker = ["Helsinki", "Vantaa", "Espoo", "Tampere", "Jee", "Broken"]
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     //MARK: UITextField Delegate methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -132,14 +122,6 @@ class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UI
         }
         }
         }
-        
-       /* super.prepare(for: segue, sender: sender)
-        
-        guard let button = sender as? UIBarButtonItem, button === saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            return
-        }
-        */
         
      //   review = UserReview(title: reviewTitle, rating: "5", username: "defaultuser", review: reviewText2)
     }
