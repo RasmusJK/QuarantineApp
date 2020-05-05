@@ -29,14 +29,12 @@
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="Amc-9p-mUh">
                                 <rect key="frame" x="31" y="381" width="353.5" height="286.5"/>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="Amc-9p-mUh">
-                                <rect key="frame" x="31" y="498" width="353.5" height="109"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="UK9-ke-JLy">
-                                        <rect key="frame" x="0.0" y="0.0" width="353.5" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="353.5" height="100.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXp-EK-bGs">
-                                                <rect key="frame" x="0.0" y="0.0" width="353.5" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="353.5" height="100.5"/>
                                                 <state key="normal" title="&gt;" image="userreviewslogo"/>
                                                 <connections>
                                                     <segue destination="PsE-bW-Rz9" kind="show" id="pf7-yU-CF8"/>
@@ -53,21 +51,6 @@
                                                 <state key="normal" image="chatrooms">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
-                                        <rect key="frame" x="0.0" y="63" width="353.5" height="46"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CommunityIcon" translatesAutoresizingMaskIntoConstraints="NO" id="NUc-ND-hEb">
-                                                <rect key="frame" x="0.0" y="22.5" width="1" height="1"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other stuff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lf8-dc-W8s">
-                                                <rect key="frame" x="30" y="12.5" width="88.5" height="21.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWO-WN-V5O">
-                                                <rect key="frame" x="147.5" y="0.0" width="206" height="46"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                <state key="normal" title="&gt;"/>
                                                 <connections>
                                                     <segue destination="iad-E2-OdY" kind="show" id="Rpv-ri-Qqu"/>
                                                 </connections>
