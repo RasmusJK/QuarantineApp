@@ -63,9 +63,7 @@ class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UI
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
         chatMessageText = textField.text ?? "No title"
-        
     }
     
     
@@ -94,30 +92,14 @@ class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UI
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        //MARK: Firebase User review testing
         let db = Firestore.firestore()
-        let chatRoom2 = chatRoom
-        let chatText = chatMessageInputField.text ?? "No message"
         
         //Add
         db.collection("chat").document("\(Int64(NSDate().timeIntervalSince1970 * 1000))").setData([
-            "chatRoom": chatRoom2,
+            "chatRoom": chatRoom,
             "chatUser": chatUser,
-            "chatText": chatText,
+            "chatText": chatMessageText,
         ])
-        
-        //Get
-        db.collection("chat").whereField("chatText", isEqualTo: chatText).getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting Firestore data: \(err)")
-            } else {
-                for doc in querySnapshot!.documents {
-                    print("id: \(doc.documentID), data: \(doc.data())")
-                }
-            }
-        }
-        
-        //   review = UserReview(title: reviewTitle, rating: "5", username: "defaultuser", review: reviewText2)
     }
     
     private func updateSaveButtonState() {
