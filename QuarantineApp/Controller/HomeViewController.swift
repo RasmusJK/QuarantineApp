@@ -23,6 +23,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.saveGameToCoreData(title: item.value.name ?? "", developer: item.value.developer ?? "", avg2weeks: item.value.average2Weeks ?? 0, appid: item.value.appid ?? 0)
             }
             self.fetchResultsToController(entity: "Games")
+            
+            // Add top item to the top media array
+            let topGameFRC = self.gamesFetchedResultsController.fetchedObjects?.first
+            let topGameClass = TopMediaItem(title: topGameFRC?.title ?? "", descOrDev: topGameFRC?.developer ?? "", avgOrRating: topGameFRC?.avg2weeks.description ?? "", imgurl: "", type: "game")
+            self.topMedia.append(topGameClass)
+            self.topMedia.reverse()
+            self.itemTableView.reloadData()
         }
     }
     
@@ -32,14 +39,27 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             if categorySwitch == "NetflixMovie" {
                 for info in (netflixInfo?.results)! {
                     self.saveMovieToCoreData(title: info.title ?? "", desc: info.synopsis ?? "", imgurl: info.img ?? "", imbdrating: info.imdbrating ?? 0.0)
-                    
                 }
                 self.fetchResultsToController(entity: categorySwitch)
+                
+                // Add top item to the top media array
+                let topMovieFRC = self.movieFetchedResultsController.fetchedObjects?.first
+                let topMovieClass = TopMediaItem(title: topMovieFRC?.title ?? "", descOrDev: topMovieFRC?.desc ?? "", avgOrRating: String(format:"%.1f", topMovieFRC?.imbdrating ?? ""), imgurl: topMovieFRC?.imgurl ?? "", type: "movie")
+                self.topMedia.append(topMovieClass)
+                self.topMedia.reverse()
+                self.itemTableView.reloadData()
+                
             } else if categorySwitch == "NetflixSeries" {
                 for info in (netflixInfo?.results)! {
                     self.saveSeriesToCoreData(title: info.title ?? "", desc: info.synopsis ?? "", imgurl: info.img ?? "", imbdrating: info.imdbrating ?? 0.0)
                 }
                 self.fetchResultsToController(entity: categorySwitch)
+                
+                //Add top item to the top media array
+                let topSeriesFRC = self.seriesFetchedResultsController.fetchedObjects?.first
+                let topSeriesClass = TopMediaItem(title: topSeriesFRC?.title ?? "", descOrDev: topSeriesFRC?.desc ?? "", avgOrRating: String(format:"%.1f", topSeriesFRC?.imbdrating ?? ""), imgurl: topSeriesFRC?.imgurl ?? "", type: "series")
+                self.topMedia.append(topSeriesClass)
+                self.itemTableView.reloadData()
             }
         }
     }
@@ -80,7 +100,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var filteredShows: [NetflixSeries] = []
     var filteredGames: [Games] = []
     var searchIsActive : Bool = false
-    //var filteredTop: topMedia = []
     
     var isSearchBarEmpty: Bool {
         return searchBar.text?.isEmpty ?? true
@@ -402,6 +421,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    /**
+        Fetches all top items from the API's and appends them to the topMedia list.
+     */
     func getTopMedia() {
         let topMovieFRC = movieFetchedResultsController.fetchedObjects?.first
         let topSeriesFRC = seriesFetchedResultsController.fetchedObjects?.first
@@ -548,11 +570,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc fileprivate func handleSegmentChange(){
         itemTableView.reloadData()
     }
-    //MARK: Placeholder methods
-    @IBAction func GOTOAUTH(_ sender: UIButton) {
-        performSegue(withIdentifier: "Auth", sender: self)
-    }
-    
 }
 /**
     Handles the home page table view
@@ -684,7 +701,12 @@ extension HomeViewController {
                 if topMedia[indexPath.section].type == "game" {
                     let avgInHours = Int(topMedia[indexPath.section].avgOrRating)! / 60
                     cell.Rating.text = "Avg time played in 2 weeks: \(avgInHours) hours"
-                } else {
+                    cell.ItemType.text = "Top game"
+                } else if (topMedia[indexPath.section].type == "movie") {
+                    cell.ItemType.text = "Top movie"
+                    cell.Rating.text = "IMBD: \(topMedia[indexPath.section].avgOrRating)"
+                } else if (topMedia[indexPath.section].type == "series") {
+                    cell.ItemType.text = "Top series"
                     cell.Rating.text = "IMBD: \(topMedia[indexPath.section].avgOrRating)"
                 }
                 
@@ -698,6 +720,7 @@ extension HomeViewController {
                     if (topMedia[indexPath.section].imgurl != "" && topMedia[indexPath.section].imgurl != nil) {
                         let image = CustomImageView()
                         image.loadImageWithURLString(urlString: topMedia[indexPath.section].imgurl)
+                        print("image is : \(image.image)")
                         cell.Thumbnail.image = image.image
                     }
                 }

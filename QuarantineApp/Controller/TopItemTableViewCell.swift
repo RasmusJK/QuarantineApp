@@ -13,6 +13,7 @@ class TopItemTableViewCell: UITableViewCell {
     @IBOutlet var Title: UILabel!
     @IBOutlet var DescOrDev: UILabel!
     @IBOutlet var Rating: UILabel!
+    @IBOutlet var ItemType: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

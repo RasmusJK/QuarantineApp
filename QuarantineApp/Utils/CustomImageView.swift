@@ -52,5 +52,4 @@ class CustomImageView: UIImageView {
         }
         task.resume()
     }
-
 }
