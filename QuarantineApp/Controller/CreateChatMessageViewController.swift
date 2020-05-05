@@ -13,12 +13,12 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
-
+    
     //MARK: Properties
     @IBOutlet weak var chatMessageInputField: UITextField!
     @IBOutlet weak var chatRoomPicker: UIPickerView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
+    @IBOutlet weak var userLabel: UILabel!
     
     var message: ChatMessage?
     var chatRoom:String = "Helsinki"
@@ -28,7 +28,7 @@ class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         chatRoomPicker.delegate = self
         chatMessageInputField.delegate = self
@@ -38,13 +38,8 @@ class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UI
         // create the alert
         
         if Auth.auth().currentUser!.email != nil {
-                      let alert = UIAlertController(title: "Welcome logged in user!", message: "You can post messages on chat.", preferredStyle: UIAlertController.Style.alert)
-
-                      // add an action (button)
-                      alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-                      // show the alert
-                      self.present(alert, animated: true, completion: nil)
+            chatUser = (Auth.auth().currentUser?.email?.replacingOccurrences(of: "@quarantodo.info", with: ""))!
+            userLabel.text = chatUser
         } else {
             
             performSegue(withIdentifier: "toAuth", sender: nil)
@@ -52,11 +47,11 @@ class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UI
         }
         
         updateSaveButtonState()
-        print("\(Auth.auth().currentUser!.email)")
+        print("\(Auth.auth().currentUser!.email ?? "Anonymous")")
         
     }
     
-    var categoriesForPicker = ["Helsinki", "Vantaa", "Espoo", "Tampere", "Jee", "Broken"]
+    var categoriesForPicker = ["Helsinki", "Vantaa", "Espoo", "Tampere"]
     
     //MARK: UITextField Delegate methods
     
@@ -68,9 +63,9 @@ class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UI
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-
-            chatMessageText = textField.text ?? "No title"
-
+        
+        chatMessageText = textField.text ?? "No title"
+        
     }
     
     
@@ -86,13 +81,13 @@ class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UI
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            return "\(categoriesForPicker[row])"
+        return "\(categoriesForPicker[row])"
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            let pickedCategory = categoriesForPicker[row] as String
-            print("currently picked category for review: \(pickedCategory)")
-            chatRoom = categoriesForPicker[row]
+        let pickedCategory = categoriesForPicker[row] as String
+        print("currently picked category for review: \(pickedCategory)")
+        chatRoom = categoriesForPicker[row]
     }
     
     //MARK: Navigation
@@ -101,12 +96,11 @@ class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UI
         
         //MARK: Firebase User review testing
         let db = Firestore.firestore()
-        let chatRoom2 = chatRoom ?? "No room"
+        let chatRoom2 = chatRoom
         let chatText = chatMessageInputField.text ?? "No message"
-        let chatUser = String(describing: Auth.auth().currentUser!.email)
         
         //Add
-        db.collection("chat").addDocument(data: [
+        db.collection("chat").document("\(Int64(NSDate().timeIntervalSince1970 * 1000))").setData([
             "chatRoom": chatRoom2,
             "chatUser": chatUser,
             "chatText": chatText,
@@ -114,16 +108,16 @@ class CreateChatMessageViewController: UIViewController, UITextFieldDelegate, UI
         
         //Get
         db.collection("chat").whereField("chatText", isEqualTo: chatText).getDocuments() { (querySnapshot, err) in
-        if let err = err {
-        print("Error getting Firestore data: \(err)")
-        } else {
-        for doc in querySnapshot!.documents {
-        print("id: \(doc.documentID), data: \(doc.data())")
-        }
-        }
+            if let err = err {
+                print("Error getting Firestore data: \(err)")
+            } else {
+                for doc in querySnapshot!.documents {
+                    print("id: \(doc.documentID), data: \(doc.data())")
+                }
+            }
         }
         
-     //   review = UserReview(title: reviewTitle, rating: "5", username: "defaultuser", review: reviewText2)
+        //   review = UserReview(title: reviewTitle, rating: "5", username: "defaultuser", review: reviewText2)
     }
     
     private func updateSaveButtonState() {

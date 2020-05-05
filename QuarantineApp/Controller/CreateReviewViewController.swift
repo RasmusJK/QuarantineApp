@@ -13,7 +13,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
-
+    
     //MARK: Properties
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var titleInputField: UITextField!
@@ -44,19 +44,16 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         titleInputField.delegate = self
         reviewInputField.delegate = self
         categoryPicker.delegate = self
         ratingInputField.delegate = self
         
-        usernameLabel.text = Auth.auth().currentUser!.email!.replacingOccurrences(of: "@quarantodo.info", with: "")
-
         titleInputField.becomeFirstResponder()
         reviewInputField.becomeFirstResponder()
         ratingInputField.becomeFirstResponder()
-        
         
         reviewerStaticText.text = reviewerInfoText
         ratingLabelInfoText.text = ratingInfo
@@ -64,38 +61,27 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         nameFieldInfoText.text = titleInfo
         reviewFieldInfoText.text = reviewInfo
         
-        // create the alert
-        
         if Auth.auth().currentUser!.email != nil {
-                      let alert = UIAlertController(title: "Welcome logged in user!", message: "User reviews are now behind a login functionality.", preferredStyle: UIAlertController.Style.alert)
-
-                      // add an action (button)
-                      alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-                      // show the alert
-                      self.present(alert, animated: true, completion: nil)
+            usernameLabel.text = Auth.auth().currentUser!.email!.replacingOccurrences(of: "@quarantodo.info", with: "")
         } else {
-            
             performSegue(withIdentifier: "toAuth", sender: nil)
-            
         }
         
         updateSaveButtonState()
-        print("\(Auth.auth().currentUser!.email)")
-        
+        print("\(Auth.auth().currentUser!.email ?? "Anonymous")")
     }
     
     var categoriesForPicker = ["Books", "Games", "Movies", "TV Series"]
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     //MARK: UITextField Delegate methods
     
@@ -133,13 +119,13 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            return "\(categoriesForPicker[row])"
+        return "\(categoriesForPicker[row])"
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            let pickedCategory = categoriesForPicker[row] as String
-            print("currently picked category for review: \(pickedCategory)")
-            category = categoriesForPicker[row]
+        let pickedCategory = categoriesForPicker[row] as String
+        print("currently picked category for review: \(pickedCategory)")
+        category = categoriesForPicker[row]
     }
     
     //MARK: Navigation
@@ -151,7 +137,7 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         let reviewItem = titleInputField.text ?? "No title"
         let reviewRating = ratingInputField.text ?? "-"
         let reviewText = reviewInputField.text ?? "No review"
-        let reviewUser = Auth.auth().currentUser!.email!.replacingOccurrences(of: "@quarantodo.info", with: "")
+        let reviewUser = Auth.auth().currentUser?.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "Anonymous"
         let reviewCategory = category
         
         //Add
@@ -165,24 +151,24 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         
         //Get
         db.collection("reviews").whereField("reviewItem", isEqualTo: reviewItem).getDocuments() { (querySnapshot, err) in
-        if let err = err {
-        print("Error getting Firestore data: \(err)")
-        } else {
-        for doc in querySnapshot!.documents {
-        print("id: \(doc.documentID), data: \(doc.data())")
-        }
-        }
+            if let err = err {
+                print("Error getting Firestore data: \(err)")
+            } else {
+                for doc in querySnapshot!.documents {
+                    print("id: \(doc.documentID), data: \(doc.data())")
+                }
+            }
         }
         
-       /* super.prepare(for: segue, sender: sender)
+        /* super.prepare(for: segue, sender: sender)
+         
+         guard let button = sender as? UIBarButtonItem, button === saveButton else {
+         os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+         return
+         }
+         */
         
-        guard let button = sender as? UIBarButtonItem, button === saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            return
-        }
-        */
-        
-     //   review = UserReview(title: reviewTitle, rating: "5", username: "defaultuser", review: reviewText2)
+        //   review = UserReview(title: reviewTitle, rating: "5", username: "defaultuser", review: reviewText2)
     }
     
     private func updateSaveButtonState() {

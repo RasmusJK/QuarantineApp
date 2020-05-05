@@ -8,32 +8,31 @@
 
 import UIKit
 
-class ChatMessage {
+class ChatMessage: Codable {
     
-//MARK: Properties
-
+    //MARK: Properties
+    
     var chatRoom: String
     var chatUsername: String
     var chatMessage: String
-
-//MARK: Initialization
-    init?(chatRoom: String, chatUsername: String, chatMessage: String) {
-   
-    guard !chatRoom.isEmpty else {
-    return nil
-    }
-        
-    guard !chatUsername.isEmpty else {
-    return nil
-    }
-        
-    guard !chatMessage.isEmpty else {
-    return nil
-    }
     
-    self.chatRoom = chatRoom
-    self.chatUsername = chatUsername
-    self.chatMessage = chatMessage
+    //MARK: Initialization
+    init?(chatRoom: String, chatUsername: String, chatMessage: String) {
         
+        guard !chatRoom.isEmpty else {
+            return nil
+        }
+        
+        guard !chatUsername.isEmpty else {
+            return nil
+        }
+        
+        guard !chatMessage.isEmpty else {
+            return nil
+        }
+        
+        self.chatRoom = chatRoom
+        self.chatUsername = chatUsername
+        self.chatMessage = chatMessage
     }
 }
