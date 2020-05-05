@@ -143,7 +143,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     */
     func downloadUserReviewsNow(completion: @escaping ([String: Any], Error?) -> Void) {
     var reviewArray = [String: Any]()
-        db.collection("reviews").whereField("reviewUser", isEqualTo: "testuser").getDocuments { QuerySnapshot, error in
+        
+        var user = Auth.auth().currentUser?.email?.replacingOccurrences(of: "@quarantodo.info", with: "") ?? "Anonymous"
+        db.collection("reviews").whereField("reviewUser", isEqualTo: user).getDocuments { QuerySnapshot, error in
       if let error = error {
         print(error)
         completion(reviewArray, error)
