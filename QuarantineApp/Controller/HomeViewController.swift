@@ -55,6 +55,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var movieFetchedResultsController : NSFetchedResultsController<NetflixMovie>!
     var seriesFetchedResultsController : NSFetchedResultsController<NetflixSeries>!
     var gamesFetchedResultsController : NSFetchedResultsController<Games>!
+    @IBOutlet var tableHeader: UILabel!
     //Firebase Auth handler
     var handle: AuthStateDidChangeListenerHandle?
     
@@ -139,11 +140,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         itemTableView.delegate = self
         itemTableView.dataSource = self
+        
         netflixAPI.netflixAPIDelegate = self
         steamAPI.steamAPIDelegate = self
         steamAPI.url = "https://steamspy.com/api.php?request=top100in2weeks"
         
-        let semaphore = DispatchSemaphore(value: 0)
         DispatchQueue.global(qos: .userInitiated).sync {
             self.fetchResultsToController(entity: "NetflixMovie")
             self.fetchResultsToController(entity: "NetflixSeries")
@@ -235,6 +236,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                             singleVC.singleTitleText = object.title ?? ""
                             singleVC.descOrDevText = object.developer ?? ""
                             singleVC.ratingText = "Average play time in two weeks: \(String(object.avg2weeks))"
+                            singleVC.imgurl = UIImage(named: "GameIcon")!
                         } else {
                             // Else assume it is movie or series
                             let object = filteredMedia[index!]
@@ -253,14 +255,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         singleVC.singleTitleText = object.title
                         singleVC.descOrDevText = object.descOrDev
                         if object.type == "game" {
+                            let image = UIImage(named: "games")
+                            singleVC.imgurl = image!
                             singleVC.ratingText = "Average play time in two weeks: \(object.avgOrRating)"
                         } else {
+                            if (object.imgurl != "") {
+                                let image = CustomImageView()
+                                image.loadImageWithURLString(urlString: object.imgurl)
+                                singleVC.imgurl = image.image!
+                            }
                             singleVC.ratingText = "IMBD: \(object.avgOrRating)"
-                        }
-                        if (object.imgurl != "") {
-                            let image = CustomImageView()
-                            image.loadImageWithURLString(urlString: object.imgurl)
-                            singleVC.imgurl = image.image!
                         }
                     }
                 case 1:
@@ -304,7 +308,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         if (object.imgurl != "" && object.imgurl != nil) {
                             let image = CustomImageView()
                             image.loadImageWithURLString(urlString: object.imgurl!)
-                            singleVC.imgurl = image.image!
+                            singleVC.imgurl = image.image ?? UIImage()
                         }
                     }
                 case 3:
@@ -313,11 +317,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         singleVC.singleTitleText = object.title ?? ""
                         singleVC.descOrDevText = object.developer ?? ""
                         singleVC.ratingText = "Average play time in two weeks: \(String(object.avg2weeks))"
+                        singleVC.imgurl = UIImage(named: "GameIcon")!
                     } else {
                         let object = gamesFetchedResultsController.object(at: indexPath!)
                         singleVC.singleTitleText = object.title ?? ""
                         singleVC.descOrDevText = object.developer ?? ""
                         singleVC.ratingText = "Average play time in two weeks: \(String(object.avg2weeks))"
+                        singleVC.imgurl = UIImage(named: "GameIcon")!
                     }
                 default:
                     print("ASD")
@@ -585,7 +591,6 @@ extension HomeViewController {
                 let media = filteredMedia[indexPath.section]
                 cell.Title.text = media.title
                 if let movie = media as? NetflixMovie {
-                    cell.DescOrDev.text = movie.desc
                     cell.Rating.text = "IMBD: \(String(format:"%.1f", movie.imbdrating ))"
                     if (movie.imgurl != "" && movie.imgurl != nil) {
                         let image = CustomImageView()
@@ -594,7 +599,6 @@ extension HomeViewController {
                     }
                 }
                 if let series = media as? NetflixSeries {
-                    cell.DescOrDev.text = series.desc
                     cell.Rating.text = "IMBD: \(String(format:"%.1f", series.imbdrating ))"
                     if (series.imgurl != "" && series.imgurl != nil) {
                         let image = CustomImageView()
@@ -603,15 +607,11 @@ extension HomeViewController {
                     }
                 }
                 if let game = media as? Games {
-                    cell.DescOrDev.text = game.developer
                     cell.Rating.text = "Avg time played: \(game.avg2weeks) minutes"
-                    //Make the image thumbnail data
-                    let image : UIImage = UIImage(named: "Profile") ?? UIImage()
-                    cell.img.image = image
+                    cell.img.image = UIImage(named: "GameIcon")
                 }
                 
                 cell.Title.sizeToFit()
-                cell.DescOrDev.sizeToFit()
                 cell.Rating.sizeToFit()
                 
                 return cell
@@ -619,11 +619,9 @@ extension HomeViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
                 let media = filteredMovies[indexPath.section]
                 cell.Title.text = media.title
-                cell.DescOrDev.text = media.desc
                 cell.Rating.text = "IMBD: \(String(format:"%.1f", media.imbdrating ))"
                 
                 cell.Title.sizeToFit()
-                cell.DescOrDev.sizeToFit()
                 cell.Rating.sizeToFit()
                 
                 if (media.imgurl != "" && media.imgurl != nil) {
@@ -636,11 +634,9 @@ extension HomeViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
                 let media = filteredShows[indexPath.section]
                 cell.Title.text = media.title
-                cell.DescOrDev.text = media.desc
                 cell.Rating.text = "IMBD: \(String(format:"%.1f", media.imbdrating ))"
                 
                 cell.Title.sizeToFit()
-                cell.DescOrDev.sizeToFit()
                 cell.Rating.sizeToFit()
                 
                 if (media.imgurl != "" && media.imgurl != nil) {
@@ -653,22 +649,18 @@ extension HomeViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
                 let media = filteredGames[indexPath.section]
                 cell.Title.text = media.title
-                cell.DescOrDev.text = media.developer
                 cell.Rating.text = "Avg time played: \(media.avg2weeks) minutes"
                 
                 cell.Title.sizeToFit()
-                cell.DescOrDev.sizeToFit()
                 cell.Rating.sizeToFit()
                 
                 //Make the image thumbnail data
-                let image : UIImage = UIImage(named: "Profile") ?? UIImage()
-                cell.img.image = image
+                cell.img.image = UIImage(named: "GameIcon")
                 
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
                 cell.Title.text = ""
-                cell.DescOrDev.text = ""
                 cell.Rating.text = ""
                 return cell
             }
@@ -679,7 +671,6 @@ extension HomeViewController {
                 searchBar.placeholder = "\(Search)"
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TopItemCell", for: indexPath) as! TopItemTableViewCell
                 cell.Title.text = topMedia[indexPath.section].title
-                cell.DescOrDev.text = topMedia[indexPath.section].descOrDev
                 if topMedia[indexPath.section].type == "game" {
                     cell.Rating.text = "Avg time played: \(topMedia[indexPath.section].avgOrRating) minutes"
                 } else {
@@ -687,13 +678,11 @@ extension HomeViewController {
                 }
                 
                 cell.Title.sizeToFit()
-                cell.DescOrDev.sizeToFit()
                 cell.Rating.sizeToFit()
                 
                 //Make the image thumbnail data
                 if (topMedia[indexPath.section].type == "game") {
-                    let image : UIImage = UIImage()
-                    cell.Thumbnail.image = image
+                    cell.Thumbnail.image = UIImage(named: "GameIcon")
                 } else {
                     if (topMedia[indexPath.section].imgurl != "" && topMedia[indexPath.section].imgurl != nil) {
                         let image = CustomImageView()
@@ -709,12 +698,7 @@ extension HomeViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
                 let movie = (movieFetchedResultsController?.object(at: indexPath))!
                 cell.Title.text = movie.title
-                cell.DescOrDev.text = movie.desc
                 cell.Rating.text = "IMBD: \(String(format:"%.1f", movie.imbdrating ))"
-                
-                cell.Title.sizeToFit()
-                cell.DescOrDev.sizeToFit()
-                cell.Rating.sizeToFit()
                 
                 if (movie.imgurl != "" && movie.imgurl != nil) {
                     let image = CustomImageView()
@@ -729,11 +713,9 @@ extension HomeViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
                 let series = (seriesFetchedResultsController?.object(at: indexPath))!
                 cell.Title.text = series.title
-                cell.DescOrDev.text = series.desc
                 cell.Rating.text = "IMBD: \(String(format:"%.1f", series.imbdrating ))"
                 
                 cell.Title.sizeToFit()
-                cell.DescOrDev.sizeToFit()
                 cell.Rating.sizeToFit()
                 
                 if (series.imgurl != "" && series.imgurl != nil) {
@@ -748,23 +730,19 @@ extension HomeViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
                 let game = (gamesFetchedResultsController?.object(at: indexPath))!
                 cell.Title.text = game.title
-                cell.DescOrDev.text = game.developer
                 cell.Rating.text = "Avg time played: \(String(format:"%.1f", game.avg2weeks )) minutes."
                 
                 cell.Title.sizeToFit()
-                cell.DescOrDev.sizeToFit()
                 cell.Rating.sizeToFit()
                 
                 //Make the image thumbnail data
-                let image : UIImage = UIImage(named: "Profile") ?? UIImage()
-                cell.img.image = image
+                cell.img.image = UIImage(named: "GameIcon")
                 return cell
             default:
                 MediaSource = All
                 searchBar.placeholder = "\(Search)"
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
                 cell.Title.text = ""
-                cell.DescOrDev.text = ""
                 cell.Rating.text = ""
                 return cell
             }
@@ -772,9 +750,6 @@ extension HomeViewController {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "ToSingle", sender: self)
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         if (isFiltering) {
