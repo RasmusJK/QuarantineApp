@@ -615,7 +615,8 @@ extension HomeViewController {
                     }
                 }
                 if let game = media as? Games {
-                    cell.Rating.text = "Avg time played: \(game.avg2weeks) minutes"
+                    let avgInHours = Int(game.avg2weeks.description)! / 60
+                    cell.Rating.text = "Avg time played in 2 weeks: \(avgInHours) hours"
                     cell.img.image = UIImage(named: "GameIcon")
                 }
                 
@@ -657,7 +658,8 @@ extension HomeViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
                 let media = filteredGames[indexPath.section]
                 cell.Title.text = media.title
-                cell.Rating.text = "Avg time played: \(media.avg2weeks) minutes"
+                let avgInHours = Int(media.avg2weeks.description)! / 60
+                cell.Rating.text = "Avg time played in 2 weeks: \(avgInHours) hours"
                 
                 cell.Title.sizeToFit()
                 cell.Rating.sizeToFit()
@@ -680,7 +682,8 @@ extension HomeViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TopItemCell", for: indexPath) as! TopItemTableViewCell
                 cell.Title.text = topMedia[indexPath.section].title
                 if topMedia[indexPath.section].type == "game" {
-                    cell.Rating.text = "Avg time played: \(topMedia[indexPath.section].avgOrRating) minutes"
+                    let avgInHours = Int(topMedia[indexPath.section].avgOrRating)! / 60
+                    cell.Rating.text = "Avg time played in 2 weeks: \(avgInHours) hours"
                 } else {
                     cell.Rating.text = "IMBD: \(topMedia[indexPath.section].avgOrRating)"
                 }
@@ -738,7 +741,8 @@ extension HomeViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
                 let game = (gamesFetchedResultsController?.object(at: indexPath))!
                 cell.Title.text = game.title
-                cell.Rating.text = "Avg time played: \(String(format:"%.1f", game.avg2weeks )) minutes."
+                let avgInHours = Int(game.avg2weeks.description)! / 60
+                cell.Rating.text = "Avg play time in 2 weeks: \(avgInHours) hours"
                 
                 cell.Title.sizeToFit()
                 cell.Rating.sizeToFit()
