@@ -42,6 +42,11 @@
 "TV Shows" = "TV Ohjelmat";
 "Books" = "Kirjat";
 "Sports" = "Urheilu";
+"Reviewer" = "Arvostelija";
+"Rating (out of 5 stars)" = "Arvio (0-5 tähteä)";
+"Category" = "Kategoria";
+"Name" = "Nimi";
+"Review" = "Arvostelu";
 
 "Back" = "Takaisin";
 "Cancel" = "Peruuta";

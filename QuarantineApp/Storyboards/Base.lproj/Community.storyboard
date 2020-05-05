@@ -498,8 +498,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoryPicker" destination="MYC-hh-wGP" id="fyQ-C0-arO"/>
+                        <outlet property="categoryPickerInfoText" destination="fZe-nk-00e" id="3JQ-Dq-sba"/>
+                        <outlet property="nameFieldInfoText" destination="BJt-dw-ob2" id="KgM-sW-h9W"/>
                         <outlet property="ratingInputField" destination="yKQ-4D-NM8" id="oFI-vr-t6q"/>
+                        <outlet property="ratingLabelInfoText" destination="bWz-Zc-kBC" id="G17-f6-Ap6"/>
+                        <outlet property="reviewFieldInfoText" destination="bJj-c2-EWh" id="Vx2-Pv-bBF"/>
                         <outlet property="reviewInputField" destination="ivv-iS-aRz" id="1oJ-K2-moI"/>
+                        <outlet property="reviewerStaticText" destination="WuM-oI-l8J" id="xER-Fj-Ked"/>
                         <outlet property="saveButton" destination="x6R-Q0-4tJ" id="hwz-1U-AkI"/>
                         <outlet property="titleInputField" destination="xRS-ri-byq" id="6lX-i6-3Hz"/>
                         <segue destination="SA1-pM-EQQ" kind="presentation" identifier="toAuth" id="cL6-mn-DEN"/>

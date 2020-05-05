@@ -41,6 +41,11 @@
 "TV Shows" = "TV Shows";
 "Books" = "Books";
 "Sports" = "Sports";
+"Reviewer" = "Reviewer";
+"Rating (out of 5 stars)" = "Rating (out of 5 stars)";
+"Category" = "Category";
+"Name" = "Name";
+"Review" = "Review";
 
 "Back" = "Back";
 "Cancel" = "Cancel";

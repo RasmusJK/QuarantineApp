@@ -21,6 +21,11 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var ratingInputField: UITextField!
+    @IBOutlet weak var reviewerStaticText: UILabel!
+    @IBOutlet weak var ratingLabelInfoText: UILabel!
+    @IBOutlet weak var categoryPickerInfoText: UILabel!
+    @IBOutlet weak var nameFieldInfoText: UILabel!
+    @IBOutlet weak var reviewFieldInfoText: UILabel!
     
     
     var review: UserReview?
@@ -28,6 +33,12 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
     var rating: String = ""
     var reviewTitle:String = ""
     var reviewText2:String = ""
+    
+    var reviewerInfoText = NSLocalizedString("Reviewer", comment: "")
+    var ratingInfo = NSLocalizedString("Rating (out of 5 stars)", comment: "")
+    var categoryInfo = NSLocalizedString("Category", comment: "")
+    var titleInfo = NSLocalizedString("Name", comment: "")
+    var reviewInfo = NSLocalizedString("Review", comment: "")
     
     
     override func viewDidLoad() {
@@ -42,6 +53,11 @@ class CreateReviewViewController: UIViewController, UITextFieldDelegate, UIPicke
         titleInputField.becomeFirstResponder()
         reviewInputField.becomeFirstResponder()
         ratingInputField.becomeFirstResponder()
+        
+        reviewerStaticText.text = reviewerInfoText
+        ratingLabelInfoText.text = ratingInfo
+        nameFieldInfoText.text = titleInfo
+        reviewFieldInfoText.text = reviewInfo
         
         // create the alert
         
