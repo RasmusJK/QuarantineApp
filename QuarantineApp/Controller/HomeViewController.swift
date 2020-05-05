@@ -87,14 +87,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var isFiltering : Bool {
         return searchIsActive && !isSearchBarEmpty
     }
+
     //Localized strings
+
+    
+
     var MediaSource: String = "asd"
     var All = "All"
     var Movies = NSLocalizedString("Movies", comment: "")
     var Shows = NSLocalizedString("Shows", comment: "")
     var Games = NSLocalizedString("Games", comment: "")
     var Search = NSLocalizedString("Search", comment: "")
+
     //Function for bar button enabled/disabled
+
+    
+
     func showBarButtons(shouldShow: Bool) {
         if shouldShow {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,

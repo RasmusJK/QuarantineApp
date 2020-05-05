@@ -140,11 +140,13 @@ class ReviewCategoryTableViewController: UITableViewController {
             print("fucked up with title")
             fatalError("Unable to get reviewCategory")
         }
+
         guard let reviewCategory4 = ReviewCategory(title: tvshows, image: reviewCategoryPhoto2) else {
             print("fucked up with title")
             fatalError("Unable to get reviewCategory")
         }
         guard let reviewCategory2 = ReviewCategory(title: games, image: reviewCategoryGames) else {
+
             print("fucked up with image")
             fatalError("Unable to get reviewCategory")
         }

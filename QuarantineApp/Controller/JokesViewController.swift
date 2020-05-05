@@ -23,8 +23,11 @@ class JokesViewController: UIViewController, JokeAPIDelegate {
             self.deliveryLabel.text = jokeInfo?.delivery
         }
     }
+
     
     //MARK: Properties
+
+
     @IBOutlet var navigationbar: UINavigationItem!
     var nextjoke = NSLocalizedString("Next Joke", comment: "")
     var jokes = NSLocalizedString("Jokes", comment: "")
