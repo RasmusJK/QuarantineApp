@@ -87,14 +87,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var isFiltering : Bool {
         return searchIsActive && !isSearchBarEmpty
     }
-    
+    //Localized strings
     var MediaSource: String = "asd"
     var All = "All"
     var Movies = NSLocalizedString("Movies", comment: "")
     var Shows = NSLocalizedString("Shows", comment: "")
     var Games = NSLocalizedString("Games", comment: "")
     var Search = NSLocalizedString("Search", comment: "")
-    
+    //Function for bar button enabled/disabled
     func showBarButtons(shouldShow: Bool) {
         if shouldShow {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
@@ -807,7 +807,7 @@ extension HomeViewController {
     }
 }
 
-
+//Searchbar delegation and functions
 extension HomeViewController: UISearchBarDelegate{
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -829,7 +829,7 @@ extension HomeViewController: UISearchBarDelegate{
         print("Search text is \(searchText) and filtering for \(MediaSource)")
         filterContentForSearch(searchText)
     }
-    
+    //Function to filtering according the mediasource
     func filterContentForSearch(_ searchText: String) {
         if(MediaSource == All){
             filteredMedia = combinedMedia.filter{(object : AnyObject) -> Bool in
