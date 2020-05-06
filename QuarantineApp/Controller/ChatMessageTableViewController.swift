@@ -126,7 +126,7 @@ class ChatMessageTableViewController: UITableViewController {
                 completion(reviewArray, error)
                 return
             }
-            
+            self.chatMessages.removeAll()
             for doc in QuerySnapshot!.documents {
                 let data = doc.data()
                 reviewArray = data
