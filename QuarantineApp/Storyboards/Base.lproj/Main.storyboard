@@ -234,7 +234,6 @@
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dqH-xJ-qEm">
                             <rect key="frame" x="150.5" y="7" width="113" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Empty core data"/>
                             <connections>
                                 <action selector="emptyCoreDataDebug:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cwd-3s-inY"/>
                             </connections>

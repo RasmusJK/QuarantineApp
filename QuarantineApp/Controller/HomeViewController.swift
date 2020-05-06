@@ -396,28 +396,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 gamesFetchedResultsController!.delegate = self
                 try? gamesFetchedResultsController?.performFetch()
             default:
-            print("shit dont work")
-        }
-    }
-    
-    func saveToCoreData(gameTitle : String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let entity = NSEntityDescription.entity(forEntityName: "Games", in: managedContext)!
-        
-        let gameItem = NSManagedObject(entity: entity, insertInto: managedContext)
-        
-        gameItem.setValue(gameTitle, forKeyPath: "gameTitle")
-        
-        
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print(error)
+            print("Could not fetch")
         }
     }
     
@@ -554,6 +533,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             print(error)
         }
     }
+    
+    /**
+        Combines all the fetched media for sorting during search
+     */
     func combineFetchedResults() {
         print("Combining fetch results")
         for item in movieFetchedResultsController.fetchedObjects! {

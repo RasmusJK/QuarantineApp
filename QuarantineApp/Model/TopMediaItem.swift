@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+    Base class for containing the media items for the top segment in the home page
+ */
 class TopMediaItem {
     let title : String
     let descOrDev : String
